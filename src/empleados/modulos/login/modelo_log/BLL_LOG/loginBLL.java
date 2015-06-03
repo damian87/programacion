@@ -7,7 +7,9 @@ package empleados.modulos.login.modelo_log.BLL_LOG;
 
 import empleados.clases.conexionBBDD;
 import empleados.clases.StringEncrypter;
-import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.recordar;
+//import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.recordar;
+import static empleados.modulos.login.controlador_log.controlador_login.recordar;
+
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOBD_EF;
 import empleados.modulos.login.modelo_log.DAO_LOG.loginDAO;
 import java.awt.Color;

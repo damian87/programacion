@@ -300,9 +300,11 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.efgraf.jTextField1.setActionCommand("_FILTRAREF");
             this.efgraf.jTextField1.setName("_FILTRAREF");
             this.efgraf.jTextField1.addActionListener(this);
-            /*this.efgraf.jComboBox1.setActionCommand("_COMBOX");
-             this.efgraf.jComboBox1.setName("_COMBOX");
-             this.efgraf.jComboBox1.addActionListener(this);*/
+            
+            
+            this.efgraf.jComboBox1.setActionCommand("_COMBOX");
+            this.efgraf.jComboBox1.setName("_COMBOX");
+            this.efgraf.jComboBox1.addActionListener(this);
 
             this.efgraf.botonarchivoEF.setActionCommand("_GUARDAR");
             this.efgraf.botonarchivoEF.setName("_GUARDAR");
@@ -579,158 +581,13 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.configu.TXT.addActionListener(this);
 
         }
-        //modulo de inicio login
-        if (i == 5) {
-
-            this.inilog.setVisible(true);
-
-            this.inilog.setTitle("Bienvenidos a la Gestion de Empleados");
-            this.inilog.setLocationRelativeTo(null);
-            this.inilog.setSize(525, 425);//ancho x alto
-            this.inilog.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            this.inilog.setIconImage(icono);
-
-            this.inilog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-            this.inilog.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            inilog.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-                    inilog.dispose();
-                    System.exit(0);
-                }
-            });
-
-            this.inilog.txtusuario.setActionCommand("_usuario");
-            this.inilog.txtusuario.setName("_usuario");
-            this.inilog.txtusuario.addActionListener(this);
-            this.inilog.txtusuario.addKeyListener(this);
-
-            this.inilog.txtpassword.setActionCommand("_password");
-            this.inilog.txtpassword.setName("_password");
-            this.inilog.txtpassword.addActionListener(this);
-            this.inilog.txtpassword.addKeyListener(this);
-
-            this.inilog.botonenter.setActionCommand("_enter");
-            this.inilog.botonenter.setName("_enter");
-            this.inilog.botonenter.addActionListener(this);
-
-            this.inilog.botonolvidarpass.setActionCommand("_olvidarpass");
-            this.inilog.botonolvidarpass.setName("_olvidarpass");
-            this.inilog.botonolvidarpass.addActionListener(this);
-
-            this.inilog.newusu.setActionCommand("_newusu");
-            this.inilog.newusu.setName("_newusu");
-            this.inilog.newusu.addActionListener(this);
-
-            this.inilog.configEF.setActionCommand("_configurador");
-            this.inilog.configEF.setName("_configurador");
-            this.inilog.configEF.addActionListener(this);
-
-        }
-        //Reestablecer password
-        if (i == 6) {
-
-            this.recordar.setVisible(true);
-
-            this.recordar.setTitle("Restablecer Password");
-            this.recordar.setLocationRelativeTo(null);
-            this.recordar.setSize(525, 425);//ancho x alto
-            this.recordar.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            this.recordar.setIconImage(icono);
-            this.recordar.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-            this.recordar.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            recordar.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Ha cancelado la operacion");
-                    recordar.dispose();
-                    //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
-
-                }
-            });
-
-            this.recordar.txtlogin.setActionCommand("_RUSU");
-            this.recordar.txtlogin.setName("_RUSU");
-            this.recordar.txtlogin.addActionListener(this);
-            this.recordar.txtlogin.addKeyListener(this);
-
-            this.recordar.txtpassword.setActionCommand("_RPASS");
-            this.recordar.txtpassword.setName("_RPASS");
-            this.recordar.txtpassword.addActionListener(this);
-            this.recordar.txtpassword.addKeyListener(this);
-
-            this.recordar.botonreestablecer.setActionCommand("_RRESSTABLECER");
-            this.recordar.botonreestablecer.setName("_RRESSTABLECER");
-            this.recordar.botonreestablecer.addActionListener(this);
-
-            this.recordar.botoncancelar.setActionCommand("_RCANCELAR");
-            this.recordar.botoncancelar.setName("_RCANCELAR");
-            this.recordar.botoncancelar.addActionListener(this);
-
-        }
-
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        switch (Accion.valueOf(e.getActionCommand())) {
-
-            //modulo login
-            case _newusu:
-                inilog.dispose();
-                new controladorEF(new creaEFgrafica(), 2).Iniciar(2);
-
-                break;
-            case _configurador:
-                inilog.dispose();
-                new controladorEF(new configuracion(), 4).Iniciar(4);
-
-                break;
-
-            case _enter:
-                boolean result;
-                String dni,
-                 password;
-                dni = this.inilog.txtusuario.getText();
-                password = this.inilog.txtpassword.getText();
-                //String dni, String password
-                loginBLL log = new loginBLL();
-                result = log.loginusu(dni, password);
-                if (result == true) {
-                    inilog.dispose();
-                    new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
-                } else {
-                    JOptionPane.showMessageDialog(null, "El usuario o contraseña son incorrectos");
-                }
-
-                break;
-
-            case _olvidarpass:
-                inilog.dispose();
-                //new controladorEF(new recordarcontraseña(), 6).Iniciar(6);
-                new controlador_login(new Iniciologin(), 6).Iniciar(6);
-
-                break;
-            //resstablecer
-            case _RCANCELAR:
-                inilog.dispose();
-                //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);
-                break;
-
-            case _RRESSTABLECER:
-
-                loginBLL rest = new loginBLL();
-                rest.resstablecerpass();
-
-                break;
+        switch (Accion.valueOf(e.getActionCommand())) {            
 
             //subprincipal
             case _GESTIONEF:

@@ -32,6 +32,7 @@ public class EFBLLgrafica {
 
     public static void crearEFgrafica() {
         int found = 0;
+        int mail=0;
         //empleadofijo efi=null;
         DAOEFgrafica.creaEFGrafica();
 
@@ -45,8 +46,11 @@ public class EFBLLgrafica {
             BLLBD_EF guardar = new BLLBD_EF();
             ArraylistEF.password = ArraylistEF.efi.getPassword();
             //StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
-            guardar.nuevoEF_BD();
-            DAOEFgrafica.Eniviaremail();
+            mail=guardar.nuevoEF_BD();
+            if (mail==1){
+                DAOEFgrafica.Eniviaremail();
+            }
+            
             //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
             //stm.cargar
             //EFBLLgrafica.GuardarSinEnterarse();

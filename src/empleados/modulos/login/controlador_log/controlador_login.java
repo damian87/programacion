@@ -225,19 +225,22 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
 
             case _olvidarpass:
                 inilog.dispose();
-                new controladorEF(new recordarcontraseña(), 6).Iniciar(6);
+                //new controladorEF(new recordarcontraseña(), 6).Iniciar(6);
+                new controlador_login(new recordarcontraseña(), 6).Iniciar(6);
 
                 break;
             //resstablecer
             case _RCANCELAR:
-                inilog.dispose();
-                new controladorEF(new Iniciologin(), 5).Iniciar(5);
+                recordar.dispose();
+                //new controladorEF(new Iniciologin(), 5).Iniciar(5);
+                new controlador_login(new Iniciologin(), 5).Iniciar(5);
                 break;
 
             case _RRESSTABLECER:
 
                 loginBLL rest = new loginBLL();
                 rest.resstablecerpass();
+                
 
                 break;
         }   

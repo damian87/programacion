@@ -303,7 +303,7 @@ public class DAOBD_EF {
         try {
 
             stmt = con.prepareStatement("UPDATE EFBBDD.Empleadofijo SET password=? WHERE login=? ");
-           //stmt = con.prepareStatement("UPDATE efbbdd.empleadofijo SET password=? WHERE login=? ");
+            //stmt = con.prepareStatement("UPDATE efbbdd.empleadofijo SET password=? WHERE login=? ");
             //VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 
             //stmt = con.prepareStatement("UPDATE usuarios SET usuario=?, password=?, nombre=?, apellido=?, fecha_Nacimiento=?, edad=?,"

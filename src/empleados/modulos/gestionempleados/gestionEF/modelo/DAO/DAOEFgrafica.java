@@ -178,9 +178,11 @@ public class DAOEFgrafica {
                 creaEFgrafica.txtemail.setBackground(Color.red);
                 creaEFgrafica.txtlogin.requestFocus();
 
+            }else{
+                creaEFgrafica.txtemail.setBackground(Color.green);
             }
 
-            creaEFgrafica.txtemail.setBackground(Color.green);
+            
         }
         return email;
     }
@@ -443,7 +445,7 @@ public class DAOEFgrafica {
             creaEFgrafica.txtNombreEF.requestFocus();
 
             creaEFgrafica.txtNombreEF.setBackground(Color.WHITE);
-            creaEFgrafica.txtNombreEF.setBackground(Color.WHITE);
+            creaEFgrafica.txtDepartamentoEF.setBackground(Color.WHITE);
             creaEFgrafica.txtDNIEF.setBackground(Color.WHITE);
             creaEFgrafica.DatePikerEFNacEF.setBackground(Color.WHITE);
             creaEFgrafica.DatePikerEFContEF.setBackground(Color.WHITE);

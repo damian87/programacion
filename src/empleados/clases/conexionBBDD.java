@@ -26,6 +26,7 @@ public class conexionBBDD {
             //String urlOdbc = "jdbc:mysql://192.168.21.100:3306/EFBBDD";
             //String urlOdbc = "jdbc:mysql://192.168.21.100:3306/efbbdd";
             String urlOdbc = "jdbc:mysql://localhost:3306/EFBBDD";
+            //String urlOdbc = "jdbc:mysql://localhost:3306/efbbdd";
             con = (java.sql.DriverManager.getConnection(urlOdbc, "root", ""));
             //JOptionPane.showMessageDialog(null, "Si funciona");
         } catch (Exception e) {
