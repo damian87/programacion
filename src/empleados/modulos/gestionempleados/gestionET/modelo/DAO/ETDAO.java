@@ -57,7 +57,7 @@ public class ETDAO {
 	
 	
 	
-	et=new empleadotemporal (nombre, dni, departamento, fechaNacimiento, fechaAlta, fechaBaja, null, null, null);
+	et=new empleadotemporal (nombre, dni, departamento, fechaNacimiento, fechaAlta, fechaBaja, null, null, null, null, null);
 	//ef=(nombre, edad, departamento, fechaNacimiento, sueldo, antiguedad, fechaContratacion);
 	
 	return et;

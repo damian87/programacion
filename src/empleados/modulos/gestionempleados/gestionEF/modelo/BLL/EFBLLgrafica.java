@@ -6,7 +6,11 @@
 package empleados.modulos.gestionempleados.gestionEF.modelo.BLL;
 
 import empleados.clases.StringEncrypter;
+import empleados.librerias.FileUploader;
 import empleados.modulos.gestionempleados.clases.empleado;
+import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
+import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.creaEF;
+import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.modief;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
@@ -15,6 +19,8 @@ import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
 import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
+import empleados.modulos.login.controlador_log.controlador_login;
+import empleados.modulos.login.vista_log.Iniciologin;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -36,9 +42,9 @@ public class EFBLLgrafica {
         } else {
             //ArraylistEF.ef.add(efi);
 
-            
             BLLBD_EF guardar = new BLLBD_EF();
-            StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
+            ArraylistEF.password = ArraylistEF.efi.getPassword();
+            //StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
             guardar.nuevoEF_BD();
             DAOEFgrafica.Eniviaremail();
             ((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
@@ -94,11 +100,36 @@ public class EFBLLgrafica {
     }
 
     public static void borrarcamporEFgrafica() {
-        DAOEFgrafica.borrarcamposcrea();
+        if (ArraylistEF.efilogin == null) {
+            DAOEFgrafica.borrarcamposcrea();
+            creaEF.dispose();
+            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+
+        } else if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+
+            DAOEFgrafica.borrarcamposcrea();
+            creaEF.dispose();
+            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+
+        } else {
+            DAOEFgrafica.borrarcamposcrea();
+            creaEF.dispose();
+            new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
+        }
     }
 
     public static void borrarcamporEFModifica() {
-        DAOEFgrafica.borrarcamposModifica();
+        if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+            DAOEFgrafica.borrarcamposModifica();
+            modief.dispose();
+            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+        } else {
+
+            DAOEFgrafica.borrarcamposModifica();
+            modief.dispose();
+
+            new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
+        }
     }
 
     public static void eliminaEFgraficatabla() {
@@ -145,10 +176,12 @@ public class EFBLLgrafica {
                 String dni = (String) TABLA.getModel().getValueAt(selec2, 0);
                 //ArraylistEF.efi = new empleadofijo(dni);
                 ArraylistEF.efilog = new empleadofijo(dni);
+                ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efilog.getDni());
+                DAOEFgrafica.modificaEFgraficallenadodatos();
+                FileUploader.pintaravatar(modief.labelavatar, 90, 90);
             }
         }
         //ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
-        ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efilog.getDni());
 
     }
 
@@ -167,11 +200,11 @@ public class EFBLLgrafica {
                 String dni = (String) TABLA.getModel().getValueAt(selec2, 0);
                 //ArraylistEF.efi = new empleadofijo(dni);
                 ArraylistEF.efilogin = new empleadofijo(dni);
+                ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efilogin.getDni());
+                JOptionPane.showMessageDialog(null, "La informacion completa del trabajador es" + ArraylistEF.efi.toString());
             }
         }
         //ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
-        ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efilogin.getDni());
-        JOptionPane.showMessageDialog(null, "La informacion completa del trabajador es" + ArraylistEF.efi.toString());
 
     }
 
@@ -179,14 +212,20 @@ public class EFBLLgrafica {
 
         //empleadofijo modificado = new empleadofijo();
         //modificado=DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
-        DAOEFgrafica.modificaEFgrafica();
-        //JOptionPane.showMessageDialog(null, ArraylistEF.efi.toString());
+        if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+            DAOEFgrafica.modificaEFlogin();
 
+        } else {
+            DAOEFgrafica.modificaEFgrafica();
+
+        }
+
+        //JOptionPane.showMessageDialog(null, ArraylistEF.efi.toString());
         BLLBD_EF modi = new BLLBD_EF();
         //modificado=ArraylistEF.efi;
         modi.modificarEF_BD();
 
-        ((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
+        //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
 
     }
 

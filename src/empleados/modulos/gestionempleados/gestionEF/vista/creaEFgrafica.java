@@ -43,6 +43,7 @@ public class creaEFgrafica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         NombreEF = new javax.swing.JLabel();
         DepartamentoEF = new javax.swing.JLabel();
@@ -72,6 +73,9 @@ public class creaEFgrafica extends javax.swing.JFrame {
         labelavatar = new javax.swing.JLabel();
         cargarimgavatar = new javax.swing.JButton();
         txtpassword = new javax.swing.JPasswordField();
+        jPanel2 = new javax.swing.JPanel();
+        Usuario = new javax.swing.JRadioButton();
+        Admin = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +89,7 @@ public class creaEFgrafica extends javax.swing.JFrame {
 
         DNIEF.setText("DNI:");
 
+        CrearEF.setBackground(new java.awt.Color(255, 255, 255));
         CrearEF.setText("Crear");
 
         BorrarEF.setText("Borrar");
@@ -104,6 +109,33 @@ public class creaEFgrafica extends javax.swing.JFrame {
         labelavatar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         cargarimgavatar.setText("Cargar Avatar");
+
+        buttonGroup1.add(Usuario);
+        Usuario.setText("Usuario");
+
+        buttonGroup1.add(Admin);
+        Admin.setText("Administrador");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Admin)
+                    .addComponent(Usuario))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Usuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Admin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,7 +190,8 @@ public class creaEFgrafica extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(NombreEF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombreEF, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNombreEF, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cargarimgavatar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -215,6 +248,8 @@ public class creaEFgrafica extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(password)
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -238,6 +273,7 @@ public class creaEFgrafica extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JRadioButton Admin;
     public static javax.swing.JButton BorrarEF;
     public static javax.swing.JButton CancelarEF;
     public static javax.swing.JButton CrearEF;
@@ -250,8 +286,11 @@ public class creaEFgrafica extends javax.swing.JFrame {
     private javax.swing.JLabel FNacEF;
     private javax.swing.JLabel Login;
     private javax.swing.JLabel NombreEF;
+    public static javax.swing.JRadioButton Usuario;
+    private javax.swing.ButtonGroup buttonGroup1;
     public static javax.swing.JButton cargarimgavatar;
     public static javax.swing.JPanel jPanel1;
+    public static javax.swing.JPanel jPanel2;
     public static javax.swing.JLabel labelavatar;
     private javax.swing.JLabel password;
     public static javax.swing.JTextField txtDNIEF;

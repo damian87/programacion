@@ -15,10 +15,10 @@ public class empleadofijo extends empleado implements Serializable{
 	private fecha fechaContratacion;
 	
 	public empleadofijo(String nombre,  String dni, String departamento, fecha fechaNacimiento,
-			fecha fechaContratacion, String login, String password, String email) {
+			fecha fechaContratacion, String login, String password, String email, String tipo, String avatar) {
 		//String nombre, String dni, String departamento, fecha fechaNacimiento
                 //(String nombre, String dni, String departamento, fecha fechaNacimiento, String login, String password, String email, String avatar, int estado, String tipo) {
-		super(nombre, dni, departamento, fechaNacimiento, login, password, email);
+		super(nombre, dni, departamento, fechaNacimiento, login, password, email, tipo, avatar);
 		this.setAntiguedad(fechaContratacion.calcularedad());
 		//this.antiguedad = antiguedad;
 		this.fechaContratacion = fechaContratacion;
@@ -38,7 +38,10 @@ public class empleadofijo extends empleado implements Serializable{
 		 * this.setAntiguedad(fechaContratacion.calcularedad());
 		 * 	return this.cambiarAntiguedad();
 		 */
-		return this.getFechaContratacion().calcularedad();
+            
+                 antiguedad=this.getFechaContratacion().calcularedad();
+                 return antiguedad;
+		//return this.getFechaContratacion().calcularedad();
 	}
 	
 	public void setAntiguedad(int antiguedad) {
@@ -66,8 +69,8 @@ public class empleadofijo extends empleado implements Serializable{
 		//String s="";
 		//s=s+"empleadofijo [antiguedad=" + antiguedad + "\n =" + "" + super.toString() + "]";
 		
-		imprimir.append ("Antiguedad: "+antiguedad+"\n"+super.toString());
-		
+		//imprimir.append ("Antiguedad: "+antiguedad+"\n"+super.toString());
+		imprimir.append (super.toString()+"\n"+"Antiguedad: "+this.cambiarAntiguedad()+"\n"+"Sueldo:"+this.calcularsueldo());
 		//imprimir.append(s);
 		
 		return imprimir.toString();

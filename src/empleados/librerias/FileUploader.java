@@ -22,29 +22,41 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author damian
  */
 public class FileUploader {
-    
-    public static String PATH_auto="";
-    
+
+    public static String PATH_auto = "";
+
     public static void lista_blanca(JFileChooser buscador) {
         buscador.setAcceptAllFileFilterUsed(false);
         buscador.addChoosableFileFilter(new FileNameExtensionFilter("Imágenes (*.jpg, *.jpeg, *.gif, *.png)", "jpg", "jpeg", "gif", "png"));
     }
-    
-    public static void pintaravatar(JLabel etiqueta, int ancho, int alto){
+
+    public static void pintaravatar(JLabel etiqueta, int ancho, int alto) {
+
+            ImageIcon icon = new ImageIcon(ArraylistEF.efilogin.getAvatar());
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
         
-         ImageIcon icon = new ImageIcon(ArraylistEF.efi.getAvatar());
-                Image img = icon.getImage();
-                Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
-                ImageIcon newIcon = new ImageIcon(newimg);
-                etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
-        
+
     }
     
-    public static void pintar_guardar_imag(JLabel etiqueta, int ancho, int alto){
+    public static void pintaravataref(JLabel etiqueta, int ancho, int alto) {
+
+            ImageIcon icon = new ImageIcon(ArraylistEF.efi.getAvatar());
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
+        
+
+    }
+
+    public static void pintar_guardar_imag(JLabel etiqueta, int ancho, int alto) {
         String ruta;
         File imagen;
         BufferedImage image;
-        String extension="";
+        String extension = "";
         JFileChooser fileChooser = new JFileChooser();
 
         lista_blanca(fileChooser);
@@ -65,19 +77,19 @@ public class FileUploader {
                 Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon newIcon = new ImageIcon(newimg);
                 etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
-                
+
                 try {
                     //guardamos la imagen
-                    image=ImageIO.read(fileChooser.getSelectedFile().toURL());
-                    extension=fileChooser.getSelectedFile().toURL().toString().substring(
-                        fileChooser.getSelectedFile().toURL().toString().length()-3);
-                    String cad=getCadenaAleatoria(5);
-                
-                    PATH_auto = new java.io.File("")+ "src/imagenes/avatars"+cad+"."+extension;
+                    image = ImageIO.read(fileChooser.getSelectedFile().toURL());
+                    extension = fileChooser.getSelectedFile().toURL().toString().substring(
+                            fileChooser.getSelectedFile().toURL().toString().length() - 3);
+                    String cad = getCadenaAleatoria(5);
+
+                    PATH_auto = new java.io.File("") + "src/imagenes/avatars" + cad + "." + extension;
                     File f = new File(PATH_auto);
                     ImageIO.write(image, extension, f);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error upload imagen","Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error upload imagen", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } else { //avatar per defecte
@@ -87,33 +99,33 @@ public class FileUploader {
             Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);
             etiqueta.setIcon(newIcon); //pintamos la imagen_default en jlabel1
-            
+
             try {
-                    //guardamos la imagen
-                    PATH_auto = new java.io.File("")+ "src/img/default-avatar.jpg";
-                    File f = new File(PATH_auto);
-                    image=ImageIO.read(f);
-                    ImageIO.write(image, "jpg", f);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error upload imagen","Error", JOptionPane.ERROR_MESSAGE);
-                }
+                //guardamos la imagen
+                PATH_auto = new java.io.File("") + "src/img/avatars/default-avatar.jpg";
+                File f = new File(PATH_auto);
+                image = ImageIO.read(f);
+                ImageIO.write(image, "jpg", f);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error upload imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        
+
     }
-    
-    public static String getCadenaAleatoria(int longitud){
-		String cadenaAleatoria = "";
-		long milis = new java.util.GregorianCalendar().getTimeInMillis();
-		Random r = new Random(milis);
-		int i = 0;
-		while ( i < longitud){
-			char c = (char)r.nextInt(255);
-			if ( (c >= '0' && c <='9') || (c >='A' && c <='Z') ){
-				cadenaAleatoria += c;
-				i ++;
-			}
-		}
-		return cadenaAleatoria;
+
+    public static String getCadenaAleatoria(int longitud) {
+        String cadenaAleatoria = "";
+        long milis = new java.util.GregorianCalendar().getTimeInMillis();
+        Random r = new Random(milis);
+        int i = 0;
+        while (i < longitud) {
+            char c = (char) r.nextInt(255);
+            if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')) {
+                cadenaAleatoria += c;
+                i++;
+            }
+        }
+        return cadenaAleatoria;
     }
-    
+
 }

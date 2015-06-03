@@ -6,8 +6,8 @@ public class empleadohoras extends empleado{
 
 	private float precioHora=(float) 9.20f;
 	private int cantHorasTrabajadas;
-	public empleadohoras(String nombre, String dni, String departamento, fecha fechaNacimiento, int cantHorasTrabajadas, String login, String password, String email) {
-		super(nombre, dni, departamento, fechaNacimiento, login, password, email);
+	public empleadohoras(String nombre, String dni, String departamento, fecha fechaNacimiento, int cantHorasTrabajadas, String login, String password, String email, String tipo, String avatar) {
+		super(nombre, dni, departamento, fechaNacimiento, login, password, email, tipo, avatar);
 		this.precioHora = precioHora;
 		this.cantHorasTrabajadas = cantHorasTrabajadas;
 		super.setSueldo(nominahoras());

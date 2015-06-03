@@ -10,8 +10,8 @@ public class empleadotemporal extends empleado{
 	private int antiguedadtemporal;
 	
 	public empleadotemporal(String nombre, String dni, String departamento, fecha fechaNacimiento, 
-			fecha fechaAlta, fecha fechaBaja, String login, String password, String email) {
-		super(nombre, dni, departamento, fechaNacimiento, login, password, email);
+			fecha fechaAlta, fecha fechaBaja, String login, String password, String email,  String tipo, String avatar) {
+		super(nombre, dni, departamento, fechaNacimiento, login, password, email, tipo, avatar);
 		this.setAntiguedadtemporal(fechaAlta.calcularedad());
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;

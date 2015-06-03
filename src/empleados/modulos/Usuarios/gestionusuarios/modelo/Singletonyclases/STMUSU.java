@@ -2,17 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases;
+package empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases;
 
 //import java.sql.Timestamp;
 //import java.util.ArrayList;
 //import javax.swing.JOptionPane;
 //import javax.swing.table.AbstractTableModel;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.*;
 import empleados.clases.fecha;
-import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.combo;
-import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
-import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
-import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
+import empleados.modulos.Usuarios.clase.Usuario;
+import static empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU.combo;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLBD_USU;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.pagerprod.pagina;
+//import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.combo;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
 //import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
@@ -26,9 +30,9 @@ import javax.swing.JComboBox;
  *
  * @author damian
  */
-public class STMEF extends AbstractTableModel{
-    public static ArrayList<empleadofijo> datos = new ArrayList<empleadofijo>();
-    public static ArrayList<empleadofijo> datosaux = new ArrayList<empleadofijo>();
+public class STMUSU extends AbstractTableModel{
+    public static ArrayList<Usuario> datos = new ArrayList<Usuario>();
+    public static ArrayList<Usuario> datosaux = new ArrayList<Usuario>();
     String[] columnas = {"DNI", "Nombre", "Departamento", "Edad", "Antigüedad", "Fecha Nac.", "Fecha Cont."};
 
     ////////////////////estos métodos son necesarios para que jtable funcione/////////////////////
@@ -54,7 +58,7 @@ public class STMEF extends AbstractTableModel{
     public Object getValueAt(int row, int col) {
 
         Object dev = null;
-        empleadofijo fila = (empleadofijo) datos.get(row);
+        Usuario fila = (Usuario) datos.get(row);
 
          switch (col) {
            
@@ -76,17 +80,17 @@ public class STMEF extends AbstractTableModel{
                 dev = fila.getEdad();
                 break;
                 
-            case 4:
-                dev = fila.cambiarAntiguedad();
-                break;
+            /*case 4:
+                dev = fila.AntiguedadAltaUsu();
+                break;*/
                 
-            case 5:
+            case 4:
                 dev = fila.getFechaNacimiento();
                 break;
                 
-            case 6:
+            /*case 6:
                 dev = fila.getFechaContratacion();
-                break;
+                break;*/
 
         }
         return dev;
@@ -101,7 +105,7 @@ public class STMEF extends AbstractTableModel{
     //Actualiza un objeto de una fila y columna
     @Override
     public void setValueAt(Object value, int row, int col) {
-        empleadofijo fila = (empleadofijo) datos.get(row);
+        Usuario fila = (Usuario) datos.get(row);
 
        switch (col) {
             case 0:
@@ -125,21 +129,21 @@ public class STMEF extends AbstractTableModel{
                 //fila.setLast_update((Timestamp) value);
                 fila.setEdad(Integer.parseInt(value.toString()));
                 break;
-            case 4:
+            /*case 4:
                 fila.setAntiguedad(Integer.parseInt(value.toString()));
-                break;
-            case 5:
+                break;*/
+            case 4:
                 fila.setFechaNacimiento(new fecha (value.toString()));
                 break;
-            case 6:
-                fila.setFechaContratacion(new fecha (value.toString()));
-                break;
+            /*case 6:
+                fila.setfechaAlta(new fecha (value.toString()));
+                break;*/
 
         }
         fireTableCellUpdated(row, col);
     }
 
-    public void addRow(empleadofijo usu) {
+    public void addRow(Usuario usu) {
         datos.add(usu);
         fireTableDataChanged();
     }
@@ -148,19 +152,19 @@ public class STMEF extends AbstractTableModel{
         datos.clear();
         datosaux.clear();
         
-        // empleadofijo Empfi = null;
+        // Usuario Empfi = null;
         //java.util.Date date= new java.util.Date();
         //
         //alist
         
-        BLLBD_EF filtra = new BLLBD_EF();
-        filtra.listarEF_BD();
+        BLLBD_USU filtra = new BLLBD_USU();
+        filtra.listarUsus_BD();
         
-        for(int i=1;i<=ArraylistEF.ef.size()-1;i++) {
+        for(int i=1;i<=SingletonsUsu.usu.size()-1;i++) {
             //_actor = new actor(i, getCadenaAleatoria1(4), getCadenaAleatoria2(8), new Timestamp(date.getTime()));
             //ef
-            addRow(ArraylistEF.ef.get(i));
-            datosaux.add(ArraylistEF.ef.get(i));
+            addRow(SingletonsUsu.usu.get(i));
+            datosaux.add(SingletonsUsu.usu.get(i));
             try {
                 Thread.sleep(1); //1 milliseconds
             } catch (Exception e) {
@@ -171,19 +175,8 @@ public class STMEF extends AbstractTableModel{
 
     public void filtrar() {
         datos.clear();
-        int cont = 0;
-        String nom = interfaceEFgrafica.jTextField1.getText();
-        for (int i = 0; i < datosaux.size(); i++) {
-            if (datosaux.get(i).getNombre().contains(nom)) {
-                addRow(datosaux.get(i));
-                cont++;
-            }
-        }
-        //FrmPagerUsuari.lblContador.setText("" + cont);
-        JOptionPane.showMessageDialog(null, cont+" conincidencias");
-        pagina1.initLinkBox();
         
-        /*int cont=0;
+        int cont=0;
         //String nom=interfazEF.jTextField1.getText();
         String nom=(String) ((JComboBox)combo).getSelectedItem(); 
         for(int i=0;i<datosaux.size();i++) {
@@ -194,13 +187,10 @@ public class STMEF extends AbstractTableModel{
             }
         }
         JOptionPane.showMessageDialog(null, cont+" conincidencias");
-        pagina1.initLinkBox();*/
-        
+        pagina.initLinkBox();
     }
-    
-    
 
-    public empleadofijo buscar(String u) {
+    public Usuario buscar(String u) {
         datos.clear();
         cargar();
 
@@ -214,7 +204,7 @@ public class STMEF extends AbstractTableModel{
         return null;
     }
 
-    public int buscaUsuario(empleadofijo u) {
+    public int buscaUsuario(Usuario u) {
         datos.clear();
         cargar();
 

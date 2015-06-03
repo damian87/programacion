@@ -7,7 +7,8 @@ public class ArraylistEF {
 	public static ArrayList <empleadofijo> ef;
         public static ArrayList<empleadofijo> listarEF_BD;
         public static empleadofijo efi;
-        public static String singletonprincipal="";
+        public static String singletonprincipal="";        
+        public static String password="";
         public static empleadofijo efilogin;
         public static empleadofijo efilog;
         

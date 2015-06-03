@@ -54,7 +54,7 @@ public class BLLBD_EF {
     }
 
     public int modificarEF_BD() {
-
+        int rd;
         Connection _con;
         empleadofijo EFModificado = null;
         conexionBBDD conexion_DB = new conexionBBDD();
@@ -63,7 +63,12 @@ public class BLLBD_EF {
         //JOptionPane.showMessageDialog(null, ArraylistEF.efi.toString());
         DAOBD_EF usu_DAO = new DAOBD_EF();
 
-        int rd = usu_DAO.modificarEFDAO(_con);
+        if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+             rd = usu_DAO.modificarEFDAOlogin(_con);
+        } else {
+
+             rd = usu_DAO.modificarEFDAO(_con);
+        }
 
         conexion_DB.CerrarConexion(_con);
         return rd;

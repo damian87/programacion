@@ -101,7 +101,8 @@ public class loginDAO {
         //Encriptar encriptador = new Encriptar(passPhrase);
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM EFBBDD.Empleadofijo WHERE login=? AND Password=?");
+            //stmt = con.prepareStatement("SELECT * FROM EFBBDD.Empleadofijo WHERE login=? AND Password=?");
+            stmt = con.prepareStatement("SELECT * FROM efbbdd.empleadofijo WHERE login=? AND Password=?");
 
             stmt.setString(1, dni);
             stmt.setString(2, password);//encriptador.encrypt(password));

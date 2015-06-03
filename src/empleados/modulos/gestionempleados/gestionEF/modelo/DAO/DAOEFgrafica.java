@@ -10,6 +10,7 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import empleados.clases.fecha;
 import empleados.clases.Mail;
 import empleados.clases.StringEncrypter;
+import static empleados.librerias.FileUploader.PATH_auto;
 import empleados.librerias.validate;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
@@ -107,7 +108,7 @@ public class DAOEFgrafica {
         } else {
 
             //deprt=creaEFgrafica.txtDepartamentoEF.getText();
-            creaEFgrafica.txtNombreEF.setBackground(Color.green);
+            creaEFgrafica.txtDepartamentoEF.setBackground(Color.green);
         }
         return deprt;
     }
@@ -173,7 +174,7 @@ public class DAOEFgrafica {
             //valida=validate.validateNombre(dni);
             valida = validate.email(email);
             if (valida = false) {
-                
+
                 creaEFgrafica.txtemail.setBackground(Color.red);
                 creaEFgrafica.txtlogin.requestFocus();
 
@@ -198,7 +199,7 @@ public class DAOEFgrafica {
 
             valida = validate.email(email);
             if (valida == false) {
-                
+
                 modificaEFgrafica.txtemail.setBackground(Color.red);
                 modificaEFgrafica.txtemail.requestFocus();
 
@@ -275,7 +276,7 @@ public class DAOEFgrafica {
         } else {
 
             modificaEFgrafica.txtpassword.setBackground(Color.green);
-            pass=StringEncrypter.encriptarTokenMD5(pass);
+            pass = StringEncrypter.encriptarTokenMD5(pass);
         }
         return pass;
     }
@@ -350,6 +351,7 @@ public class DAOEFgrafica {
         empleadofijo ef1 = null;
         //nombre
         String nom;
+        String tipo = "";
         int validar, valida;
 
         nom = nombreEFgrafica();
@@ -365,6 +367,10 @@ public class DAOEFgrafica {
         //eamil
         String email;
         email = email();
+
+        //avatar
+        String avatar;
+        avatar = PATH_auto;
 
         //usuariologin
         String usuario;
@@ -382,66 +388,72 @@ public class DAOEFgrafica {
         fecha contr = null;
 
         contr = fcontEFgrafica();
-        if(nom.isEmpty() || dni.isEmpty() || deprt.isEmpty() || usuario.isEmpty() || Password.isEmpty() || email.isEmpty() || naci==null || contr==null){
+        if (nom.isEmpty() || dni.isEmpty() || deprt.isEmpty() || usuario.isEmpty() || Password.isEmpty() || email.isEmpty() || naci == null || contr == null) {
             JOptionPane.showMessageDialog(null, "Por favor rellene todos los campos");
-        }else{
-        //comparamos fechas
-        validar = contr.compfechas(naci);
+        } else {
+            //comparamos fechas
+            validar = contr.compfechas(naci);
 
-        if (validar == 1) {
-            creaEFgrafica.DatePikerEFNacEF.setBackground(Color.GREEN);
-            creaEFgrafica.DatePikerEFContEF.setBackground(Color.GREEN);
-            creaEFgrafica.CrearEF.requestFocus();
-        } else if (validar == 0) {
-            creaEFgrafica.DatePikerEFNacEF.setBackground(Color.RED);
-            creaEFgrafica.DatePikerEFContEF.setBackground(Color.RED);
-            creaEFgrafica.DatePikerEFNacEF.requestFocus();
-            JOptionPane.showMessageDialog(null, "La fecha de contratacion debe ser superior a la de nacimiento");
-        } else if (validar == -1) {
-            creaEFgrafica.DatePikerEFNacEF.setBackground(Color.RED);
-            creaEFgrafica.DatePikerEFContEF.setBackground(Color.RED);
-            creaEFgrafica.DatePikerEFNacEF.requestFocus();
-            JOptionPane.showMessageDialog(null, "La fecha de contratacion debe ser superior a la de nacimiento");
-        }
+            if (validar == 1) {
+                creaEFgrafica.DatePikerEFNacEF.setBackground(Color.GREEN);
+                creaEFgrafica.DatePikerEFContEF.setBackground(Color.GREEN);
+                creaEFgrafica.CrearEF.requestFocus();
+            } else if (validar == 0) {
+                creaEFgrafica.DatePikerEFNacEF.setBackground(Color.RED);
+                creaEFgrafica.DatePikerEFContEF.setBackground(Color.RED);
+                creaEFgrafica.DatePikerEFNacEF.requestFocus();
+                JOptionPane.showMessageDialog(null, "La fecha de contratacion debe ser superior a la de nacimiento");
+            } else if (validar == -1) {
+                creaEFgrafica.DatePikerEFNacEF.setBackground(Color.RED);
+                creaEFgrafica.DatePikerEFContEF.setBackground(Color.RED);
+                creaEFgrafica.DatePikerEFNacEF.requestFocus();
+                JOptionPane.showMessageDialog(null, "La fecha de contratacion debe ser superior a la de nacimiento");
+            }
 
-        //miramos la diferencia entre la fecha de nacimiento y la actual
-        valida = naci.calcularedad();
+            //miramos la diferencia entre la fecha de nacimiento y la actual
+            valida = naci.calcularedad();
 
-        if (valida < 16) {
-            creaEFgrafica.DatePikerEFNacEF.setBackground(Color.RED);
-            creaEFgrafica.DatePikerEFContEF.setBackground(Color.RED);
-            creaEFgrafica.DatePikerEFNacEF.requestFocus();
-            JOptionPane.showMessageDialog(null, "No puede contratar a un menor de 16 años");
-        }
+            if (valida < 16) {
+                creaEFgrafica.DatePikerEFNacEF.setBackground(Color.RED);
+                creaEFgrafica.DatePikerEFContEF.setBackground(Color.RED);
+                creaEFgrafica.DatePikerEFNacEF.requestFocus();
+                JOptionPane.showMessageDialog(null, "No puede contratar a un menor de 16 años");
+            }
 
+            if (creaEFgrafica.Usuario.isSelected()) {
+                tipo = "User";
+            } else if (creaEFgrafica.Admin.isSelected()) {
+                tipo = "admin";
+            }
+            JOptionPane.showMessageDialog(null, "DAOEFgrafica linea 427, avatar: " + avatar + " tipo: " + tipo);
         //validamos
-        //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
-        
-        ArraylistEF.efi = new empleadofijo(nom, dni, deprt, naci, contr, usuario, Password, email);
-        //String nombre,  String dni, String departamento, fecha fechaNacimiento, fecha fechaContratacion, String login, String password, String email
+            //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
 
-        creaEFgrafica.txtNombreEF.setText("");
-        creaEFgrafica.txtDepartamentoEF.setText("");
-        creaEFgrafica.DatePikerEFNacEF.setDate(null);
-        creaEFgrafica.DatePikerEFContEF.setDate(null);
-        creaEFgrafica.txtDNIEF.setText("");
-        creaEFgrafica.txtemail.setText("");
-        creaEFgrafica.txtlogin.setText("");
-        creaEFgrafica.txtpassword.setText("");
-        creaEFgrafica.txtNombreEF.requestFocus();
+            ArraylistEF.efi = new empleadofijo(nom, dni, deprt, naci, contr, usuario, Password, email, tipo, avatar);
+            //String nombre,  String dni, String departamento, fecha fechaNacimiento, fecha fechaContratacion, String login, String password, String email
 
-        creaEFgrafica.txtNombreEF.setBackground(Color.WHITE);
-        creaEFgrafica.txtNombreEF.setBackground(Color.WHITE);
-        creaEFgrafica.txtDNIEF.setBackground(Color.WHITE);
-        creaEFgrafica.DatePikerEFNacEF.setBackground(Color.WHITE);
-        creaEFgrafica.DatePikerEFContEF.setBackground(Color.WHITE);
-        creaEFgrafica.txtemail.setBackground(Color.WHITE);
-        creaEFgrafica.txtlogin.setBackground(Color.WHITE);
-        creaEFgrafica.txtpassword.setBackground(Color.WHITE);
-        
+            creaEFgrafica.txtNombreEF.setText("");
+            creaEFgrafica.txtDepartamentoEF.setText("");
+            creaEFgrafica.DatePikerEFNacEF.setDate(null);
+            creaEFgrafica.DatePikerEFContEF.setDate(null);
+            creaEFgrafica.txtDNIEF.setText("");
+            creaEFgrafica.txtemail.setText("");
+            creaEFgrafica.txtlogin.setText("");
+            creaEFgrafica.txtpassword.setText("");
+            creaEFgrafica.txtNombreEF.requestFocus();
+
+            creaEFgrafica.txtNombreEF.setBackground(Color.WHITE);
+            creaEFgrafica.txtNombreEF.setBackground(Color.WHITE);
+            creaEFgrafica.txtDNIEF.setBackground(Color.WHITE);
+            creaEFgrafica.DatePikerEFNacEF.setBackground(Color.WHITE);
+            creaEFgrafica.DatePikerEFContEF.setBackground(Color.WHITE);
+            creaEFgrafica.txtemail.setBackground(Color.WHITE);
+            creaEFgrafica.txtlogin.setBackground(Color.WHITE);
+            creaEFgrafica.txtpassword.setBackground(Color.WHITE);
+
         }
         return ArraylistEF.efi;
-        
+
         //return ef1;
     }
 
@@ -474,6 +486,24 @@ public class DAOEFgrafica {
 
     }
 
+    public static void modificaEFgraficallenadodatosPerfil() {
+
+        //String nombre, departamento;
+        //int pos = 0;
+        //fecha fnac = null, fcont = null;
+        modificaEFgrafica.txtNombre.setText(ArraylistEF.efilogin.getNombre());
+        modificaEFgrafica.txtDepartamento.setText(ArraylistEF.efilogin.getDepartamento());
+        modificaEFgrafica.txtantiguedad.setText(Integer.toString(ArraylistEF.efilogin.cambiarAntiguedad()));
+        modificaEFgrafica.txtedad.setText(Integer.toString(ArraylistEF.efilogin.getEdad()));
+        modificaEFgrafica.txtsueldo.setText(Float.toString(ArraylistEF.efilogin.calcularsueldo()));
+        ((JTextFieldDateEditor) modificaEFgrafica.DatePiketEFnac.getDateEditor()).setText(ArraylistEF.efilogin.getFechaNacimiento().toString());
+        ((JTextFieldDateEditor) modificaEFgrafica.DatePikerEFCont.getDateEditor()).setText(ArraylistEF.efilogin.getFechaContratacion().toString());
+        modificaEFgrafica.txtemail.setText(ArraylistEF.efilogin.getEmail());
+        modificaEFgrafica.txtlogin.setText(ArraylistEF.efilogin.getLogin());
+        modificaEFgrafica.txtpassword.setText("");
+
+    }
+
     public static void modificaEFgrafica() {
         //empleadofijo ef2=null;
         //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
@@ -481,53 +511,98 @@ public class DAOEFgrafica {
         //          + "estado=?,antiguedad=?,fechaContratacion=?
         fecha mnac, mcont;
         String mnom, mdeprt, mlog, mpass, mmail;
-        mnac=fnacEFmodificagrafica();
-        mcont=fcontEFmodificagrafica();
-        mnom=modificanombreEFgrafica();
-        mdeprt=modificadepartamentoEFgrafica();
-        mlog=modificausuariologin();
-        mpass=modificapassword();
-        mmail=modificaemail();
-        if(mnac==null || mcont == null || mnom.isEmpty() || mdeprt.isEmpty() || mlog.isEmpty() || mpass.isEmpty() || mmail.isEmpty()){
+        mnac = fnacEFmodificagrafica();
+        mcont = fcontEFmodificagrafica();
+        mnom = modificanombreEFgrafica();
+        mdeprt = modificadepartamentoEFgrafica();
+        mlog = modificausuariologin();
+        mpass = modificapassword();
+        mmail = modificaemail();
+        if (mnac == null || mcont == null || mnom.isEmpty() || mdeprt.isEmpty() || mlog.isEmpty() || mpass.isEmpty() || mmail.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
-            
-        }else{
-        ArraylistEF.efi.setNombre(modificanombreEFgrafica());
-        ArraylistEF.efi.setDepartamento(modificadepartamentoEFgrafica());
-        ArraylistEF.efi.setFechaNacimiento(fnacEFmodificagrafica());
-        ArraylistEF.efi.setFechaContratacion(fcontEFmodificagrafica());
-        //ArraylistEF.efi.setSueldo(ArraylistEF.efi.calcularsueldo());
-        ArraylistEF.efi.setLogin(modificausuariologin());
-        ArraylistEF.efi.setPassword(modificapassword());
-        ArraylistEF.efi.setEmail(modificaemail());
 
-        JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
+        } else {
+            ArraylistEF.efi.setNombre(modificanombreEFgrafica());
+            ArraylistEF.efi.setDepartamento(modificadepartamentoEFgrafica());
+            ArraylistEF.efi.setFechaNacimiento(fnacEFmodificagrafica());
+            ArraylistEF.efi.setFechaContratacion(fcontEFmodificagrafica());
+            //ArraylistEF.efi.setSueldo(ArraylistEF.efi.calcularsueldo());
+            ArraylistEF.efi.setLogin(modificausuariologin());
+            ArraylistEF.efi.setPassword(modificapassword());
+            ArraylistEF.efi.setEmail(modificaemail());
+            ArraylistEF.efilogin.setAvatar(PATH_auto);
 
-        borrarcamposModifica();
-        modificaEFgrafica.txtNombre.setBackground(Color.WHITE);
-        modificaEFgrafica.txtDepartamento.setBackground(Color.WHITE);
-        modificaEFgrafica.txtantiguedad.setBackground(Color.WHITE);
-        modificaEFgrafica.txtedad.setBackground(Color.WHITE);
-        modificaEFgrafica.DatePiketEFnac.setBackground(Color.WHITE);
-        modificaEFgrafica.DatePikerEFCont.setBackground(Color.WHITE);
-        modificaEFgrafica.txtemail.setBackground(Color.WHITE);
-        modificaEFgrafica.txtlogin.setBackground(Color.WHITE);
-        modificaEFgrafica.txtpassword.setBackground(Color.WHITE);
+            JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
+
+            borrarcamposModifica();
+            modificaEFgrafica.txtNombre.setBackground(Color.WHITE);
+            modificaEFgrafica.txtDepartamento.setBackground(Color.WHITE);
+            modificaEFgrafica.txtantiguedad.setBackground(Color.WHITE);
+            modificaEFgrafica.txtedad.setBackground(Color.WHITE);
+            modificaEFgrafica.DatePiketEFnac.setBackground(Color.WHITE);
+            modificaEFgrafica.DatePikerEFCont.setBackground(Color.WHITE);
+            modificaEFgrafica.txtemail.setBackground(Color.WHITE);
+            modificaEFgrafica.txtlogin.setBackground(Color.WHITE);
+            modificaEFgrafica.txtpassword.setBackground(Color.WHITE);
+        }
     }
+
+    public static void modificaEFlogin() {
+        //empleadofijo ef2=null;
+        //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
+        //nombre=?,edad=?,departamento=?,fechaNacimiento=?,suelo=?,password=?,email=?,avatar=?,tipo=?,"
+        //          + "estado=?,antiguedad=?,fechaContratacion=?
+        fecha mnac, mcont;
+        String mnom, mdeprt, mlog, mpass, mmail;
+        mnac = fnacEFmodificagrafica();
+        mcont = fcontEFmodificagrafica();
+        mnom = modificanombreEFgrafica();
+        mdeprt = modificadepartamentoEFgrafica();
+        mlog = modificausuariologin();
+        mpass = modificapassword();
+        mmail = modificaemail();
+        if (mnac == null || mcont == null || mnom.isEmpty() || mdeprt.isEmpty() || mlog.isEmpty() || mpass.isEmpty() || mmail.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
+
+        } else {
+            ArraylistEF.efilogin.setNombre(modificanombreEFgrafica());
+            ArraylistEF.efilogin.setDepartamento(modificadepartamentoEFgrafica());
+            ArraylistEF.efilogin.setFechaNacimiento(fnacEFmodificagrafica());
+            ArraylistEF.efilogin.setFechaContratacion(fcontEFmodificagrafica());
+            //ArraylistEF.efilogin.setSueldo(ArraylistEF.efilogin.calcularsueldo());
+            ArraylistEF.efilogin.setLogin(modificausuariologin());
+            ArraylistEF.efilogin.setPassword(modificapassword());
+            ArraylistEF.efilogin.setEmail(modificaemail());
+            ArraylistEF.efilogin.setAvatar(PATH_auto);
+
+            JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
+
+            borrarcamposModifica();
+            modificaEFgrafica.txtNombre.setBackground(Color.WHITE);
+            modificaEFgrafica.txtDepartamento.setBackground(Color.WHITE);
+            modificaEFgrafica.txtantiguedad.setBackground(Color.WHITE);
+            modificaEFgrafica.txtedad.setBackground(Color.WHITE);
+            modificaEFgrafica.DatePiketEFnac.setBackground(Color.WHITE);
+            modificaEFgrafica.DatePikerEFCont.setBackground(Color.WHITE);
+            modificaEFgrafica.txtemail.setBackground(Color.WHITE);
+            modificaEFgrafica.txtlogin.setBackground(Color.WHITE);
+            modificaEFgrafica.txtpassword.setBackground(Color.WHITE);
+        }
     }
 
     public static void Eniviaremail() {
 
+        JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + ArraylistEF.efi.getEmail() + "Password: " + ArraylistEF.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
         //creamos el objeto Mail
-        Mail mail = new Mail(ArraylistEF.efi.getEmail(), ArraylistEF.efi.getPassword());
+        /*Mail mail = new Mail(ArraylistEF.efi.getEmail(), ArraylistEF.password.toString());
 
-        //enviamos el mensaje
-        String error = mail.send();
+         //enviamos el mensaje
+         String error = mail.send();
 
-        if (error.equals("")) {
-            JOptionPane.showMessageDialog(null, "Envio Correcto", "Correcto", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
-        }
+         if (error.equals("")) {
+         JOptionPane.showMessageDialog(null, "Envio Correcto", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+         } else {
+         JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
+         }*/
     }
 }

@@ -27,7 +27,8 @@ public class dummiesef {
                 String login [] = {"", "", "", "", ""};
                 String password [] = {"", "", "", "", ""};
                 String email [] = {"", "", "", "", ""};
-                
+                String tipo [] = {"", "", "", "", ""};
+                String avatar [] = {"", "", "", "", ""};
 		 
 			//menuempleados.vef.guardar(f);
 		 
@@ -36,7 +37,7 @@ public class dummiesef {
                  
                  
                  for(int i=0;i<5;i++){
-                    f=new empleadofijo (nombre[i], dni [i], departamento[i], FechaNacimiento[i], FechaContratacion[i], login[i], password[i], email[i]);
+                    f=new empleadofijo (nombre[i], dni [i], departamento[i], FechaNacimiento[i], FechaContratacion[i], login[i], password[i], email[i], tipo[i], avatar[i]);
 				//menuempleados.vef.guardar(f);
 		stmt = _con.prepareStatement("INSERT INTO EFBBDD.Empleadofijo"
                     + "(nombre,edad,departamento,fechaNacimiento,suelo,dni,password,email,avatar,tipo,"

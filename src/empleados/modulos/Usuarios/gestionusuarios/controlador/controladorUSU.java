@@ -3,50 +3,65 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package empleados.modulos.gestionempleados.gestionEF.controlador;
+package empleados.modulos.Usuarios.gestionusuarios.controlador;
 
+import empleados.modulos.gestionempleados.gestionEF.controlador.*;
 import empleados.librerias.FileUploader;
 import empleados.librerias.fondopanelconfig;
 import empleados.librerias.fondopanelcrear;
 import empleados.librerias.fondopanelpager;
 import empleados.menuempleados;
+import empleados.modulos.Usuarios.clase.Usuario;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLBD_USU;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLUSUgrafica;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.DAO.DAOUSUgrafica;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.STMUSU;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.pagerprod.pagina;
+import empleados.modulos.Usuarios.gestionusuarios.vista.AutocompleteJComboBox;
+import empleados.modulos.Usuarios.gestionusuarios.vista.CreaUsu;
+import empleados.modulos.Usuarios.gestionusuarios.vista.PerfilUsu;
+import empleados.modulos.Usuarios.gestionusuarios.vista.StringSearchable;
+import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
+import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardarjson;
+import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardartxt;
+import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardarxml;
+import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.jComboBox1;
 import empleados.modulos.config.configuracion;
-import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
-import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
-import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica;
-import static empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica.modificaEFgraficallenadodatosPerfil;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
+//import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
-import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
-import empleados.modulos.gestionempleados.gestionEF.vista.AutocompleteJComboBox;
-import empleados.modulos.gestionempleados.gestionEF.vista.StringSearchable;
-import empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica;
-import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
+//import empleados.modulos.gestionempleados.gestionEF.vista.AutocompleteJComboBox;
+//import empleados.modulos.gestionempleados.gestionEF.vista.StringSearchable;
+//import empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica;
+//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.combo;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.comboActionPerformed;
-import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardarjson;
-import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardartxt;
-import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardarxml;
-import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.jComboBox1;
-import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.jTextField1;
+//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardarjson;
+//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardartxt;
+//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardarxml;
+//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.jComboBox1;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.sorter;
-import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
-import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.ModificarEF;
-import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.txtDepartamento;
+//import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
+//import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.ModificarEF;
+//import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.txtDepartamento;
 import empleados.modulos.gestionempleados.gestionEF.vista.recordarcontraseña;
 import empleados.modulos.login.vista_log.Iniciologin;
 import empleados.modulos.inicio.subprincipal;
@@ -67,33 +82,33 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  *
  * @author damian
  */
-public class controladorEF implements ActionListener, KeyListener, MouseListener {
+public class controladorUSU implements ActionListener, KeyListener, MouseListener {
 
-    public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new STMEF());
+    public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new STMUSU());
     public static AutocompleteJComboBox combo = null;
-    public static interfaceEFgrafica efgraf = new interfaceEFgrafica();
+    public static interfaceUSUgrafica efgraf = new interfaceUSUgrafica();
     public static subprincipal subpri = new subprincipal();
-    public static creaEFgrafica creaEF = new creaEFgrafica();
-    public static modificaEFgrafica modief = new modificaEFgrafica();
+    public static CreaUsu creaEF = new CreaUsu();
+    public static PerfilUsu modief = new PerfilUsu();
     public static configuracion configu = new configuracion();
     public static Iniciologin inilog = new Iniciologin();
     public static recordarcontraseña recordar = new recordarcontraseña();
 
-    public controladorEF(JFrame inicio, int i) {
+    public controladorUSU(JFrame inicio, int i) {
         if (i == 0) {
             this.subpri = (subprincipal) inicio;
         }
 
         if (i == 1) {
-            this.efgraf = (interfaceEFgrafica) inicio;
+            this.efgraf = (interfaceUSUgrafica) inicio;
         }
 
         if (i == 2) {
-            this.creaEF = (creaEFgrafica) inicio;
+            this.creaEF = (CreaUsu) inicio;
         }
 
         if (i == 3) {
-            this.modief = (modificaEFgrafica) inicio;
+            this.modief = (PerfilUsu) inicio;
         }
 
         if (i == 4) {
@@ -118,7 +133,6 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
         _BTN_PRIMERO,
         _BUSCAR,
         _COMBOX,
-        _FILTRAREF,
         _TABLAEF,
         _GUARDAR,
         _ELIMINAR,
@@ -179,7 +193,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
         _RCANCELAR
     }
 
-    //en el new controladorEF (new interfaceEFgrafica(), 0).Iniciar(0);
+    //en el new controladorEF (new interfaceUSUgrafica(), 0).Iniciar(0);
     //el primer 0 es para entrar al if del controladorEF, y el segundo 0 es para la funion iniciar k 
     public void Iniciar(int i) {
         //SUBPRINCIPAL
@@ -239,14 +253,16 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.efgraf.jPanel3.setOpaque(false);
             this.efgraf.jPanel4.setOpaque(false);
             this.efgraf.jPanel5.setOpaque(false);
-
-            TABLA.setModel(new STMEF());
-            ((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
+            
+            TABLA.setModel(new STMUSU());
+            ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
             TABLA.setFillsViewportHeight(true);
             TABLA.setRowSorter(sorter);
 
-            pagina1.inicializa();
-            pagina1.initLinkBox();
+            pagina.inicializa();
+            pagina.initLinkBox();
+            
+            
 
             this.efgraf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             this.efgraf.addWindowListener(new WindowAdapter() {
@@ -260,8 +276,8 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             });
 
             List<String> myWords = new ArrayList<String>();
-            for (int e = 0; e <= ArraylistEF.ef.size() - 1; e++) {
-                myWords.add(ArraylistEF.ef.get(e).getNombre());
+            for (int e = 0; e <= SingletonsUsu.usu.size() - 1; e++) {
+                myWords.add(SingletonsUsu.usu.get(e).getNombre());
             }
 
             StringSearchable searchable = new StringSearchable(myWords);
@@ -277,9 +293,6 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             });
 
             this.efgraf.guardartxt.doClick();
-            
-            FileUploader.pintaravatar(this.efgraf.labelavatar, 90, 90);
-            
 
             this.efgraf.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
             this.efgraf.ANTERIOR.setName("_BTN_ANTERIOR");
@@ -297,12 +310,9 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.efgraf.primero.setName("_BTN_PRIMERO");
             this.efgraf.primero.addActionListener(this);
 
-            this.efgraf.jTextField1.setActionCommand("_FILTRAREF");
-            this.efgraf.jTextField1.setName("_FILTRAREF");
-            this.efgraf.jTextField1.addActionListener(this);
-            /*this.efgraf.jComboBox1.setActionCommand("_COMBOX");
-             this.efgraf.jComboBox1.setName("_COMBOX");
-             this.efgraf.jComboBox1.addActionListener(this);*/
+            this.efgraf.jComboBox1.setActionCommand("_COMBOX");
+            this.efgraf.jComboBox1.setName("_COMBOX");
+            this.efgraf.jComboBox1.addActionListener(this);
 
             this.efgraf.botonarchivoEF.setActionCommand("_GUARDAR");
             this.efgraf.botonarchivoEF.setName("_GUARDAR");
@@ -324,7 +334,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.efgraf.info.setName("_INFO");
             this.efgraf.info.addActionListener(this);
 
-            if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+            if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
 
                 this.efgraf.botonnuevoEF.setVisible(false);
                 this.efgraf.botonmodificarEF.setVisible(false);
@@ -347,7 +357,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
         }
 
         if (i == 2) {
-            //creaEFgrafica
+            //CreaUsu
 
             this.creaEF.setVisible(true);
             try {
@@ -364,12 +374,9 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             fondopanelcrear c = new fondopanelcrear();
             this.creaEF.setContentPane(c);
             this.creaEF.jPanel1.setOpaque(false);
-            this.creaEF.jPanel2.setOpaque(false);
             c.add(this.creaEF.jPanel1);
             //this.creaEF.setSize(525, 425);//ancho x alto
 
-            this.creaEF.Usuario.doClick();
-             this.creaEF.jPanel2.setVisible(false);
             this.creaEF.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             creaEF.addWindowListener(new WindowAdapter() {
                 @Override
@@ -421,19 +428,11 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.cargarimgavatar.setName("_CargaAvatar");
             this.creaEF.cargarimgavatar.addKeyListener(this);
 
-           
-            
-            if (ArraylistEF.efilogin == null) {
-                this.creaEF.jPanel2.setVisible(false);
-            }else if ("admin".equals(ArraylistEF.efilogin.getTipo())) {
-                this.creaEF.jPanel2.setVisible(true);
-            }
-
             //FALTAN COLOCAR LOS KEYPRESSET Y KEYRELEASSED
         }
 
         if (i == 3) {
-            //modificaEFgrafica
+            //PerfilUsu
 
             this.modief.setVisible(true);
 
@@ -448,15 +447,12 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.modief.setContentPane(c);
             this.modief.jPanel1.setOpaque(false);
             c.add(this.modief.jPanel1);
+           
 
-            if ("User".equals(ArraylistEF.efilogin.getTipo())) {
-                DAOEFgrafica.modificaEFgraficallenadodatosPerfil();
-                FileUploader.pintaravatar(this.modief.labelavatar, 90, 90);
-            } else {
+            BLLUSUgrafica.modificaUsuariograficallenacampos();
+            DAOUSUgrafica.modificaUsugraficallenadodatos();
+            FileUploader.pintaravatar(this.modief.labelavatar, 90, 90);
 
-                EFBLLgrafica.modificaEFgraficallenacampos();               
-                FileUploader.pintaravataref(this.modief.labelavatar, 90, 90);
-            }
             this.modief.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             modief.addWindowListener(new WindowAdapter() {
                 @Override
@@ -525,7 +521,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
             this.configu.setIconImage(icono);
             this.configu.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
+            
             fondopanelconfig c = new fondopanelconfig();
             this.configu.setContentPane(c);
             this.configu.FondoConfig.setOpaque(false);
@@ -685,12 +681,12 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             //modulo login
             case _newusu:
                 inilog.dispose();
-                new controladorEF(new creaEFgrafica(), 2).Iniciar(2);
+                new controladorUSU(new CreaUsu(), 2).Iniciar(2);
 
                 break;
             case _configurador:
                 inilog.dispose();
-                new controladorEF(new configuracion(), 4).Iniciar(4);
+                new controladorUSU(new configuracion(), 4).Iniciar(4);
 
                 break;
 
@@ -705,7 +701,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 result = log.loginusu(dni, password);
                 if (result == true) {
                     inilog.dispose();
-                    new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
+                    new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario o contraseña son incorrectos");
                 }
@@ -735,79 +731,74 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             //subprincipal
             case _GESTIONEF:
                 subpri.dispose();
-                new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
+                new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
                 break;
 
             case _CONFIGURACION:
                 subpri.dispose();
-                new controladorEF(new configuracion(), 4).Iniciar(4);
+                new controladorUSU(new configuracion(), 4).Iniciar(4);
 
                 break;
             //interfaz
             case _BTN_ANTERIOR:
-                pagina1.currentPageIndex -= 1;
-                pagina1.initLinkBox();
+                pagina.currentPageIndex -= 1;
+                pagina.initLinkBox();
                 break;
             case _BTN_SIGUIENTE:
-                pagina1.currentPageIndex += 1;
-                pagina1.initLinkBox();
+                pagina.currentPageIndex += 1;
+                pagina.initLinkBox();
                 break;
 
             case _BTN_ULTIMO:
-                pagina1.currentPageIndex = pagina1.maxPageIndex;
-                pagina1.initLinkBox();
+                pagina.currentPageIndex = pagina.maxPageIndex;
+                pagina.initLinkBox();
                 break;
 
             case _BTN_PRIMERO:
-                //pagina1.currentPageIndex -= 1;
-                pagina1.currentPageIndex -= pagina1.maxPageIndex - 1;
-                pagina1.initLinkBox();
+                pagina.currentPageIndex -= 1;
+                pagina.initLinkBox();
                 break;
 
-            case _FILTRAREF:
-                STMEF filtra = new STMEF();
-                filtra.filtrar();
-                break;
             case _COMBOX:
-                pagina1.itemsPerPage = Integer.parseInt(jComboBox1.getSelectedItem().toString());
-                pagina1.currentPageIndex = 1;
-                pagina1.initLinkBox();
+                pagina.itemsPerPage = Integer.parseInt(jComboBox1.getSelectedItem().toString());
+                pagina.currentPageIndex = 1;
+                pagina.initLinkBox();
                 break;
 
             case _GUARDAR:
                 if (guardarjson.isSelected()) {
-                    ((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
+                    ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
                     empleados.librerias.json.generajsonEF();
 
                 } else if (guardartxt.isSelected()) {
-                    ((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
+                    ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
                     empleados.librerias.txt.generatxtEF();
 
                 } else if (guardarxml.isSelected()) {
-                    ((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
+                    ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
                     empleados.librerias.xml.generaxmlEF();
 
                 }
                 break;
 
             case _ELIMINAR:
-                empleadofijo pos = null;
+                Usuario pos = null;
 
-                EFBLLgrafica.eliminaEFgraficatabla();
+                BLLUSUgrafica.eliminaUsuariograficatabla();
 
                 break;
 
             case _NCREAR:
                 efgraf.dispose();
 
-                new controladorEF(new creaEFgrafica(), 2).Iniciar(2);
+                new controladorUSU(new CreaUsu(), 2).Iniciar(2);
 
                 break;
 
             case _MODIFICAR:
 
                 efgraf.dispose();
-                new controladorEF(new modificaEFgrafica(), 3).Iniciar(3);
+                new controladorUSU(new PerfilUsu(), 3).Iniciar(3);
 
                 break;
 
@@ -820,36 +811,38 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 break;
 
             case _BTNMEDIA:
-                BLLBD_EF empleado = new BLLBD_EF();
+                BLLBD_USU usuario = new BLLBD_USU();
 
-                empleado.EdadMediaBLL();
+                usuario.EdadMediaBLL();
 
                 break;
 
             case _BTNMAYMEN:
-                BLLBD_EF empleadomedia = new BLLBD_EF();
+                BLLBD_USU usuariomedia = new BLLBD_USU();
 
-                empleadomedia.EF_MenorMayorBLL();
+                usuariomedia.Usuario_MenorMayorBLL();
                 break;
             case _INFO:
-                //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
-                EFBLLgrafica.masinfo();
+                ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
+                BLLUSUgrafica.masinfo();
 
                 break;
 
             //crea
             case _CREAREF:
 
-                EFBLLgrafica.crearEFgrafica();
+                BLLUSUgrafica.crearUsuarioGrafica();
                 break;
 
             case _BORRAR_CAMPOSEF:
-                EFBLLgrafica.borrarcamporEFgrafica();
+                BLLUSUgrafica.BorrarcamposUsuarioCreagrafica();
                 break;
 
             case _CANCELAR_CREAEF:
-                EFBLLgrafica.borrarcamporEFgrafica();
-
+                BLLUSUgrafica.borrarcamporUsuarioModifica();
+                creaEF.dispose();
+                //new controladorEF(new Iniciologin(), 5).Iniciar(5);
+                new controlador_login(new Iniciologin(), 5).Iniciar(5);
                 break;
 
             case _CargaAvatar:
@@ -861,40 +854,42 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             //modifica
             case _MMODIFICA:
 
-                EFBLLgrafica.modificaEFgrafica();
+                BLLUSUgrafica.modificaUsugrafica();
 
                 break;
 
             case _MCANCELAR:
-                EFBLLgrafica.borrarcamporEFModifica();
+                BLLUSUgrafica.borrarcamporUsuarioModifica();
+                modief.dispose();
 
+                new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
                 break;
 
             case _TABLAEF:
-                pagina1.currentPageIndex = 1;
+                pagina.currentPageIndex = 1;
 
-                ((STMEF) TABLA.getModel()).filtrar();
+                ((STMUSU) TABLA.getModel()).filtrar();
                 break;
 
             case _NOMBREEF:
-                EFBLLgrafica.nombreEFgrafica();
+                BLLUSUgrafica.nombreUsuariografica();
                 break;
 
             case _DEPARTAMENTOEF:
-                EFBLLgrafica.departamentoEFgrafica();
+                BLLUSUgrafica.PoblacionUsugrafica();
                 break;
 
             case _DNIEF:
-                EFBLLgrafica.dniEFgrafica();
+                BLLUSUgrafica.dniUsugrafica();
                 break;
 
             case _MNOMBRE:
-                DAOEFgrafica.modificanombreEFgrafica();
+                BLLUSUgrafica.ModificanombreUsuariografica();
 
                 break;
 
             case _MDEPARTAMENTO:
-                DAOEFgrafica.modificadepartamentoEFgrafica();
+                BLLUSUgrafica.ModificaPoblacionUsugrafica();
 
                 break;
 
@@ -970,34 +965,34 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 break;
 
             case _TABLAEF:
-                pagina1.currentPageIndex = 1;
+                pagina.currentPageIndex = 1;
 
-                ((STMEF) TABLA.getModel()).filtrar();
+                ((STMUSU) TABLA.getModel()).filtrar();
                 break;
 
             //crea
             case _NOMBREEF:
-                EFBLLgrafica.nombreEFgrafica();
+                BLLUSUgrafica.nombreUsuariografica();
                 break;
 
             case _DEPARTAMENTOEF:
-                EFBLLgrafica.departamentoEFgrafica();
+                BLLUSUgrafica.PoblacionUsugrafica();
                 break;
 
             case _DNIEF:
-                EFBLLgrafica.dniEFgrafica();
+                BLLUSUgrafica.dniUsugrafica();
                 break;
 
             case _Email:
-                EFBLLgrafica.emailEFgrafica();
+                BLLUSUgrafica.emailUsuariografica();
                 break;
 
             case _Password:
-                EFBLLgrafica.passwordEFgrafica();
+                BLLUSUgrafica.passwordUsuariografica();
                 break;
 
             case _Usuario:
-                EFBLLgrafica.UsuarioEFgrafica();
+                BLLUSUgrafica.loginUsuariografica();
                 break;
 
             case _CargaAvatar:
@@ -1007,25 +1002,25 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 break;
             //modifica
             case _MNOMBRE:
-                DAOEFgrafica.modificanombreEFgrafica();
+                BLLUSUgrafica.ModificanombreUsuariografica();
 
                 break;
 
             case _MDEPARTAMENTO:
-                DAOEFgrafica.modificadepartamentoEFgrafica();
+                BLLUSUgrafica.ModificaPoblacionUsugrafica();
 
                 break;
 
             case _MEmail:
-                DAOEFgrafica.modificaemail();
+                BLLUSUgrafica.ModificaemailUsuariografica();
                 break;
 
             case _MPassword:
-                DAOEFgrafica.modificapassword();
+                BLLUSUgrafica.ModificapasswordUsuariografica();
                 break;
 
             case _MUsuario:
-                DAOEFgrafica.modificausuariologin();
+                BLLUSUgrafica.ModificaloginUsuariografica();
                 break;
 
         }
@@ -1052,30 +1047,30 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 break;
             //interfazEFgrafica
             case _TABLAEF:
-                pagina1.currentPageIndex = 1;
+                pagina.currentPageIndex = 1;
 
-                ((STMEF) TABLA.getModel()).filtrar();
+                ((STMUSU) TABLA.getModel()).filtrar();
                 break;
 
             case _NOMBREEF:
-                EFBLLgrafica.nombreEFgrafica();
+                BLLUSUgrafica.nombreUsuariografica();
                 break;
 
             case _DEPARTAMENTOEF:
-                EFBLLgrafica.departamentoEFgrafica();
+                BLLUSUgrafica.PoblacionUsugrafica();
                 break;
 
             case _DNIEF:
-                EFBLLgrafica.dniEFgrafica();
+                BLLUSUgrafica.dniUsugrafica();
                 break;
 
             case _MNOMBRE:
-                DAOEFgrafica.modificanombreEFgrafica();
+                BLLUSUgrafica.ModificanombreUsuariografica();
                 //txtDepartamento.requestFocus();
                 break;
 
             case _MDEPARTAMENTO:
-                DAOEFgrafica.modificadepartamentoEFgrafica();
+                BLLUSUgrafica.ModificaPoblacionUsugrafica();
                 //ModificarEF.requestFocus();
                 break;
 

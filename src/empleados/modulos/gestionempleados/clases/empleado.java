@@ -29,13 +29,13 @@ public class empleado implements Comparable<empleado>, Serializable{
         @XStreamAlias("email")
         private String email;
         @XStreamAlias("avatar")
-        private String avatar="";
+        private String avatar;
         @XStreamAlias("tipo")
-        private String tipo="User";
+        private String tipo;
         private int estado=0;
         
 	
-	public empleado(String nombre, String dni, String departamento, fecha fechaNacimiento, String login, String password, String email) {
+	public empleado(String nombre, String dni, String departamento, fecha fechaNacimiento, String login, String password, String email, String tipo, String avatar) {
             
 		//super();
 		this.nombre = nombre;
@@ -47,6 +47,8 @@ public class empleado implements Comparable<empleado>, Serializable{
                 this.login=login;
                 this.password=password;
                 this.email=email;
+                this.tipo=tipo;
+                this.avatar=avatar;
                 
                 
 		
@@ -193,15 +195,15 @@ public class empleado implements Comparable<empleado>, Serializable{
 			//imprimir.append ("sueldo: "+formato.dosDecimales(sueldo)+"\n");
 		}
 		
-		imprimir.append ("Nombre: "+getNombre()+"\n");
+		imprimir.append ("\n"+"Nombre: "+getNombre()+"\n");
 		imprimir.append ("edad: "+getEdad()+"\n");
 		imprimir.append ("departamento: "+getDepartamento()+"\n");
 		//imprimir.append ("sueldo: "+s+"\n");
-		imprimir.append ("sueldo: "+getSueldo()+"\n");
+		//imprimir.append ("sueldo: "+this.getSueldo()+"\n");
                 imprimir.append ("login: "+getLogin()+"\n");
                 imprimir.append ("password: "+getPassword()+"\n");
                 imprimir.append ("email: "+getEmail()+"\n");
-                 imprimir.append ("tipo: "+getTipo()+"\n");
+                 imprimir.append ("tipo: "+getTipo());
                 
 		
 		//s1=s1+"empleado [nombre=" + nombre + "\n edad=" + edad + "\n departamento=" + departamento + "\n sueldo="

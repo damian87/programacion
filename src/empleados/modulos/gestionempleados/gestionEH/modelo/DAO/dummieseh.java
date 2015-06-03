@@ -24,7 +24,7 @@ public class dummieseh {
 			
 			for(int i=0;i<5;i++){
 				
-				h=new empleadohoras (nom[i], DNI [i], Depart[i], FecNac[i], horastrabajadas[i], null, null, null);
+				h=new empleadohoras (nom[i], DNI [i], Depart[i], FecNac[i], horastrabajadas[i], null, null, null, null, null);
 				//menuempleados.veh.guardar(h);
 				
 				
