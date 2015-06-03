@@ -32,7 +32,7 @@ public class configuracion {
 		tema = '0';
 		fichero = '2';
 		
-		JOptionPane.showMessageDialog(null, "Bienvenidos a Gestion Empleados de Outlet Products");
+		//JOptionPane.showMessageDialog(null, "Bienvenidos a Gestion Empleados de Outlet Products");
 		
 		//DAOEFgrafica.cargarDatos();
                 //EFBLLgrafica.GuardarSinEnterarse();

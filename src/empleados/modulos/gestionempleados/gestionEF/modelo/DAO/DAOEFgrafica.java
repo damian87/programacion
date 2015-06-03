@@ -425,7 +425,7 @@ public class DAOEFgrafica {
             } else if (creaEFgrafica.Admin.isSelected()) {
                 tipo = "admin";
             }
-            JOptionPane.showMessageDialog(null, "DAOEFgrafica linea 427, avatar: " + avatar + " tipo: " + tipo);
+            //JOptionPane.showMessageDialog(null, "DAOEFgrafica linea 427, avatar: " + avatar + " tipo: " + tipo);
         //validamos
             //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
 

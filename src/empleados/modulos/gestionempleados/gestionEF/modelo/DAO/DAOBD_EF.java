@@ -237,7 +237,7 @@ public class DAOBD_EF {
         try {
             stmt = con.prepareStatement("DELETE FROM EFBBDD.Empleadofijo WHERE dni=?");
             //stmt = con.prepareStatement("DELETE FROM efbbdd.empleadofijo WHERE dni=?");
-            stmt.setString(1, ArraylistEF.efilogin.getDni());
+            stmt.setString(1, ArraylistEF.efi.getDni());
             b = stmt.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un error al eliminar el usuario!");

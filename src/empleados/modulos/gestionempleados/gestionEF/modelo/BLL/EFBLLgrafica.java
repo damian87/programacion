@@ -47,7 +47,7 @@ public class EFBLLgrafica {
             //StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
             guardar.nuevoEF_BD();
             DAOEFgrafica.Eniviaremail();
-            ((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
+            //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
             //stm.cargar
             //EFBLLgrafica.GuardarSinEnterarse();
 
@@ -134,22 +134,23 @@ public class EFBLLgrafica {
 
     public static void eliminaEFgraficatabla() {
         empleadofijo ef1 = null;
-        int inicio,
-                selec1;
-        if (TABLA.getModel().getRowCount() != 0) {
-            int selec = TABLA.getSelectedRow();
-            inicio = (pagina1.currentPageIndex - 1) * pagina1.itemsPerPage;
-            selec1 = inicio + selec;
-            if (selec1 == -1) {
-                JOptionPane.showMessageDialog(null, "Seleccione primero un Empleado Fijo");
-            } else {
-                String dni = (String) TABLA.getModel().getValueAt(selec1, 0);
-                ArraylistEF.efi = new empleadofijo(dni);
+         int inicio,
+         selec1;
+         if (TABLA.getModel().getRowCount() != 0) {
+         int selec = TABLA.getSelectedRow();
+         inicio = (pagina1.currentPageIndex - 1) * pagina1.itemsPerPage;
+         selec1 = inicio + selec;
+         if (selec1 == -1) {
+         JOptionPane.showMessageDialog(null, "Seleccione primero un Empleado Fijo");
+         } else {
+         String dni = (String) TABLA.getModel().getValueAt(selec1, 0);
+         ArraylistEF.efi = new empleadofijo(dni);
 
-                ef1 = DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
+         ef1 = DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
+       
 
                 //remove
-                ArraylistEF.ef.remove(ef1);
+                ArraylistEF.ef.remove(ArraylistEF.efi);
                 BLLBD_EF elimina = new BLLBD_EF();
                 elimina.eliminarEF();
                 JOptionPane.showMessageDialog(null, "El empleado a sido eliminado satisfactoriamente");
@@ -226,7 +227,6 @@ public class EFBLLgrafica {
         modi.modificarEF_BD();
 
         //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
-
     }
 
     public static void AbrirSinEnterarse() {
