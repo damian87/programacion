@@ -40,7 +40,7 @@ public class recordarcontraseña extends javax.swing.JFrame {
 
         Login.setText("Login:");
 
-        password.setText("Password:");
+        password.setText("Nuevo Password:");
 
         etititulo.setText("Reestablecer contraseña");
 

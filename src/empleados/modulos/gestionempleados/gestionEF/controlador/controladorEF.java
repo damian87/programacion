@@ -268,6 +268,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             combo = new AutocompleteJComboBox(searchable);
             this.efgraf.jPanel3.setLayout(new java.awt.BorderLayout());
             this.efgraf.jPanel3.add(combo);
+            this.efgraf.jPanel3.setVisible(false);
 
             combo.addActionListener(new java.awt.event.ActionListener() {
                 @Override
@@ -277,9 +278,8 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             });
 
             this.efgraf.guardartxt.doClick();
-            
+
             FileUploader.pintaravatar(this.efgraf.labelavatar, 90, 90);
-            
 
             this.efgraf.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
             this.efgraf.ANTERIOR.setName("_BTN_ANTERIOR");
@@ -300,8 +300,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.efgraf.jTextField1.setActionCommand("_FILTRAREF");
             this.efgraf.jTextField1.setName("_FILTRAREF");
             this.efgraf.jTextField1.addActionListener(this);
-            
-            
+
             this.efgraf.jComboBox1.setActionCommand("_COMBOX");
             this.efgraf.jComboBox1.setName("_COMBOX");
             this.efgraf.jComboBox1.addActionListener(this);
@@ -369,9 +368,11 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.jPanel2.setOpaque(false);
             c.add(this.creaEF.jPanel1);
             //this.creaEF.setSize(525, 425);//ancho x alto
+            
+            this.creaEF.txtdniEF.setVisible(false);
 
             this.creaEF.Usuario.doClick();
-             this.creaEF.jPanel2.setVisible(false);
+            this.creaEF.jPanel2.setVisible(false);
             this.creaEF.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             creaEF.addWindowListener(new WindowAdapter() {
                 @Override
@@ -403,9 +404,13 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.txtDepartamentoEF.setName("_DEPARTAMENTOEF");
             this.creaEF.txtDepartamentoEF.addKeyListener(this);
 
-            this.creaEF.txtdniEF.setActionCommand("_DNIEF");
+            /*this.creaEF.txtdniEF.setActionCommand("_DNIEF");
             this.creaEF.txtdniEF.setName("_DNIEF");
-            this.creaEF.txtdniEF.addKeyListener(this);
+            this.creaEF.txtdniEF.addKeyListener(this);*/
+            
+            this.creaEF.txtDNIEF.setActionCommand("_DNIEF");
+            this.creaEF.txtDNIEF.setName("_DNIEF");
+            this.creaEF.txtDNIEF.addKeyListener(this);                        
 
             this.creaEF.txtemail.setActionCommand("_Email");
             this.creaEF.txtemail.setName("_Email");
@@ -423,11 +428,9 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.cargarimgavatar.setName("_CargaAvatar");
             this.creaEF.cargarimgavatar.addKeyListener(this);
 
-           
-            
             if (ArraylistEF.efilogin == null) {
                 this.creaEF.jPanel2.setVisible(false);
-            }else if ("admin".equals(ArraylistEF.efilogin.getTipo())) {
+            } else if ("admin".equals(ArraylistEF.efilogin.getTipo())) {
                 this.creaEF.jPanel2.setVisible(true);
             }
 
@@ -456,7 +459,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 FileUploader.pintaravatar(this.modief.labelavatar, 90, 90);
             } else {
 
-                EFBLLgrafica.modificaEFgraficallenacampos();               
+                EFBLLgrafica.modificaEFgraficallenacampos();
                 FileUploader.pintaravataref(this.modief.labelavatar, 90, 90);
             }
             this.modief.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -581,13 +584,13 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.configu.TXT.addActionListener(this);
 
         }
-        
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        switch (Accion.valueOf(e.getActionCommand())) {            
+        switch (Accion.valueOf(e.getActionCommand())) {
 
             //subprincipal
             case _GESTIONEF:
@@ -832,6 +835,12 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 ((STMEF) TABLA.getModel()).filtrar();
                 break;
 
+            //interfazEF
+            case _FILTRAREF:
+                STMEF filtra = new STMEF();
+                filtra.filtrar();
+                break;
+
             //crea
             case _NOMBREEF:
                 EFBLLgrafica.nombreEFgrafica();
@@ -941,7 +950,11 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 FileUploader.pintar_guardar_imag(this.creaEF.labelavatar, 90, 90);
 
                 break;
-
+            
+            case _FILTRAREF:
+                STMEF filtra = new STMEF();
+                filtra.filtrar();
+                break;
         }
     }
 
