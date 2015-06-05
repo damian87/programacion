@@ -145,13 +145,13 @@ public class DAOEFgrafica {
         } else {
             //dni=creaEFgrafica.txtDNIEF.getText();
             //valida=validate.validateNombre(dni);
-            valida = validate.validaDNI(dni);
-            if (valida = false) {
+            //valida = validate.validaDNI(dni);
+            //if (valida = false) {
                 //JOptionPane.showMessageDialog(null, "Introduzca un DNI valido");
                 creaEFgrafica.txtDNIEF.setBackground(Color.red);
                 creaEFgrafica.txtDNIEF.requestFocus();
 
-            }
+            //}
 
             creaEFgrafica.txtDNIEF.setBackground(Color.green);
         }

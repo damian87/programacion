@@ -32,8 +32,8 @@ public class DAOBD_EF {
         int b = 0;
         try {
 
-            stmt = con.prepareStatement("INSERT INTO EFBBDD.Empleadofijo"
-                    //stmt = con.prepareStatement("INSERT INTO efbbdd.empleadofijo"
+            //stmt = con.prepareStatement("INSERT INTO EFBBDD.Empleadofijo"
+                    stmt = con.prepareStatement("INSERT INTO efbbdd.empleadofijo"
                     + "(nombre,edad,departamento,fechaNacimiento,suelo,dni,login,password,email,avatar,tipo,"
                     + "estado,antiguedad,fechaContratacion) "
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -82,8 +82,8 @@ public class DAOBD_EF {
         fecha naci, contr;
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM EFBBDD.Empleadofijo");
-            //stmt = con.prepareStatement("SELECT * FROM efbbdd.empleadofijo");
+            //stmt = con.prepareStatement("SELECT * FROM EFBBDD.Empleadofijo");
+            stmt = con.prepareStatement("SELECT * FROM efbbdd.empleadofijo");
             rs = stmt.executeQuery();
             empleadofijo emplfijo = null;
             while (rs.next()) {
