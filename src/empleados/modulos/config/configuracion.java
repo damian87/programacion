@@ -11,7 +11,6 @@
 package empleados.modulos.config;
 
 import empleados.modulos.gestionempleados.gestionEF.vista.*;
-import empleados.modulos.inicio.subprincipal;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import empleados.menuempleados;
 import java.awt.Color;

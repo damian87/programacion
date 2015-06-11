@@ -8,7 +8,7 @@ package empleados.modulos.login.controlador_log;
 import empleados.librerias.fondopanellogin;
 import empleados.modulos.config.configuracion;
 import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 //import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.inilog;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
@@ -92,7 +92,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             this.inilog.setSize(525, 425);//ancho x alto
             this.inilog.setResizable(false);
             
-            ArraylistEF.efilogin = null; //vaciamos el objeto
+            SingletonsEF.efilogin = null; //vaciamos el objeto
             
             this.inilog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
 
@@ -211,7 +211,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
                 result = log.loginusu(dni, password);
                 if (result == true) {
                     inilog.dispose();
-                    if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+                    if ("User".equals(SingletonsEF.efilogin.getTipo())) {
                     new controladorEF(new modificaEFgrafica(), 3).Iniciar(3);    
                     }else{
                     new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);    

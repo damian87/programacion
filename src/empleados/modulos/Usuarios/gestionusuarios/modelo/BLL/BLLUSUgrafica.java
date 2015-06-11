@@ -5,8 +5,8 @@
  */
 package empleados.modulos.Usuarios.gestionusuarios.modelo.BLL;
 
-import empleados.clases.StringEncrypter;
-import empleados.modulos.Usuarios.clase.Usuario;
+import empleados.clases.Encriptar;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.DAO.DAOUSUgrafica;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.STMUSU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;

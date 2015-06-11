@@ -156,11 +156,11 @@ public class STMEF extends AbstractTableModel{
         BLLBD_EF filtra = new BLLBD_EF();
         filtra.listarEF_BD();
         
-        for(int i=1;i<=ArraylistEF.ef.size()-1;i++) {
+        for(int i=1;i<=SingletonsEF.ef.size()-1;i++) {
             //_actor = new actor(i, getCadenaAleatoria1(4), getCadenaAleatoria2(8), new Timestamp(date.getTime()));
             //ef
-            addRow(ArraylistEF.ef.get(i));
-            datosaux.add(ArraylistEF.ef.get(i));
+            addRow(SingletonsEF.ef.get(i));
+            datosaux.add(SingletonsEF.ef.get(i));
             try {
                 Thread.sleep(1); //1 milliseconds
             } catch (Exception e) {

@@ -8,7 +8,7 @@ package empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases;
 
 
 
-import empleados.modulos.Usuarios.clase.Usuario;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import java.util.ArrayList;
 
 /**

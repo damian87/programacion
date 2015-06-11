@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package empleados.modulos.Usuarios.gestionusuarios.vista;
+package empleados.modulos.Usuarios.gestionusuarios.autocomplete;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import empleados.modulos.Usuarios.gestionusuarios.vista.Searchable;
+import empleados.modulos.Usuarios.gestionusuarios.autocomplete.Searchable;
 
 /**
  *

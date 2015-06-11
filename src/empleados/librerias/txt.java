@@ -22,7 +22,7 @@ public class txt {
                 
                 FileOutputStream fo=new FileOutputStream(f);
 				ObjectOutputStream o=new ObjectOutputStream(fo);
-				o.writeObject(ArraylistEF.ef);
+				o.writeObject(SingletonsEF.ef);
 				o.close();
                 JOptionPane.showMessageDialog(null, "Archivo TXT guardado con exito", "Archivo TXT", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -44,7 +44,7 @@ public class txt {
                 
                 FileOutputStream fo=new FileOutputStream(f);
 				ObjectOutputStream o=new ObjectOutputStream(fo);
-				o.writeObject(ArraylistEF.ef);
+				o.writeObject(SingletonsEF.ef);
 				o.close();
             
         } catch (Exception e) {
@@ -68,13 +68,13 @@ public class txt {
                 
                 FileInputStream fi=new FileInputStream(f);
     			ObjectInputStream oi=new ObjectInputStream(fi);
-    			ArraylistEF.ef = (ArrayList<empleadofijo>)oi.readObject();
+    			SingletonsEF.ef = (ArrayList<empleadofijo>)oi.readObject();
     			oi.close();
             }
         } catch (Exception e) {
         	JOptionPane.showMessageDialog(null, "Error al leer el TXT", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    	return ArraylistEF.ef;
+    	return SingletonsEF.ef;
     }
     
    
@@ -91,13 +91,13 @@ public class txt {
                 
                 FileInputStream fi=new FileInputStream(f);
     			ObjectInputStream oi=new ObjectInputStream(fi);
-    			ArraylistEF.ef = (ArrayList<empleadofijo>)oi.readObject();
+    			SingletonsEF.ef = (ArrayList<empleadofijo>)oi.readObject();
     			oi.close();
             
         } catch (Exception e) {
         	
         }
-    	return ArraylistEF.ef;
+    	return SingletonsEF.ef;
     }
     
    

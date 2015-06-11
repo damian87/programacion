@@ -38,7 +38,7 @@ public class json {
 	                PATH=PATH+ ".json";
 	              
 	                Gson gson1=new Gson();
-	                String json=gson1.toJson(ArraylistEF.ef);
+	                String json=gson1.toJson(SingletonsEF.ef);
 		            FileWriter fileXml=new FileWriter(PATH);
 	                fileXml.write(json.toString());
 	                fileXml.close();
@@ -64,7 +64,7 @@ public class json {
 		           
 		              
 		                Gson gson = new Gson();
-			            String json1 = gson.toJson(ArraylistEF.ef);
+			            String json1 = gson.toJson(SingletonsEF.ef);
 			            FileWriter fileXml = new FileWriter(PATH);
 		                fileXml.write(json1.toString());
 		                fileXml.close();
@@ -91,7 +91,7 @@ public class json {
 		                File JFC = fileChooser.getSelectedFile();
 		                PATH = JFC.getAbsolutePath();
 		               
-		                ArraylistEF.ef.clear();
+		                SingletonsEF.ef.clear();
 		                JsonReader lector = new JsonReader(new FileReader(PATH));
 		                JsonParser parseador = new JsonParser();
 		                JsonElement raiz = parseador.parse(lector);
@@ -100,13 +100,13 @@ public class json {
 		            	JsonArray lista = raiz.getAsJsonArray();
 		            	for (JsonElement elemento : lista) {
 		            		e1 = json.fromJson(elemento, empleadofijo.class);
-		            		ArraylistEF.ef.add(e1);
+		            		SingletonsEF.ef.add(e1);
 		            	}
 		          } 
 	        } catch (Exception e) {
 	        	JOptionPane.showMessageDialog(null, "Error al abrir el JSON", "Error", JOptionPane.ERROR_MESSAGE);
 	        }
-	        return ArraylistEF.ef;
+	        return SingletonsEF.ef;
 	    }
 	 
 	 public static ArrayList<empleadofijo> abrir_jsonOcultoEF(){//Abre json de empleados fijos de forma silenciosa
@@ -116,7 +116,7 @@ public class json {
 	        try {
 	            PATH = new java.io.File(".").getCanonicalPath()+"/src/empleados/modulos/gestionempleados/gestionEF/modelo/tipofichero/ef.json";
 
-		                ArraylistEF.ef.clear();
+		                SingletonsEF.ef.clear();
 		                JsonReader lector = new JsonReader(new FileReader(PATH));
 		                JsonParser parseador = new JsonParser();
 		                JsonElement raiz = parseador.parse(lector);
@@ -125,12 +125,12 @@ public class json {
 		            	JsonArray lista = raiz.getAsJsonArray();
 		            	for (JsonElement elemento : lista) {
 		            		e1 = json.fromJson(elemento, empleadofijo.class);
-		            		ArraylistEF.ef.add(e1);
+		            		SingletonsEF.ef.add(e1);
 		            	}
 	        } catch (Exception e) {
 
 	        }
-	        return ArraylistEF.ef;
+	        return SingletonsEF.ef;
 	    }
 	 
 

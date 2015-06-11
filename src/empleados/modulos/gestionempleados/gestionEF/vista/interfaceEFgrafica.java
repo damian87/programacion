@@ -12,11 +12,10 @@ package empleados.modulos.gestionempleados.gestionEF.vista;
 
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
-import empleados.modulos.inicio.subprincipal;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;

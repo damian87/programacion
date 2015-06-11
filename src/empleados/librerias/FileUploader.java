@@ -5,7 +5,7 @@
  */
 package empleados.librerias;
 
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -32,7 +32,7 @@ public class FileUploader {
 
     public static void pintaravatar(JLabel etiqueta, int ancho, int alto) {
 
-            ImageIcon icon = new ImageIcon(ArraylistEF.efilogin.getAvatar());
+            ImageIcon icon = new ImageIcon(SingletonsEF.efilogin.getAvatar());
             Image img = icon.getImage();
             Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);
@@ -43,7 +43,7 @@ public class FileUploader {
     
     public static void pintaravataref(JLabel etiqueta, int ancho, int alto) {
 
-            ImageIcon icon = new ImageIcon(ArraylistEF.efi.getAvatar());
+            ImageIcon icon = new ImageIcon(SingletonsEF.efi.getAvatar());
             Image img = icon.getImage();
             Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);

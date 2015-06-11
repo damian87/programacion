@@ -3,7 +3,6 @@ package empleados;
 import empleados.clases.*;
 import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
 import empleados.modulos.login.vista_log.Iniciologin;
-import empleados.modulos.inicio.subprincipal;
 import empleados.modulos.login.controlador_log.controlador_login;
 
 public class menuempleados {

@@ -6,10 +6,10 @@
 package empleados.modulos.Usuarios.gestionusuarios.modelo.DAO;
 
 import com.toedter.calendar.JTextFieldDateEditor;
-import empleados.clases.StringEncrypter;
+import empleados.clases.Encriptar;
 import empleados.clases.fecha;
 import empleados.librerias.validate;
-import empleados.modulos.Usuarios.clase.Usuario;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLUSUgrafica;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.Usuarios.gestionusuarios.vista.CreaUsu;
@@ -279,7 +279,7 @@ public class DAOUSUgrafica {
         } else {
 
             PerfilUsu.txtpassword.setBackground(Color.green);
-            pass=StringEncrypter.encriptarTokenMD5(pass);
+            pass=Encriptar.encriptarTokenMD5(pass);
         }
         return pass;
     }
@@ -407,7 +407,9 @@ public class DAOUSUgrafica {
             CreaUsu.DatePikerEFNacEF.setBackground(Color.RED);            
             CreaUsu.DatePikerEFNacEF.requestFocus();
             JOptionPane.showMessageDialog(null, "No puede registrar a un menor de 16 años");
-        }
+        }else{
+            
+             
 
         //validamos
         //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
@@ -431,6 +433,7 @@ public class DAOUSUgrafica {
         CreaUsu.txtemail.setBackground(Color.WHITE);
         CreaUsu.txtlogin.setBackground(Color.WHITE);
         CreaUsu.txtpassword.setBackground(Color.WHITE);
+        }
         
         }
         return SingletonsUsu.u;

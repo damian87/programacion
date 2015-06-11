@@ -11,17 +11,17 @@ import empleados.librerias.fondopanelconfig;
 import empleados.librerias.fondopanelcrear;
 import empleados.librerias.fondopanelpager;
 import empleados.menuempleados;
-import empleados.modulos.Usuarios.clase.Usuario;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLBD_USU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLUSUgrafica;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.DAO.DAOUSUgrafica;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.STMUSU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.pagerprod.pagina;
-import empleados.modulos.Usuarios.gestionusuarios.vista.AutocompleteJComboBox;
+import empleados.modulos.Usuarios.gestionusuarios.autocomplete.AutocompleteJComboBox;
 import empleados.modulos.Usuarios.gestionusuarios.vista.CreaUsu;
 import empleados.modulos.Usuarios.gestionusuarios.vista.PerfilUsu;
-import empleados.modulos.Usuarios.gestionusuarios.vista.StringSearchable;
+import empleados.modulos.Usuarios.gestionusuarios.autocomplete.StringSearchable;
 import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardarjson;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardartxt;
@@ -64,7 +64,6 @@ import javax.swing.JFrame;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.txtDepartamento;
 import empleados.modulos.gestionempleados.gestionEF.vista.recordarcontraseña;
 import empleados.modulos.login.vista_log.Iniciologin;
-import empleados.modulos.inicio.subprincipal;
 import empleados.modulos.login.controlador_log.controlador_login;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -87,7 +86,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new STMUSU());
     public static AutocompleteJComboBox combo = null;
     public static interfaceUSUgrafica efgraf = new interfaceUSUgrafica();
-    public static subprincipal subpri = new subprincipal();
+    //public static subprincipal subpri = new subprincipal();
     public static CreaUsu creaEF = new CreaUsu();
     public static PerfilUsu modief = new PerfilUsu();
     public static configuracion configu = new configuracion();
@@ -95,9 +94,9 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
     public static recordarcontraseña recordar = new recordarcontraseña();
 
     public controladorUSU(JFrame inicio, int i) {
-        if (i == 0) {
+        /*if (i == 0) {
             this.subpri = (subprincipal) inicio;
-        }
+        }*/
 
         if (i == 1) {
             this.efgraf = (interfaceUSUgrafica) inicio;
@@ -118,6 +117,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         if (i == 5) {
             this.inilog = (Iniciologin) inicio;
         }
+        
         if (i == 6) {
             this.recordar = (recordarcontraseña) inicio;
         }
@@ -196,7 +196,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
     //en el new controladorEF (new interfaceUSUgrafica(), 0).Iniciar(0);
     //el primer 0 es para entrar al if del controladorEF, y el segundo 0 es para la funion iniciar k 
     public void Iniciar(int i) {
-        //SUBPRINCIPAL
+        /*//SUBPRINCIPAL
         if (i == 0) {
             this.subpri.setVisible(true);
 
@@ -227,7 +227,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.subpri.imprimirEF.setName("_GESTIONEF");
             this.subpri.imprimirEF.addActionListener(this);
 
-        }
+        }*/
 
         if (i == 1) {
 
@@ -253,7 +253,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.efgraf.jPanel3.setOpaque(false);
             this.efgraf.jPanel4.setOpaque(false);
             this.efgraf.jPanel5.setOpaque(false);
-            
+
             TABLA.setModel(new STMUSU());
             ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
             TABLA.setFillsViewportHeight(true);
@@ -261,8 +261,6 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             pagina.inicializa();
             pagina.initLinkBox();
-            
-            
 
             this.efgraf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             this.efgraf.addWindowListener(new WindowAdapter() {
@@ -447,7 +445,6 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.modief.setContentPane(c);
             this.modief.jPanel1.setOpaque(false);
             c.add(this.modief.jPanel1);
-           
 
             BLLUSUgrafica.modificaUsuariograficallenacampos();
             DAOUSUgrafica.modificaUsugraficallenadodatos();
@@ -521,7 +518,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
             this.configu.setIconImage(icono);
             this.configu.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-            
+
             fondopanelconfig c = new fondopanelconfig();
             this.configu.setContentPane(c);
             this.configu.FondoConfig.setOpaque(false);
@@ -728,7 +725,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
                 break;
 
-            //subprincipal
+            /*//subprincipal
             case _GESTIONEF:
                 subpri.dispose();
                 new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
@@ -738,7 +735,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 subpri.dispose();
                 new controladorUSU(new configuracion(), 4).Iniciar(4);
 
-                break;
+                break;*/
             //interfaz
             case _BTN_ANTERIOR:
                 pagina.currentPageIndex -= 1;

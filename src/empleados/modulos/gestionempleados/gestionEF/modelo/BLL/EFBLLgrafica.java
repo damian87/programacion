@@ -5,14 +5,14 @@
  */
 package empleados.modulos.gestionempleados.gestionEF.modelo.BLL;
 
-import empleados.clases.StringEncrypter;
+import empleados.clases.Encriptar;
 import empleados.librerias.FileUploader;
 import empleados.modulos.gestionempleados.clases.empleado;
 import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
 import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.creaEF;
 import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.modief;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
@@ -37,14 +37,14 @@ public class EFBLLgrafica {
         DAOEFgrafica.creaEFGrafica();
 
         //dni no repes
-        found = buscar(ArraylistEF.efi);
+        found = buscar(SingletonsEF.efi);
         if (found != -1) {
             JOptionPane.showMessageDialog(null, "El DNI ya existe, el empleado no ha sido creado, porfavor revise los datos");
         } else {
             //ArraylistEF.ef.add(efi);
 
             BLLBD_EF guardar = new BLLBD_EF();
-            ArraylistEF.password = ArraylistEF.efi.getPassword();
+            SingletonsEF.password = SingletonsEF.efi.getPassword();
             //StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
             mail=guardar.nuevoEF_BD();
             if (mail==1){
@@ -62,8 +62,8 @@ public class EFBLLgrafica {
     public static int buscar(empleado ef) {//Buscar
         int aux = -1;
 
-        for (int i = 0; i <= (ArraylistEF.ef.size() - 1); i++) {
-            if ((ArraylistEF.ef.get(i)).equals(ef))//buclea hasta que encuentra un dni que sea igual con el comparator de la madre y lo devuelve como aux
+        for (int i = 0; i <= (SingletonsEF.ef.size() - 1); i++) {
+            if ((SingletonsEF.ef.get(i)).equals(ef))//buclea hasta que encuentra un dni que sea igual con el comparator de la madre y lo devuelve como aux
             {
                 aux = i;
             }
@@ -104,12 +104,12 @@ public class EFBLLgrafica {
     }
 
     public static void borrarcamporEFgrafica() {
-        if (ArraylistEF.efilogin == null) {
+        if (SingletonsEF.efilogin == null) {
             DAOEFgrafica.borrarcamposcrea();
             creaEF.dispose();
             new controlador_login(new Iniciologin(), 5).Iniciar(5);
 
-        } else if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+        } else if ("User".equals(SingletonsEF.efilogin.getTipo())) {
 
             DAOEFgrafica.borrarcamposcrea();
             creaEF.dispose();
@@ -123,7 +123,7 @@ public class EFBLLgrafica {
     }
 
     public static void borrarcamporEFModifica() {
-        if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+        if ("User".equals(SingletonsEF.efilogin.getTipo())) {
             DAOEFgrafica.borrarcamposModifica();
             modief.dispose();
             new controlador_login(new Iniciologin(), 5).Iniciar(5);
@@ -148,13 +148,13 @@ public class EFBLLgrafica {
          JOptionPane.showMessageDialog(null, "Seleccione primero un Empleado Fijo");
          } else {
          String dni = (String) TABLA.getModel().getValueAt(selec1, 0);
-         ArraylistEF.efi = new empleadofijo(dni);
+         SingletonsEF.efi = new empleadofijo(dni);
 
-         ef1 = DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
+         ef1 = DAOEFgrafica.obtenerEF(SingletonsEF.efi.getDni());
        
 
                 //remove
-                ArraylistEF.ef.remove(ArraylistEF.efi);
+                SingletonsEF.ef.remove(SingletonsEF.efi);
                 BLLBD_EF elimina = new BLLBD_EF();
                 elimina.eliminarEF();
                 JOptionPane.showMessageDialog(null, "El empleado a sido eliminado satisfactoriamente");
@@ -180,8 +180,8 @@ public class EFBLLgrafica {
             } else {
                 String dni = (String) TABLA.getModel().getValueAt(selec2, 0);
                 //ArraylistEF.efi = new empleadofijo(dni);
-                ArraylistEF.efilog = new empleadofijo(dni);
-                ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efilog.getDni());
+                SingletonsEF.efilog = new empleadofijo(dni);
+                SingletonsEF.efi = DAOEFgrafica.obtenerEF(SingletonsEF.efilog.getDni());
                 DAOEFgrafica.modificaEFgraficallenadodatos();
                 FileUploader.pintaravatar(modief.labelavatar, 90, 90);
             }
@@ -204,9 +204,9 @@ public class EFBLLgrafica {
             } else {
                 String dni = (String) TABLA.getModel().getValueAt(selec2, 0);
                 //ArraylistEF.efi = new empleadofijo(dni);
-                ArraylistEF.efilogin = new empleadofijo(dni);
-                ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efilogin.getDni());
-                JOptionPane.showMessageDialog(null, "La informacion completa del trabajador es" + ArraylistEF.efi.toString());
+                SingletonsEF.efilogin = new empleadofijo(dni);
+                SingletonsEF.efi = DAOEFgrafica.obtenerEF(SingletonsEF.efilogin.getDni());
+                JOptionPane.showMessageDialog(null, "La informacion completa del trabajador es" + SingletonsEF.efi.toString());
             }
         }
         //ArraylistEF.efi = DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
@@ -217,7 +217,7 @@ public class EFBLLgrafica {
 
         //empleadofijo modificado = new empleadofijo();
         //modificado=DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
-        if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+        if ("User".equals(SingletonsEF.efilogin.getTipo())) {
             DAOEFgrafica.modificaEFlogin();
 
         } else {
@@ -235,8 +235,8 @@ public class EFBLLgrafica {
 
     public static void AbrirSinEnterarse() {
         //ArraylistEF.ef=empleados.librerias.json.abrir_jsonOcultoEF();
-        ArraylistEF.ef = empleados.librerias.txt.abrir_txtOcultoEF();
-        ArraylistEF.ef = empleados.librerias.xml.abrir_xmlOcultoEF();
+        SingletonsEF.ef = empleados.librerias.txt.abrir_txtOcultoEF();
+        SingletonsEF.ef = empleados.librerias.xml.abrir_xmlOcultoEF();
     }
 
 }

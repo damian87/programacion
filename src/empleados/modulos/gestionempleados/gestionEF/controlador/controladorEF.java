@@ -16,7 +16,7 @@ import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica.modificaEFgraficallenadodatosPerfil;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import java.awt.event.ActionListener;
@@ -49,7 +49,6 @@ import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafi
 import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.txtDepartamento;
 import empleados.modulos.gestionempleados.gestionEF.vista.recordarcontraseña;
 import empleados.modulos.login.vista_log.Iniciologin;
-import empleados.modulos.inicio.subprincipal;
 import empleados.modulos.login.controlador_log.controlador_login;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -72,7 +71,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new STMEF());
     public static AutocompleteJComboBox combo = null;
     public static interfaceEFgrafica efgraf = new interfaceEFgrafica();
-    public static subprincipal subpri = new subprincipal();
+    //public static subprincipal subpri = new subprincipal();
     public static creaEFgrafica creaEF = new creaEFgrafica();
     public static modificaEFgrafica modief = new modificaEFgrafica();
     public static configuracion configu = new configuracion();
@@ -80,9 +79,9 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
     public static recordarcontraseña recordar = new recordarcontraseña();
 
     public controladorEF(JFrame inicio, int i) {
-        if (i == 0) {
+        /*if (i == 0) {
             this.subpri = (subprincipal) inicio;
-        }
+        }*/
 
         if (i == 1) {
             this.efgraf = (interfaceEFgrafica) inicio;
@@ -182,7 +181,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
     //en el new controladorEF (new interfaceEFgrafica(), 0).Iniciar(0);
     //el primer 0 es para entrar al if del controladorEF, y el segundo 0 es para la funion iniciar k 
     public void Iniciar(int i) {
-        //SUBPRINCIPAL
+        /*//SUBPRINCIPAL
         if (i == 0) {
             this.subpri.setVisible(true);
 
@@ -213,7 +212,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.subpri.imprimirEF.setName("_GESTIONEF");
             this.subpri.imprimirEF.addActionListener(this);
 
-        }
+        }*/
 
         if (i == 1) {
 
@@ -260,8 +259,8 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             });
 
             List<String> myWords = new ArrayList<String>();
-            for (int e = 0; e <= ArraylistEF.ef.size() - 1; e++) {
-                myWords.add(ArraylistEF.ef.get(e).getNombre());
+            for (int e = 0; e <= SingletonsEF.ef.size() - 1; e++) {
+                myWords.add(SingletonsEF.ef.get(e).getNombre());
             }
 
             StringSearchable searchable = new StringSearchable(myWords);
@@ -325,7 +324,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.efgraf.info.setName("_INFO");
             this.efgraf.info.addActionListener(this);
 
-            if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+            if ("User".equals(SingletonsEF.efilogin.getTipo())) {
 
                 this.efgraf.botonnuevoEF.setVisible(false);
                 this.efgraf.botonmodificarEF.setVisible(false);
@@ -428,9 +427,9 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.cargarimgavatar.setName("_CargaAvatar");
             this.creaEF.cargarimgavatar.addKeyListener(this);
 
-            if (ArraylistEF.efilogin == null) {
+            if (SingletonsEF.efilogin == null) {
                 this.creaEF.jPanel2.setVisible(false);
-            } else if ("admin".equals(ArraylistEF.efilogin.getTipo())) {
+            } else if ("admin".equals(SingletonsEF.efilogin.getTipo())) {
                 this.creaEF.jPanel2.setVisible(true);
             }
 
@@ -454,7 +453,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.modief.jPanel1.setOpaque(false);
             c.add(this.modief.jPanel1);
 
-            if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+            if ("User".equals(SingletonsEF.efilogin.getTipo())) {
                 DAOEFgrafica.modificaEFgraficallenadodatosPerfil();
                 FileUploader.pintaravatar(this.modief.labelavatar, 90, 90);
             } else {
@@ -593,7 +592,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
         switch (Accion.valueOf(e.getActionCommand())) {
 
             //subprincipal
-            case _GESTIONEF:
+            /*case _GESTIONEF:
                 subpri.dispose();
                 new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
                 break;
@@ -602,7 +601,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 subpri.dispose();
                 new controladorEF(new configuracion(), 4).Iniciar(4);
 
-                break;
+                break;*/
             //interfaz
             case _BTN_ANTERIOR:
                 pagina1.currentPageIndex -= 1;

@@ -9,7 +9,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEParameterSpec;
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class StringEncrypter {
+public class Encriptar {
     public static String getCadenaAleatoria(int longitud){
 		String cadenaAleatoria = "";
 		long milis = new java.util.GregorianCalendar().getTimeInMillis();

@@ -10,7 +10,7 @@ package empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases;
 //import javax.swing.table.AbstractTableModel;
 //import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.*;
 import empleados.clases.fecha;
-import empleados.modulos.Usuarios.clase.Usuario;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import static empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU.combo;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLBD_USU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.pagerprod.pagina;

@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 
 
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class configuracion {
 
 	public configuracion(){
             
-                ArraylistEF.ef = new ArrayList <empleadofijo> ();
+                SingletonsEF.ef = new ArrayList <empleadofijo> ();
 		moneda ='€';
 		decimales = '2';
 		Formatofecha = "dd/mm/yyyy";

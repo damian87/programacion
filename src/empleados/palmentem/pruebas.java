@@ -10,7 +10,7 @@ import empleados.clases.configuracion;
 import static empleados.menuempleados.conf;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOBD_EF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.dummiesef;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -40,7 +40,7 @@ public class pruebas {
                 
        //dummiesef.dummies();
         
-        JOptionPane.showMessageDialog(null, "imprime"+ArraylistEF.ef.toString());
+        JOptionPane.showMessageDialog(null, "imprime"+SingletonsEF.ef.toString());
         
     }
     

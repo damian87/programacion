@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package empleados.modulos.Usuarios.clase;
+package empleados.modulos.Usuarios.gestionusuarios.modelo.clase;
 
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;

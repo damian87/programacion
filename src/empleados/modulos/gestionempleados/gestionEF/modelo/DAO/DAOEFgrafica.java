@@ -9,11 +9,11 @@ package empleados.modulos.gestionempleados.gestionEF.modelo.DAO;
 import com.toedter.calendar.JTextFieldDateEditor;
 import empleados.clases.fecha;
 import empleados.clases.Mail;
-import empleados.clases.StringEncrypter;
+import empleados.clases.Encriptar;
 import static empleados.librerias.FileUploader.PATH_auto;
 import empleados.librerias.validate;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
@@ -278,7 +278,7 @@ public class DAOEFgrafica {
         } else {
 
             modificaEFgrafica.txtpassword.setBackground(Color.green);
-            pass = StringEncrypter.encriptarTokenMD5(pass);
+            pass = Encriptar.encriptarTokenMD5(pass);
         }
         return pass;
     }
@@ -431,7 +431,7 @@ public class DAOEFgrafica {
         //validamos
             //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
 
-            ArraylistEF.efi = new empleadofijo(nom, dni, deprt, naci, contr, usuario, Password, email, tipo, avatar);
+            SingletonsEF.efi = new empleadofijo(nom, dni, deprt, naci, contr, usuario, Password, email, tipo, avatar);
             //String nombre,  String dni, String departamento, fecha fechaNacimiento, fecha fechaContratacion, String login, String password, String email
 
             creaEFgrafica.txtNombreEF.setText("");
@@ -454,7 +454,7 @@ public class DAOEFgrafica {
             creaEFgrafica.txtpassword.setBackground(Color.WHITE);
 
         }
-        return ArraylistEF.efi;
+        return SingletonsEF.efi;
 
         //return ef1;
     }
@@ -466,7 +466,7 @@ public class DAOEFgrafica {
 
         ef1 = new empleadofijo(dni);
         pos = EFBLLgrafica.buscar(ef1);
-        ef1 = ArraylistEF.ef.get(pos);
+        ef1 = SingletonsEF.ef.get(pos);
         return ef1;
     }
 
@@ -475,15 +475,15 @@ public class DAOEFgrafica {
         //String nombre, departamento;
         //int pos = 0;
         //fecha fnac = null, fcont = null;
-        modificaEFgrafica.txtNombre.setText(ArraylistEF.efi.getNombre());
-        modificaEFgrafica.txtDepartamento.setText(ArraylistEF.efi.getDepartamento());
-        modificaEFgrafica.txtantiguedad.setText(Integer.toString(ArraylistEF.efi.cambiarAntiguedad()));
-        modificaEFgrafica.txtedad.setText(Integer.toString(ArraylistEF.efi.getEdad()));
-        modificaEFgrafica.txtsueldo.setText(Float.toString(ArraylistEF.efi.calcularsueldo()));
-        ((JTextFieldDateEditor) modificaEFgrafica.DatePiketEFnac.getDateEditor()).setText(ArraylistEF.efi.getFechaNacimiento().toString());
-        ((JTextFieldDateEditor) modificaEFgrafica.DatePikerEFCont.getDateEditor()).setText(ArraylistEF.efi.getFechaContratacion().toString());
-        modificaEFgrafica.txtemail.setText(ArraylistEF.efi.getEmail());
-        modificaEFgrafica.txtlogin.setText(ArraylistEF.efi.getLogin());
+        modificaEFgrafica.txtNombre.setText(SingletonsEF.efi.getNombre());
+        modificaEFgrafica.txtDepartamento.setText(SingletonsEF.efi.getDepartamento());
+        modificaEFgrafica.txtantiguedad.setText(Integer.toString(SingletonsEF.efi.cambiarAntiguedad()));
+        modificaEFgrafica.txtedad.setText(Integer.toString(SingletonsEF.efi.getEdad()));
+        modificaEFgrafica.txtsueldo.setText(Float.toString(SingletonsEF.efi.calcularsueldo()));
+        ((JTextFieldDateEditor) modificaEFgrafica.DatePiketEFnac.getDateEditor()).setText(SingletonsEF.efi.getFechaNacimiento().toString());
+        ((JTextFieldDateEditor) modificaEFgrafica.DatePikerEFCont.getDateEditor()).setText(SingletonsEF.efi.getFechaContratacion().toString());
+        modificaEFgrafica.txtemail.setText(SingletonsEF.efi.getEmail());
+        modificaEFgrafica.txtlogin.setText(SingletonsEF.efi.getLogin());
         modificaEFgrafica.txtpassword.setText("");
 
     }
@@ -493,15 +493,15 @@ public class DAOEFgrafica {
         //String nombre, departamento;
         //int pos = 0;
         //fecha fnac = null, fcont = null;
-        modificaEFgrafica.txtNombre.setText(ArraylistEF.efilogin.getNombre());
-        modificaEFgrafica.txtDepartamento.setText(ArraylistEF.efilogin.getDepartamento());
-        modificaEFgrafica.txtantiguedad.setText(Integer.toString(ArraylistEF.efilogin.cambiarAntiguedad()));
-        modificaEFgrafica.txtedad.setText(Integer.toString(ArraylistEF.efilogin.getEdad()));
-        modificaEFgrafica.txtsueldo.setText(Float.toString(ArraylistEF.efilogin.calcularsueldo()));
-        ((JTextFieldDateEditor) modificaEFgrafica.DatePiketEFnac.getDateEditor()).setText(ArraylistEF.efilogin.getFechaNacimiento().toString());
-        ((JTextFieldDateEditor) modificaEFgrafica.DatePikerEFCont.getDateEditor()).setText(ArraylistEF.efilogin.getFechaContratacion().toString());
-        modificaEFgrafica.txtemail.setText(ArraylistEF.efilogin.getEmail());
-        modificaEFgrafica.txtlogin.setText(ArraylistEF.efilogin.getLogin());
+        modificaEFgrafica.txtNombre.setText(SingletonsEF.efilogin.getNombre());
+        modificaEFgrafica.txtDepartamento.setText(SingletonsEF.efilogin.getDepartamento());
+        modificaEFgrafica.txtantiguedad.setText(Integer.toString(SingletonsEF.efilogin.cambiarAntiguedad()));
+        modificaEFgrafica.txtedad.setText(Integer.toString(SingletonsEF.efilogin.getEdad()));
+        modificaEFgrafica.txtsueldo.setText(Float.toString(SingletonsEF.efilogin.calcularsueldo()));
+        ((JTextFieldDateEditor) modificaEFgrafica.DatePiketEFnac.getDateEditor()).setText(SingletonsEF.efilogin.getFechaNacimiento().toString());
+        ((JTextFieldDateEditor) modificaEFgrafica.DatePikerEFCont.getDateEditor()).setText(SingletonsEF.efilogin.getFechaContratacion().toString());
+        modificaEFgrafica.txtemail.setText(SingletonsEF.efilogin.getEmail());
+        modificaEFgrafica.txtlogin.setText(SingletonsEF.efilogin.getLogin());
         modificaEFgrafica.txtpassword.setText("");
 
     }
@@ -524,15 +524,15 @@ public class DAOEFgrafica {
             JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
 
         } else {
-            ArraylistEF.efi.setNombre(modificanombreEFgrafica());
-            ArraylistEF.efi.setDepartamento(modificadepartamentoEFgrafica());
-            ArraylistEF.efi.setFechaNacimiento(fnacEFmodificagrafica());
-            ArraylistEF.efi.setFechaContratacion(fcontEFmodificagrafica());
+            SingletonsEF.efi.setNombre(modificanombreEFgrafica());
+            SingletonsEF.efi.setDepartamento(modificadepartamentoEFgrafica());
+            SingletonsEF.efi.setFechaNacimiento(fnacEFmodificagrafica());
+            SingletonsEF.efi.setFechaContratacion(fcontEFmodificagrafica());
             //ArraylistEF.efi.setSueldo(ArraylistEF.efi.calcularsueldo());
-            ArraylistEF.efi.setLogin(modificausuariologin());
-            ArraylistEF.efi.setPassword(modificapassword());
-            ArraylistEF.efi.setEmail(modificaemail());
-            ArraylistEF.efilogin.setAvatar(PATH_auto);
+            SingletonsEF.efi.setLogin(modificausuariologin());
+            SingletonsEF.efi.setPassword(modificapassword());
+            SingletonsEF.efi.setEmail(modificaemail());
+            SingletonsEF.efilogin.setAvatar(PATH_auto);
 
             JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
 
@@ -567,15 +567,15 @@ public class DAOEFgrafica {
             JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
 
         } else {
-            ArraylistEF.efilogin.setNombre(modificanombreEFgrafica());
-            ArraylistEF.efilogin.setDepartamento(modificadepartamentoEFgrafica());
-            ArraylistEF.efilogin.setFechaNacimiento(fnacEFmodificagrafica());
-            ArraylistEF.efilogin.setFechaContratacion(fcontEFmodificagrafica());
+            SingletonsEF.efilogin.setNombre(modificanombreEFgrafica());
+            SingletonsEF.efilogin.setDepartamento(modificadepartamentoEFgrafica());
+            SingletonsEF.efilogin.setFechaNacimiento(fnacEFmodificagrafica());
+            SingletonsEF.efilogin.setFechaContratacion(fcontEFmodificagrafica());
             //ArraylistEF.efilogin.setSueldo(ArraylistEF.efilogin.calcularsueldo());
-            ArraylistEF.efilogin.setLogin(modificausuariologin());
-            ArraylistEF.efilogin.setPassword(modificapassword());
-            ArraylistEF.efilogin.setEmail(modificaemail());
-            ArraylistEF.efilogin.setAvatar(PATH_auto);
+            SingletonsEF.efilogin.setLogin(modificausuariologin());
+            SingletonsEF.efilogin.setPassword(modificapassword());
+            SingletonsEF.efilogin.setEmail(modificaemail());
+            SingletonsEF.efilogin.setAvatar(PATH_auto);
 
             JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
 
@@ -594,7 +594,7 @@ public class DAOEFgrafica {
 
     public static void Eniviaremail() {
 
-        JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + ArraylistEF.efi.getEmail() + "Password: " + ArraylistEF.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsEF.efi.getEmail() + "Password: " + SingletonsEF.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
         //creamos el objeto Mail
         /*Mail mail = new Mail(ArraylistEF.efi.getEmail(), ArraylistEF.password.toString());
 

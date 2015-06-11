@@ -6,7 +6,7 @@
 package empleados.modulos.login.modelo_log.BLL_LOG;
 
 import empleados.clases.conexionBBDD;
-import empleados.clases.StringEncrypter;
+import empleados.clases.Encriptar;
 //import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.recordar;
 import static empleados.modulos.login.controlador_log.controlador_login.recordar;
 
@@ -57,7 +57,7 @@ public class loginBLL {
         String usu, pass;
         usu = recordar.txtlogin.getText();
         pass = recordar.txtpassword.getText();
-        pass=StringEncrypter.encriptarTokenMD5(pass);
+        pass=Encriptar.encriptarTokenMD5(pass);
         conexionBBDD _conexion_DB = new conexionBBDD();
 
         _con = _conexion_DB.AbrirConexion();

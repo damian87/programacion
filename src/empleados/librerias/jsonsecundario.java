@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 
 public class jsonsecundario {
@@ -54,7 +54,7 @@ public class jsonsecundario {
                 }
 
                 Gson gson = new Gson();
-                String json = gson.toJson(ArraylistEF.ef);
+                String json = gson.toJson(SingletonsEF.ef);
                 FileWriter fileXml = new FileWriter(PATH);
                 fileXml.write(json.toString());
                 fileXml.close();
@@ -89,7 +89,7 @@ public class jsonsecundario {
                 File JFC = fileChooser.getSelectedFile();
                 PATH = JFC.getAbsolutePath();
 
-                ArraylistEF.ef.clear();
+                SingletonsEF.ef.clear();
 
                 JsonReader lector = new JsonReader(new FileReader(PATH));
                 JsonParser parseador = new JsonParser();
@@ -100,7 +100,7 @@ public class jsonsecundario {
 
                 for (JsonElement elemento : lista) {
                     a = json.fromJson(elemento, empleadofijo.class);
-                    ArraylistEF.ef.add(a);
+                    SingletonsEF.ef.add(a);
                 }
 
                 JOptionPane.showMessageDialog(null,
@@ -112,6 +112,6 @@ public class jsonsecundario {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        return ArraylistEF.ef;
+        return SingletonsEF.ef;
     }
 }

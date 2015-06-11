@@ -18,7 +18,6 @@ import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.emplea
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
 */
-import empleados.modulos.inicio.subprincipal;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;

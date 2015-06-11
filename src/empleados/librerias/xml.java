@@ -5,7 +5,7 @@ import com.thoughtworks.xstream.annotations.Annotations;
 //import com.thoughtworks.xstream.converters.basic.DateConverter;
 //import com.thoughtworks.xstream.io.xml.DomDriver;
 
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 
 import java.io.ByteArrayOutputStream;
@@ -32,7 +32,7 @@ public class xml {
 			Annotations.configureAliases(xstream, empleadofijo.class);
 
             String header = "<?xml version=\"1.0\" encoding=\"" + ENCODING + "\"?>\n";
-            xstream.toXML(ArraylistEF.ef, osw);
+            xstream.toXML(SingletonsEF.ef, osw);
             StringBuffer xml = new StringBuffer();
             xml.append(header);
             xml.append(os.toString());
@@ -69,7 +69,7 @@ public class xml {
 			Annotations.configureAliases(xstream, empleadofijo.class);
 
             String header = "<?xml version=\"1.0\" encoding=\"" + ENCODING + "\"?>\n";
-            xstream.toXML(ArraylistEF.ef, osw);
+            xstream.toXML(SingletonsEF.ef, osw);
             StringBuffer xml = new StringBuffer();
             xml.append(header);
             xml.append(os.toString());
@@ -100,13 +100,13 @@ public class xml {
             if (seleccion == JFileChooser.APPROVE_OPTION) {
             	File JFC = fileChooser.getSelectedFile();
                 PATH = JFC.getAbsolutePath();
-                ArraylistEF.ef = (ArrayList <empleadofijo>)xstream.fromXML(new FileReader(PATH));
+                SingletonsEF.ef = (ArrayList <empleadofijo>)xstream.fromXML(new FileReader(PATH));
             }
             
         } catch (Exception e1) {
         	JOptionPane.showMessageDialog(null, "Error al leer el XML", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        return ArraylistEF.ef;
+        return SingletonsEF.ef;
     }
     
     
@@ -120,12 +120,12 @@ public class xml {
             Annotations.configureAliases(xstream, empleadofijo.class);
  
             PATH = new java.io.File(".").getCanonicalPath()+"/src/empleados/modulos/gestionempleados/gestionEF/modelo/tipofichero/ef.xml";
-            ArraylistEF.ef = (ArrayList <empleadofijo>)xstream.fromXML(new FileReader(PATH));
+            SingletonsEF.ef = (ArrayList <empleadofijo>)xstream.fromXML(new FileReader(PATH));
             
         } catch (Exception e1) {
         	
         }
-        return ArraylistEF.ef;
+        return SingletonsEF.ef;
     }
     
     

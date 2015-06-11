@@ -6,14 +6,13 @@
 package empleados.modulos.login.modelo_log.DAO_LOG;
 
 import empleados.clases.fecha;
-import empleados.clases.StringEncrypter;
+import empleados.clases.Encriptar;
 import empleados.librerias.validate;
 import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import empleados.modulos.login.vista_log.Iniciologin;
-import empleados.modulos.inicio.subprincipal;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -70,7 +69,7 @@ public class loginDAO {
         if (/*LoginBLL.matchLoginPass()*/login == true) {
             conectado = "si";
 
-            new controladorEF(new subprincipal(), 0).Iniciar(0);
+            //new controladorEF(new subprincipal(), 0).Iniciar(0);
 
             //JPanel p4 = new JPanel();
             //p4.add(this.Logeado.jPanel1);
@@ -106,7 +105,7 @@ public class loginDAO {
 
             stmt.setString(1, dni);
             stmt.setString(2, password);//encriptador.encrypt(password));
-            stmt.setString(2, StringEncrypter.encriptarTokenMD5(password));
+            stmt.setString(2, Encriptar.encriptarTokenMD5(password));
             rs = stmt.executeQuery();
             //null
             while (rs.next()) {
@@ -130,7 +129,7 @@ public class loginDAO {
                 
                 dni = rs.getString("login");
                 password = rs.getString("Password");
-                ArraylistEF.efilogin = e;
+                SingletonsEF.efilogin = e;
 
                 resultado = true;
             }

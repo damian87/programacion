@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package empleados.modulos.Usuarios.gestionusuarios.vista;
+package empleados.modulos.Usuarios.gestionusuarios.autocomplete;
 
 //import empleados.modulos.gestionempleados.gestionEF.vista.Searchable;
 import java.awt.Component;

@@ -6,7 +6,7 @@
 package empleados.modulos.Usuarios.gestionusuarios.modelo.DAO;
 
 import empleados.clases.fecha;
-import empleados.modulos.Usuarios.clase.Usuario;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import java.sql.CallableStatement;
 import java.sql.Connection;

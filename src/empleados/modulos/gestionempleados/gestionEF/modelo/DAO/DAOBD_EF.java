@@ -5,10 +5,10 @@
  */
 package empleados.modulos.gestionempleados.gestionEF.modelo.DAO;
 
-import empleados.clases.StringEncrypter;
+import empleados.clases.Encriptar;
 import empleados.clases.fecha;
 import static empleados.modulos.gestionempleados.gestionEF.modelo.DAO.dummiesef.dummies;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -37,21 +37,21 @@ public class DAOBD_EF {
                     + "(nombre,edad,departamento,fechaNacimiento,suelo,dni,login,password,email,avatar,tipo,"
                     + "estado,antiguedad,fechaContratacion) "
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            stmt.setString(1, ArraylistEF.efi.getNombre());
-            stmt.setInt(2, ArraylistEF.efi.getEdad());
-            stmt.setString(3, ArraylistEF.efi.getDepartamento());
-            stmt.setString(4, ArraylistEF.efi.getFechaNacimiento().toString());
-            stmt.setFloat(5, ArraylistEF.efi.getSueldo());
-            stmt.setString(6, ArraylistEF.efi.getDni());
-            stmt.setString(7, ArraylistEF.efi.getLogin());
+            stmt.setString(1, SingletonsEF.efi.getNombre());
+            stmt.setInt(2, SingletonsEF.efi.getEdad());
+            stmt.setString(3, SingletonsEF.efi.getDepartamento());
+            stmt.setString(4, SingletonsEF.efi.getFechaNacimiento().toString());
+            stmt.setFloat(5, SingletonsEF.efi.getSueldo());
+            stmt.setString(6, SingletonsEF.efi.getDni());
+            stmt.setString(7, SingletonsEF.efi.getLogin());
             //stmt.setString(8, ArraylistEF.efi.getPassword());
-            stmt.setString(8, StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword()));
-            stmt.setString(9, ArraylistEF.efi.getEmail());
-            stmt.setString(10, ArraylistEF.efi.getAvatar());
-            stmt.setString(11, ArraylistEF.efi.getTipo());
-            stmt.setInt(12, ArraylistEF.efi.getEstado());
-            stmt.setInt(13, ArraylistEF.efi.cambiarAntiguedad());
-            stmt.setString(14, ArraylistEF.efi.getFechaContratacion().toString());
+            stmt.setString(8, Encriptar.encriptarTokenMD5(SingletonsEF.efi.getPassword()));
+            stmt.setString(9, SingletonsEF.efi.getEmail());
+            stmt.setString(10, SingletonsEF.efi.getAvatar());
+            stmt.setString(11, SingletonsEF.efi.getTipo());
+            stmt.setInt(12, SingletonsEF.efi.getEstado());
+            stmt.setInt(13, SingletonsEF.efi.cambiarAntiguedad());
+            stmt.setString(14, SingletonsEF.efi.getFechaContratacion().toString());
 
             b = stmt.executeUpdate();
 
@@ -76,7 +76,7 @@ public class DAOBD_EF {
     public void listarEF_BD(Connection con) throws SQLException {
 
         //ArrayList<usuario> _listaUsuarios = new ArrayList();
-        ArraylistEF.ef.clear();
+        SingletonsEF.ef.clear();
         ResultSet rs = null;
         PreparedStatement stmt = null;
         fecha naci, contr;
@@ -103,7 +103,7 @@ public class DAOBD_EF {
                 contr = new fecha(rs.getString("fechaContratacion"));
                 emplfijo.setFechaContratacion(contr);
 
-                ArraylistEF.ef.add(emplfijo);
+                SingletonsEF.ef.add(emplfijo);
 
             }
 
@@ -140,21 +140,21 @@ public class DAOBD_EF {
 
             //stmt = con.prepareStatement("UPDATE usuarios SET usuario=?, password=?, nombre=?, apellido=?, fecha_Nacimiento=?, edad=?,"
             //      + "fecha_alta=?, telefono=?, ciudad=?, codigo_postal=?, email=?, tipo=? WHERE dni=?");
-            stmt.setString(1, ArraylistEF.efi.getNombre());
-            stmt.setInt(2, ArraylistEF.efi.getEdad());
-            stmt.setString(3, ArraylistEF.efi.getDepartamento());
-            stmt.setString(4, ArraylistEF.efi.getFechaNacimiento().toString());
-            stmt.setFloat(5, ArraylistEF.efi.getSueldo());
-            stmt.setString(6, ArraylistEF.efi.getDni());
-            stmt.setString(7, ArraylistEF.efi.getLogin());
-            stmt.setString(8, ArraylistEF.efi.getPassword());
-            stmt.setString(9, ArraylistEF.efi.getEmail());
-            stmt.setString(10, ArraylistEF.efi.getAvatar());
-            stmt.setString(11, ArraylistEF.efi.getTipo());
-            stmt.setInt(12, ArraylistEF.efi.getEstado());
-            stmt.setInt(13, ArraylistEF.efi.cambiarAntiguedad());
-            stmt.setString(14, ArraylistEF.efi.getFechaContratacion().toString());
-            stmt.setString(15, ArraylistEF.efi.getDni());
+            stmt.setString(1, SingletonsEF.efi.getNombre());
+            stmt.setInt(2, SingletonsEF.efi.getEdad());
+            stmt.setString(3, SingletonsEF.efi.getDepartamento());
+            stmt.setString(4, SingletonsEF.efi.getFechaNacimiento().toString());
+            stmt.setFloat(5, SingletonsEF.efi.getSueldo());
+            stmt.setString(6, SingletonsEF.efi.getDni());
+            stmt.setString(7, SingletonsEF.efi.getLogin());
+            stmt.setString(8, SingletonsEF.efi.getPassword());
+            stmt.setString(9, SingletonsEF.efi.getEmail());
+            stmt.setString(10, SingletonsEF.efi.getAvatar());
+            stmt.setString(11, SingletonsEF.efi.getTipo());
+            stmt.setInt(12, SingletonsEF.efi.getEstado());
+            stmt.setInt(13, SingletonsEF.efi.cambiarAntiguedad());
+            stmt.setString(14, SingletonsEF.efi.getFechaContratacion().toString());
+            stmt.setString(15, SingletonsEF.efi.getDni());
 
             //stmt.executeUpdate();
             b = stmt.executeUpdate();
@@ -193,21 +193,21 @@ public class DAOBD_EF {
 
             //stmt = con.prepareStatement("UPDATE usuarios SET usuario=?, password=?, nombre=?, apellido=?, fecha_Nacimiento=?, edad=?,"
             //      + "fecha_alta=?, telefono=?, ciudad=?, codigo_postal=?, email=?, tipo=? WHERE dni=?");
-            stmt.setString(1, ArraylistEF.efilogin.getNombre());
-            stmt.setInt(2, ArraylistEF.efilogin.getEdad());
-            stmt.setString(3, ArraylistEF.efilogin.getDepartamento());
-            stmt.setString(4, ArraylistEF.efilogin.getFechaNacimiento().toString());
-            stmt.setFloat(5, ArraylistEF.efilogin.getSueldo());
-            stmt.setString(6, ArraylistEF.efilogin.getDni());
-            stmt.setString(7, ArraylistEF.efilogin.getLogin());
-            stmt.setString(8, ArraylistEF.efilogin.getPassword());
-            stmt.setString(9, ArraylistEF.efilogin.getEmail());
-            stmt.setString(10, ArraylistEF.efilogin.getAvatar());
-            stmt.setString(11, ArraylistEF.efilogin.getTipo());
-            stmt.setInt(12, ArraylistEF.efilogin.getEstado());
-            stmt.setInt(13, ArraylistEF.efilogin.cambiarAntiguedad());
-            stmt.setString(14, ArraylistEF.efilogin.getFechaContratacion().toString());
-            stmt.setString(15, ArraylistEF.efilogin.getDni());
+            stmt.setString(1, SingletonsEF.efilogin.getNombre());
+            stmt.setInt(2, SingletonsEF.efilogin.getEdad());
+            stmt.setString(3, SingletonsEF.efilogin.getDepartamento());
+            stmt.setString(4, SingletonsEF.efilogin.getFechaNacimiento().toString());
+            stmt.setFloat(5, SingletonsEF.efilogin.getSueldo());
+            stmt.setString(6, SingletonsEF.efilogin.getDni());
+            stmt.setString(7, SingletonsEF.efilogin.getLogin());
+            stmt.setString(8, SingletonsEF.efilogin.getPassword());
+            stmt.setString(9, SingletonsEF.efilogin.getEmail());
+            stmt.setString(10, SingletonsEF.efilogin.getAvatar());
+            stmt.setString(11, SingletonsEF.efilogin.getTipo());
+            stmt.setInt(12, SingletonsEF.efilogin.getEstado());
+            stmt.setInt(13, SingletonsEF.efilogin.cambiarAntiguedad());
+            stmt.setString(14, SingletonsEF.efilogin.getFechaContratacion().toString());
+            stmt.setString(15, SingletonsEF.efilogin.getDni());
 
             //stmt.executeUpdate();
             b = stmt.executeUpdate();
@@ -237,7 +237,7 @@ public class DAOBD_EF {
         try {
             stmt = con.prepareStatement("DELETE FROM EFBBDD.Empleadofijo WHERE dni=?");
             //stmt = con.prepareStatement("DELETE FROM efbbdd.empleadofijo WHERE dni=?");
-            stmt.setString(1, ArraylistEF.efi.getDni());
+            stmt.setString(1, SingletonsEF.efi.getDni());
             b = stmt.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un error al eliminar el usuario!");

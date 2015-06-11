@@ -7,7 +7,7 @@ package empleados.modulos.gestionempleados.gestionEF.modelo.BLL;
 
 import empleados.clases.conexionBBDD;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOBD_EF;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -63,7 +63,7 @@ public class BLLBD_EF {
         //JOptionPane.showMessageDialog(null, ArraylistEF.efi.toString());
         DAOBD_EF usu_DAO = new DAOBD_EF();
 
-        if ("User".equals(ArraylistEF.efilogin.getTipo())) {
+        if ("User".equals(SingletonsEF.efilogin.getTipo())) {
              rd = usu_DAO.modificarEFDAOlogin(_con);
         } else {
 
