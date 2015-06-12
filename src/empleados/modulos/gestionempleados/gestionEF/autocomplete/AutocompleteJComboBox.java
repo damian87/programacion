@@ -1,4 +1,4 @@
-package empleados.modulos.gestionempleados.gestionEF.vista;
+package empleados.modulos.gestionempleados.gestionEF.autocomplete;
 import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

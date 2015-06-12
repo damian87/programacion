@@ -62,7 +62,7 @@ import javax.swing.JFrame;
 //import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.ModificarEF;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.txtDepartamento;
-import empleados.modulos.gestionempleados.gestionEF.vista.recordarcontraseña;
+import empleados.modulos.login.vista_log.recordarcontraseña;
 import empleados.modulos.login.vista_log.Iniciologin;
 import empleados.modulos.login.controlador_log.controlador_login;
 import java.awt.Image;

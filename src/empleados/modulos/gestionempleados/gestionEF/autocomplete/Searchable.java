@@ -1,4 +1,4 @@
-package empleados.modulos.gestionempleados.gestionEF.vista;
+package empleados.modulos.gestionempleados.gestionEF.autocomplete;
 import java.util.Collection;
 
 public interface Searchable<E, V>{

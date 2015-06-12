@@ -27,9 +27,9 @@ public class DAOBD_USU {
         int b = 0;
         try {
                
-            //recordar de cambiar la columna departamento en BBDD por localidad
-            stmt = con.prepareStatement("INSERT INTO EFBBDD.Usuarios"
-                    + "(nombre,dni,departamento,fechaNacimiento, antiguedadusu"
+            //recordar de cambiar la columna poblacion en BBDD por localidad
+            stmt = con.prepareStatement("INSERT INTO EFBBDD.usuarios"
+                    + "(nombre,dni,poblacion,fechaNacimiento, antiguedadusu,"
                     + "login, password, email, avatar) "
                     + "VALUES(?,?,?,?,?,?,?,?,?)");
             stmt.setString(1, SingletonsUsu.u.getNombre());
@@ -74,7 +74,7 @@ public class DAOBD_USU {
         fecha alta, naci;
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM EFBBDD.Usuarios");
+            stmt = con.prepareStatement("SELECT * FROM EFBBDD.usuarios");
             rs = stmt.executeQuery();
             Usuario usr = null;
             while (rs.next()) {
@@ -116,8 +116,8 @@ public class DAOBD_USU {
         int b = 0;
         try {
             
-            stmt = con.prepareStatement("UPDATE EFBBDD.Usuarios SET nombre=?,dni=?,"
-                    + "departamento=?,fechaNacimiento=?,"
+            stmt = con.prepareStatement("UPDATE EFBBDD.usuarios SET nombre=?,dni=?,"
+                    + "poblacion=?,fechaNacimiento=?,"
                     + "login=?, password=?, email=?, avatar=? WHERE dni=? ");
             
             stmt.setString(1, SingletonsUsu.u.getNombre());
@@ -156,7 +156,7 @@ public class DAOBD_USU {
         PreparedStatement stmt = null;
         int b = 0;
         try {
-            stmt = con.prepareStatement("DELETE FROM EFBBDD.Usuarios WHERE dni=?");
+            stmt = con.prepareStatement("DELETE FROM EFBBDD.usuarios WHERE dni=?");
             stmt.setString(1, SingletonsUsu.u.getDni());
             b = stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -178,7 +178,7 @@ public class DAOBD_USU {
         CallableStatement cstmt = null;
         String cadena = "";
         try {
-            cstmt = (CallableStatement) conexion.prepareCall("{call mayormenor(?,?)}");
+            cstmt = (CallableStatement) conexion.prepareCall("{call mayor_menor(?,?)}");
             cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
             cstmt.registerOutParameter(2, java.sql.Types.INTEGER);
             cstmt.execute();
@@ -197,7 +197,7 @@ public class DAOBD_USU {
         CallableStatement cstmt = null;
         String cadena = "";
         try {
-            cstmt = (CallableStatement) conexion.prepareCall("{call mediaedad(?)}");
+            cstmt = (CallableStatement) conexion.prepareCall("{call media_edad(?)}");
             cstmt.registerOutParameter(1, java.sql.Types.DOUBLE);
             cstmt.execute();
             cadena = cadena + "Edad media: " + (int) cstmt.getDouble(1) + " años";

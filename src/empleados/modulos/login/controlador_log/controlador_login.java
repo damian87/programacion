@@ -19,8 +19,9 @@ import static empleados.modulos.login.controlador_log.controlador_login.recordar
 import empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica;
 import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
+import empleados.modulos.gestionempleados.gestionEF.vista.menupager;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
-import empleados.modulos.gestionempleados.gestionEF.vista.recordarcontraseña;
+import empleados.modulos.login.vista_log.recordarcontraseña;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
 import empleados.modulos.login.vista_log.Iniciologin;
 import java.awt.Image;
@@ -214,7 +215,8 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
                     if ("User".equals(SingletonsEF.efilogin.getTipo())) {
                     new controladorEF(new modificaEFgrafica(), 3).Iniciar(3);    
                     }else{
-                    new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);    
+                    //new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);  
+                    new controladorEF(new menupager(), 5).Iniciar(5); 
                     }
                     
                 } else {

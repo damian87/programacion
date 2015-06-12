@@ -8,8 +8,11 @@ package empleados.modulos.gestionempleados.gestionEF.controlador;
 import empleados.librerias.FileUploader;
 import empleados.librerias.fondopanelconfig;
 import empleados.librerias.fondopanelcrear;
+import empleados.librerias.fondopanellogin;
 import empleados.librerias.fondopanelpager;
 import empleados.menuempleados;
+import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
+import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
 import empleados.modulos.config.configuracion;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
@@ -32,8 +35,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
-import empleados.modulos.gestionempleados.gestionEF.vista.AutocompleteJComboBox;
-import empleados.modulos.gestionempleados.gestionEF.vista.StringSearchable;
+import empleados.modulos.gestionempleados.gestionEF.autocomplete.AutocompleteJComboBox;
+import empleados.modulos.gestionempleados.gestionEF.autocomplete.StringSearchable;
 import empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.combo;
@@ -43,11 +46,12 @@ import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgraf
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardarxml;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.jComboBox1;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.jTextField1;
+import empleados.modulos.gestionempleados.gestionEF.vista.menupager;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.sorter;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.ModificarEF;
 import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.txtDepartamento;
-import empleados.modulos.gestionempleados.gestionEF.vista.recordarcontraseña;
+import empleados.modulos.login.vista_log.recordarcontraseña;
 import empleados.modulos.login.vista_log.Iniciologin;
 import empleados.modulos.login.controlador_log.controlador_login;
 import java.awt.Image;
@@ -77,11 +81,12 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
     public static configuracion configu = new configuracion();
     public static Iniciologin inilog = new Iniciologin();
     public static recordarcontraseña recordar = new recordarcontraseña();
+    public static menupager menpa = new menupager();
 
     public controladorEF(JFrame inicio, int i) {
         /*if (i == 0) {
-            this.subpri = (subprincipal) inicio;
-        }*/
+         this.subpri = (subprincipal) inicio;
+         }*/
 
         if (i == 1) {
             this.efgraf = (interfaceEFgrafica) inicio;
@@ -99,11 +104,15 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.configu = (configuracion) inicio;
         }
 
-        if (i == 5) {
+        /*if (i == 5) {
             this.inilog = (Iniciologin) inicio;
         }
         if (i == 6) {
             this.recordar = (recordarcontraseña) inicio;
+        }*/
+
+        if (i == 5) {
+            this.menpa = (menupager) inicio;
         }
 
     }
@@ -175,44 +184,48 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
         _RUSU,
         _RPASS,
         _RRESSTABLECER,
-        _RCANCELAR
+        _RCANCELAR,
+        //menu pager
+        _MENUEMPLEADOS,
+        _MENUUSUARIOS
+
     }
 
     //en el new controladorEF (new interfaceEFgrafica(), 0).Iniciar(0);
     //el primer 0 es para entrar al if del controladorEF, y el segundo 0 es para la funion iniciar k 
     public void Iniciar(int i) {
         /*//SUBPRINCIPAL
-        if (i == 0) {
-            this.subpri.setVisible(true);
+         if (i == 0) {
+         this.subpri.setVisible(true);
 
-            this.subpri.setTitle("Bienvenidos a la Gestion de Empleados");
-            this.subpri.setLocationRelativeTo(null);
-            this.subpri.setSize(525, 425);//ancho x alto
-            this.subpri.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            this.subpri.setIconImage(icono);
+         this.subpri.setTitle("Bienvenidos a la Gestion de Empleados");
+         this.subpri.setLocationRelativeTo(null);
+         this.subpri.setSize(525, 425);//ancho x alto
+         this.subpri.setResizable(false);
+         Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
+         this.subpri.setIconImage(icono);
 
-            this.subpri.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+         this.subpri.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
 
-            this.subpri.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            subpri.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-                    subpri.dispose();
-                    System.exit(0);
-                }
-            });
+         this.subpri.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+         subpri.addWindowListener(new WindowAdapter() {
+         @Override
+         public void windowClosing(WindowEvent e) {
+         JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
+         subpri.dispose();
+         System.exit(0);
+         }
+         });
 
-            this.subpri.configEF.setActionCommand("_CONFIGURACION");
-            this.subpri.configEF.setName("_CONFIGURACION");
-            this.subpri.configEF.addActionListener(this);
+         this.subpri.configEF.setActionCommand("_CONFIGURACION");
+         this.subpri.configEF.setName("_CONFIGURACION");
+         this.subpri.configEF.addActionListener(this);
 
-            this.subpri.imprimirEF.setActionCommand("_GESTIONEF");
-            this.subpri.imprimirEF.setName("_GESTIONEF");
-            this.subpri.imprimirEF.addActionListener(this);
+         this.subpri.imprimirEF.setActionCommand("_GESTIONEF");
+         this.subpri.imprimirEF.setName("_GESTIONEF");
+         this.subpri.imprimirEF.addActionListener(this);
 
-        }*/
+         }*/
 
         if (i == 1) {
 
@@ -367,7 +380,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.jPanel2.setOpaque(false);
             c.add(this.creaEF.jPanel1);
             //this.creaEF.setSize(525, 425);//ancho x alto
-            
+
             this.creaEF.txtdniEF.setVisible(false);
 
             this.creaEF.Usuario.doClick();
@@ -404,12 +417,11 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.txtDepartamentoEF.addKeyListener(this);
 
             /*this.creaEF.txtdniEF.setActionCommand("_DNIEF");
-            this.creaEF.txtdniEF.setName("_DNIEF");
-            this.creaEF.txtdniEF.addKeyListener(this);*/
-            
+             this.creaEF.txtdniEF.setName("_DNIEF");
+             this.creaEF.txtdniEF.addKeyListener(this);*/
             this.creaEF.txtDNIEF.setActionCommand("_DNIEF");
             this.creaEF.txtDNIEF.setName("_DNIEF");
-            this.creaEF.txtDNIEF.addKeyListener(this);                        
+            this.creaEF.txtDNIEF.addKeyListener(this);
 
             this.creaEF.txtemail.setActionCommand("_Email");
             this.creaEF.txtemail.setName("_Email");
@@ -584,6 +596,45 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
 
         }
 
+        if (i == 5) {
+            //configuracion
+
+            this.menpa.setVisible(true);
+
+            this.menpa.setTitle("Configuracion");
+            this.menpa.setLocationRelativeTo(null);
+            this.menpa.setSize(525, 425);//ancho x alto
+            this.menpa.setResizable(false);
+            Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
+            this.menpa.setIconImage(icono);
+            this.menpa.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+
+            fondopanellogin c = new fondopanellogin();
+            this.menpa.setContentPane(c);
+            this.menpa.jPanel1.setOpaque(false);
+            c.add(this.menpa.jPanel1);
+
+            this.menpa.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+            menpa.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    menpa.dispose();
+
+                    //new controladorEF(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                }
+            });
+
+            this.menpa.btnempleados.setActionCommand("_MENUEMPLEADOS");
+            this.menpa.btnempleados.setName("_MENUEMPLEADOS");
+            this.menpa.btnempleados.addActionListener(this);
+
+            this.menpa.btnusuarios.setActionCommand("_MENUUSUARIOS");
+            this.menpa.btnusuarios.setName("_MENUUSUARIOS");
+            this.menpa.btnusuarios.addActionListener(this);
+
+        }
+
     }
 
     @Override
@@ -593,15 +644,15 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
 
             //subprincipal
             /*case _GESTIONEF:
-                subpri.dispose();
-                new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
-                break;
+             subpri.dispose();
+             new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
+             break;
 
-            case _CONFIGURACION:
-                subpri.dispose();
-                new controladorEF(new configuracion(), 4).Iniciar(4);
+             case _CONFIGURACION:
+             subpri.dispose();
+             new controladorEF(new configuracion(), 4).Iniciar(4);
 
-                break;*/
+             break;*/
             //interfaz
             case _BTN_ANTERIOR:
                 pagina1.currentPageIndex -= 1;
@@ -693,6 +744,19 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             case _INFO:
                 //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
                 EFBLLgrafica.masinfo();
+
+                break;
+
+            //menupager
+            case _MENUEMPLEADOS:
+                
+                new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
+
+                break;
+            case _MENUUSUARIOS:
+                
+                new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
+                
 
                 break;
 
@@ -949,7 +1013,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 FileUploader.pintar_guardar_imag(this.creaEF.labelavatar, 90, 90);
 
                 break;
-            
+
             case _FILTRAREF:
                 STMEF filtra = new STMEF();
                 filtra.filtrar();
