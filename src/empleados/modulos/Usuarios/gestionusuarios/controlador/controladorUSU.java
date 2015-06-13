@@ -23,6 +23,7 @@ import empleados.modulos.Usuarios.gestionusuarios.vista.CreaUsu;
 import empleados.modulos.Usuarios.gestionusuarios.vista.PerfilUsu;
 import empleados.modulos.Usuarios.gestionusuarios.autocomplete.StringSearchable;
 import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
+import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.TABLA;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardarjson;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardartxt;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardarxml;
@@ -42,7 +43,7 @@ import java.util.ArrayList;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 //import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
-import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
+//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -87,8 +88,8 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
     public static AutocompleteJComboBox combo = null;
     public static interfaceUSUgrafica efgraf = new interfaceUSUgrafica();
     //public static subprincipal subpri = new subprincipal();
-    public static CreaUsu creaEF = new CreaUsu();
-    public static PerfilUsu modief = new PerfilUsu();
+    public static CreaUsu creaUSU = new CreaUsu();
+    public static PerfilUsu modiUSU = new PerfilUsu();
     public static configuracion configu = new configuracion();
     public static Iniciologin inilog = new Iniciologin();
     public static recordarcontraseña recordar = new recordarcontraseña();
@@ -103,11 +104,11 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         }
 
         if (i == 2) {
-            this.creaEF = (CreaUsu) inicio;
+            this.creaUSU = (CreaUsu) inicio;
         }
 
         if (i == 3) {
-            this.modief = (PerfilUsu) inicio;
+            this.modiUSU = (PerfilUsu) inicio;
         }
 
         if (i == 4) {
@@ -357,74 +358,82 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         if (i == 2) {
             //CreaUsu
 
-            this.creaEF.setVisible(true);
+            this.creaUSU.setVisible(true);
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception e) {
             }
-            this.creaEF.setTitle("Alta Empleado Fijo");
-            this.creaEF.setLocationRelativeTo(null);
+            this.creaUSU.setTitle("Alta Empleado Fijo");
+            this.creaUSU.setLocationRelativeTo(null);
 
-            this.creaEF.setResizable(false);
+            this.creaUSU.setResizable(false);
             //Image icono=Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            //this.creaEF.setIconImage(icono);
-            this.creaEF.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+            //this.creaUSU.setIconImage(icono);
+            this.creaUSU.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
             fondopanelcrear c = new fondopanelcrear();
-            this.creaEF.setContentPane(c);
-            this.creaEF.jPanel1.setOpaque(false);
-            c.add(this.creaEF.jPanel1);
-            //this.creaEF.setSize(525, 425);//ancho x alto
+            this.creaUSU.setContentPane(c);
+            this.creaUSU.jPanel1.setOpaque(false);
+            c.add(this.creaUSU.jPanel1);
+            
+             this.creaUSU.Usuario.doClick();
+            //this.creaUSU.setSize(525, 425);//ancho x alto
 
-            this.creaEF.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            creaEF.addWindowListener(new WindowAdapter() {
+            this.creaUSU.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+            creaUSU.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    creaEF.dispose();
+                    creaUSU.dispose();
                     //EFBLLgrafica.GuardarSinEnterarse();
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
                     new controlador_login(new Iniciologin(), 5).Iniciar(5);
                 }
             });
 
-            this.creaEF.CrearEF.setActionCommand("_CREAREF");
-            this.creaEF.CrearEF.setName("_CREAREF");
-            this.creaEF.CrearEF.addActionListener(this);
+            this.creaUSU.CrearEF.setActionCommand("_CREAREF");
+            this.creaUSU.CrearEF.setName("_CREAREF");
+            this.creaUSU.CrearEF.addActionListener(this);
 
-            this.creaEF.BorrarEF.setActionCommand("_BORRAR_CAMPOSEF");
-            this.creaEF.BorrarEF.setName("_BORRAR_CAMPOSEF");
-            this.creaEF.BorrarEF.addActionListener(this);
+            this.creaUSU.BorrarEF.setActionCommand("_BORRAR_CAMPOSEF");
+            this.creaUSU.BorrarEF.setName("_BORRAR_CAMPOSEF");
+            this.creaUSU.BorrarEF.addActionListener(this);
 
-            this.creaEF.CancelarEF.setActionCommand("_CANCELAR_CREAEF");
-            this.creaEF.CancelarEF.setName("_CANCELAR_CREAEF");
-            this.creaEF.CancelarEF.addActionListener(this);
+            this.creaUSU.CancelarEF.setActionCommand("_CANCELAR_CREAEF");
+            this.creaUSU.CancelarEF.setName("_CANCELAR_CREAEF");
+            this.creaUSU.CancelarEF.addActionListener(this);
 
-            this.creaEF.txtNombreEF.setActionCommand("_NOMBREEF");
-            this.creaEF.txtNombreEF.setName("_NOMBREEF");
-            this.creaEF.txtNombreEF.addKeyListener(this);
+            this.creaUSU.txtNombreEF.setActionCommand("_NOMBREEF");
+            this.creaUSU.txtNombreEF.setName("_NOMBREEF");
+            this.creaUSU.txtNombreEF.addKeyListener(this);
 
-            this.creaEF.txtDepartamentoEF.setActionCommand("_DEPARTAMENTOEF");
-            this.creaEF.txtDepartamentoEF.setName("_DEPARTAMENTOEF");
-            this.creaEF.txtDepartamentoEF.addKeyListener(this);
+            this.creaUSU.txtDepartamentoEF.setActionCommand("_DEPARTAMENTOEF");
+            this.creaUSU.txtDepartamentoEF.setName("_DEPARTAMENTOEF");
+            this.creaUSU.txtDepartamentoEF.addKeyListener(this);
 
-            this.creaEF.txtdniEF.setActionCommand("_DNIEF");
-            this.creaEF.txtdniEF.setName("_DNIEF");
-            this.creaEF.txtdniEF.addKeyListener(this);
+            this.creaUSU.txtdniEF.setActionCommand("_DNIEF");
+            this.creaUSU.txtdniEF.setName("_DNIEF");
+            this.creaUSU.txtdniEF.addKeyListener(this);
 
-            this.creaEF.txtemail.setActionCommand("_Email");
-            this.creaEF.txtemail.setName("_Email");
-            this.creaEF.txtemail.addKeyListener(this);
+            this.creaUSU.txtemail.setActionCommand("_Email");
+            this.creaUSU.txtemail.setName("_Email");
+            this.creaUSU.txtemail.addKeyListener(this);
 
-            this.creaEF.txtpassword.setActionCommand("_Password");
-            this.creaEF.txtpassword.setName("_Password");
-            this.creaEF.txtpassword.addKeyListener(this);
+            this.creaUSU.txtpassword.setActionCommand("_Password");
+            this.creaUSU.txtpassword.setName("_Password");
+            this.creaUSU.txtpassword.addKeyListener(this);
 
-            this.creaEF.txtlogin.setActionCommand("_Usuario");
-            this.creaEF.txtlogin.setName("_Usuario");
-            this.creaEF.txtlogin.addKeyListener(this);
+            this.creaUSU.txtlogin.setActionCommand("_Usuario");
+            this.creaUSU.txtlogin.setName("_Usuario");
+            this.creaUSU.txtlogin.addKeyListener(this);
 
-            this.creaEF.cargarimgavatar.setActionCommand("_CargaAvatar");
-            this.creaEF.cargarimgavatar.setName("_CargaAvatar");
-            this.creaEF.cargarimgavatar.addKeyListener(this);
+            this.creaUSU.cargarimgavatar.setActionCommand("_CargaAvatar");
+            this.creaUSU.cargarimgavatar.setName("_CargaAvatar");
+            this.creaUSU.cargarimgavatar.addKeyListener(this);
+            
+            if (SingletonsUsu.usulogin == null) {
+                this.creaUSU.jPanel2.setVisible(false);
+            } else if ("admin".equals(SingletonsUsu.usulogin.getTipo())) {
+                this.creaUSU.jPanel2.setVisible(true);
+            }
 
             //FALTAN COLOCAR LOS KEYPRESSET Y KEYRELEASSED
         }
@@ -432,77 +441,77 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         if (i == 3) {
             //PerfilUsu
 
-            this.modief.setVisible(true);
+            this.modiUSU.setVisible(true);
 
-            this.modief.setTitle("Modifcar Empleado Fijo");
-            this.modief.setLocationRelativeTo(null);
-            this.modief.setSize(525, 425);//ancho x alto
-            this.modief.setResizable(false);
+            this.modiUSU.setTitle("Modifcar Empleado Fijo");
+            this.modiUSU.setLocationRelativeTo(null);
+            this.modiUSU.setSize(525, 425);//ancho x alto
+            this.modiUSU.setResizable(false);
             java.awt.Image icono = java.awt.Toolkit.getDefaultToolkit().getImage("imagenes/modificar.png");
-            this.modief.setIconImage(icono);
-            this.modief.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+            this.modiUSU.setIconImage(icono);
+            this.modiUSU.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
             fondopanelcrear c = new fondopanelcrear();
-            this.modief.setContentPane(c);
-            this.modief.jPanel1.setOpaque(false);
-            c.add(this.modief.jPanel1);
+            this.modiUSU.setContentPane(c);
+            this.modiUSU.jPanel1.setOpaque(false);
+            c.add(this.modiUSU.jPanel1);
 
             BLLUSUgrafica.modificaUsuariograficallenacampos();
             DAOUSUgrafica.modificaUsugraficallenadodatos();
-            FileUploader.pintaravatar(this.modief.labelavatar, 90, 90);
+            FileUploader.pintaravatar(this.modiUSU.labelavatar, 90, 90);
 
-            this.modief.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            modief.addWindowListener(new WindowAdapter() {
+            this.modiUSU.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+            modiUSU.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    modief.dispose();
+                    modiUSU.dispose();
 
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
                     new controlador_login(new Iniciologin(), 5).Iniciar(5);
                 }
             });
 
-            this.modief.txtedad.setEditable(false);
-            this.modief.txtantiguedad.setEditable(false);
-            this.modief.txtsueldo.setEditable(false);
+            this.modiUSU.txtedad.setEditable(false);
+            this.modiUSU.txtantiguedad.setEditable(false);
+            this.modiUSU.txtsueldo.setEditable(false);
 
-            this.modief.ModificarEF.setActionCommand("_MMODIFICA");
-            this.modief.ModificarEF.setName("_MMODIFICA");
-            this.modief.ModificarEF.addActionListener(this);
+            this.modiUSU.ModificarEF.setActionCommand("_MMODIFICA");
+            this.modiUSU.ModificarEF.setName("_MMODIFICA");
+            this.modiUSU.ModificarEF.addActionListener(this);
 
-            this.modief.CancelarEF.setActionCommand("_MCANCELAR");
-            this.modief.CancelarEF.setName("_MCANCELAR");
-            this.modief.CancelarEF.addActionListener(this);
+            this.modiUSU.CancelarEF.setActionCommand("_MCANCELAR");
+            this.modiUSU.CancelarEF.setName("_MCANCELAR");
+            this.modiUSU.CancelarEF.addActionListener(this);
 
-            this.modief.txtNombre.setActionCommand("_MNOMBRE");
-            this.modief.txtNombre.setName("_MNOMBRE");
-            this.modief.txtNombre.addActionListener(this);
-            this.modief.txtNombre.setActionCommand("_MNOMBRE");
-            this.modief.txtNombre.addKeyListener(this);
+            this.modiUSU.txtNombre.setActionCommand("_MNOMBRE");
+            this.modiUSU.txtNombre.setName("_MNOMBRE");
+            this.modiUSU.txtNombre.addActionListener(this);
+            this.modiUSU.txtNombre.setActionCommand("_MNOMBRE");
+            this.modiUSU.txtNombre.addKeyListener(this);
 
-            this.modief.txtDepartamento.setActionCommand("_MDEPARTAMENTO");
-            this.modief.txtDepartamento.setName("_MDEPARTAMENTO");
-            this.modief.txtDepartamento.addActionListener(this);
-            this.modief.txtDepartamento.setActionCommand("_MDEPARTAMENTO");
-            this.modief.txtDepartamento.addKeyListener(this);
+            this.modiUSU.txtDepartamento.setActionCommand("_MDEPARTAMENTO");
+            this.modiUSU.txtDepartamento.setName("_MDEPARTAMENTO");
+            this.modiUSU.txtDepartamento.addActionListener(this);
+            this.modiUSU.txtDepartamento.setActionCommand("_MDEPARTAMENTO");
+            this.modiUSU.txtDepartamento.addKeyListener(this);
 
-            this.modief.txtemail.setActionCommand("_MEmail");
-            this.modief.txtemail.setName("_MEmail");
-            this.modief.txtemail.addActionListener(this);
-            this.modief.txtemail.addKeyListener(this);
+            this.modiUSU.txtemail.setActionCommand("_MEmail");
+            this.modiUSU.txtemail.setName("_MEmail");
+            this.modiUSU.txtemail.addActionListener(this);
+            this.modiUSU.txtemail.addKeyListener(this);
 
-            this.modief.txtpassword.setActionCommand("_MPassword");
-            this.modief.txtpassword.setName("_MPassword");
-            this.modief.txtpassword.addActionListener(this);
-            this.modief.txtpassword.addKeyListener(this);
+            this.modiUSU.txtpassword.setActionCommand("_MPassword");
+            this.modiUSU.txtpassword.setName("_MPassword");
+            this.modiUSU.txtpassword.addActionListener(this);
+            this.modiUSU.txtpassword.addKeyListener(this);
 
-            this.modief.txtlogin.setActionCommand("_MUsuario");
-            this.modief.txtlogin.setName("_MUsuario");
-            this.modief.txtlogin.addActionListener(this);
-            this.modief.txtlogin.addKeyListener(this);
+            this.modiUSU.txtlogin.setActionCommand("_MUsuario");
+            this.modiUSU.txtlogin.setName("_MUsuario");
+            this.modiUSU.txtlogin.addActionListener(this);
+            this.modiUSU.txtlogin.addKeyListener(this);
 
-            this.modief.cargarimgavatar.setActionCommand("_MAvatar");
-            this.modief.cargarimgavatar.setName("_MAvatar");
-            this.modief.cargarimgavatar.addActionListener(this);
+            this.modiUSU.cargarimgavatar.setActionCommand("_MAvatar");
+            this.modiUSU.cargarimgavatar.setName("_MAvatar");
+            this.modiUSU.cargarimgavatar.addActionListener(this);
 
         }
 
@@ -837,14 +846,14 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             case _CANCELAR_CREAEF:
                 BLLUSUgrafica.borrarcamporUsuarioModifica();
-                creaEF.dispose();
+                creaUSU.dispose();
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
                 new controlador_login(new Iniciologin(), 5).Iniciar(5);
                 break;
 
             case _CargaAvatar:
 
-                FileUploader.pintar_guardar_imag(this.creaEF.labelavatar, 90, 90);
+                FileUploader.pintar_guardar_imag(this.creaUSU.labelavatar, 90, 90);
 
                 break;
 
@@ -857,7 +866,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             case _MCANCELAR:
                 BLLUSUgrafica.borrarcamporUsuarioModifica();
-                modief.dispose();
+                modiUSU.dispose();
 
                 new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
                 break;
@@ -891,7 +900,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 break;
 
             case _MAvatar:
-                FileUploader.pintar_guardar_imag(this.modief.labelavatar, 90, 90);
+                FileUploader.pintar_guardar_imag(this.modiUSU.labelavatar, 90, 90);
 
                 break;
 
@@ -994,7 +1003,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             case _CargaAvatar:
 
-                FileUploader.pintar_guardar_imag(this.creaEF.labelavatar, 90, 90);
+                FileUploader.pintar_guardar_imag(this.creaUSU.labelavatar, 90, 90);
 
                 break;
             //modifica
@@ -1073,7 +1082,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             case _CargaAvatar:
 
-                FileUploader.pintar_guardar_imag(this.creaEF.labelavatar, 90, 90);
+                FileUploader.pintar_guardar_imag(this.creaUSU.labelavatar, 90, 90);
 
                 break;
 

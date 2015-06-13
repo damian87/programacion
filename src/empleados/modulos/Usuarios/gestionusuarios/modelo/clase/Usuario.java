@@ -10,6 +10,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import empleados.clases.fecha;
 import empleados.modulos.gestionempleados.clases.empleado;
 import java.io.Serializable;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +18,8 @@ import java.io.Serializable;
  */
 public class Usuario extends empleado implements Serializable{
     
-    
+        @XStreamAlias ("antiguedad")
+	private int antiguedad;
 	@XStreamAlias ("fechaAlta")
 	private fecha fechaAlta;
 	
@@ -42,8 +44,9 @@ public class Usuario extends empleado implements Serializable{
 		/*
 		 * this.setAntiguedad(fechaContratacion.calcularedad());
 		 * 	return this.cambiarAntiguedad();
-		 */
-		return this.getfechaAlta().calcularedad();
+		 */               
+                antiguedad=this.getfechaAlta().calcularedad();               
+		return antiguedad;
 	}
         
 

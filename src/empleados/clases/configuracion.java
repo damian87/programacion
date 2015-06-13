@@ -1,5 +1,7 @@
 package empleados.clases;
 
+import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import javax.swing.JOptionPane;
 
@@ -26,6 +28,7 @@ public class configuracion {
 	public configuracion(){
             
                 SingletonsEF.ef = new ArrayList <empleadofijo> ();
+                SingletonsUsu.usu = new ArrayList <Usuario> ();
 		moneda ='€';
 		decimales = '2';
 		Formatofecha = "dd/mm/yyyy";

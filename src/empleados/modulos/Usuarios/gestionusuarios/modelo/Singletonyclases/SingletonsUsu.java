@@ -21,5 +21,6 @@ public class SingletonsUsu {
     public static Usuario u;        
     public static Usuario usulogin;
     public static Usuario usulog;
+    public static String password="";
 
 }

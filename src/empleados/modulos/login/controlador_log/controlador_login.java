@@ -6,6 +6,8 @@
 package empleados.modulos.login.controlador_log;
 
 import empleados.librerias.fondopanellogin;
+import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
+import empleados.modulos.Usuarios.gestionusuarios.vista.CreaUsu;
 import empleados.modulos.config.configuracion;
 import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
@@ -192,7 +194,8 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             //modulo login
             case _newusu:
                 inilog.dispose();
-                new controladorEF(new creaEFgrafica(), 2).Iniciar(2);
+                //new controladorEF(new creaEFgrafica(), 2).Iniciar(2);
+                new controladorUSU(new CreaUsu(), 2).Iniciar(2);                
 
                 break;
             case _configurador:

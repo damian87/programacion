@@ -5,6 +5,7 @@
  */
 package empleados.modulos.Usuarios.gestionusuarios.modelo.DAO;
 
+import empleados.clases.Encriptar;
 import empleados.clases.fecha;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
@@ -26,25 +27,22 @@ public class DAOBD_USU {
         PreparedStatement stmt = null;
         int b = 0;
         try {
-               
+
             //recordar de cambiar la columna poblacion en BBDD por localidad
             stmt = con.prepareStatement("INSERT INTO EFBBDD.usuarios"
-                    + "(nombre,dni,poblacion,fechaNacimiento, antiguedadusu,"
-                    + "login, password, email, avatar) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?)");
+                    + "(nombre,edad,dni,poblacion,fechaNacimiento,"
+                    + "login,password,email,avatar,tipo)"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?)");
             stmt.setString(1, SingletonsUsu.u.getNombre());
-            stmt.setString(2, SingletonsUsu.u.getDni());
-            stmt.setString(3, SingletonsUsu.u.getDepartamento());//localidad
-            stmt.setString(4, SingletonsUsu.u.getFechaNacimiento().toString());
-            //stmt.setString(5, SingletonsUsu.u.getfechaAlta().toString());
-            stmt.setInt(5, SingletonsUsu.u.AntiguedadAltaUsu());
+            stmt.setInt(2, SingletonsUsu.u.getEdad());
+            stmt.setString(3, SingletonsUsu.u.getDni());
+            stmt.setString(4, SingletonsUsu.u.getDepartamento());//localidad
+            stmt.setString(5, SingletonsUsu.u.getFechaNacimiento().toString());
             stmt.setString(6, SingletonsUsu.u.getLogin());
-            stmt.setString(7, SingletonsUsu.u.getPassword());
+            stmt.setString(7, Encriptar.encriptarTokenMD5(SingletonsUsu.u.getPassword()));
             stmt.setString(8, SingletonsUsu.u.getEmail());
             stmt.setString(9, SingletonsUsu.u.getAvatar());
-            
-           
-
+            stmt.setString(10, SingletonsUsu.u.getTipo());            
             b = stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "El Usuario ha sido introducido y guardado en la base de datos correctamente!");
@@ -87,7 +85,6 @@ public class DAOBD_USU {
                 //usr.setfechaAlta(alta);
                 usr.setLogin(rs.getString("login"));
                 usr.setEmail(rs.getString("email"));
-                
 
                 SingletonsUsu.usu.add(usr);
 
@@ -115,23 +112,28 @@ public class DAOBD_USU {
         PreparedStatement stmt = null;
         int b = 0;
         try {
-            
-            stmt = con.prepareStatement("UPDATE EFBBDD.usuarios SET nombre=?,dni=?,"
+            /*
+            "INSERT INTO EFBBDD.usuarios"
+                    + "(nombre,edad,dni,poblacion,fechaNacimiento,"
+                    + "login,password,email,avatar,tipo)"
+            */
+            stmt = con.prepareStatement("UPDATE EFBBDD.usuarios SET nombre=?,edad=?,dni=?,"
                     + "poblacion=?,fechaNacimiento=?,"
-                    + "login=?, password=?, email=?, avatar=? WHERE dni=? ");
-            
+                    + "login=?, password=?, email=?, avatar=?, tipo=? WHERE dni=? ");
+
             stmt.setString(1, SingletonsUsu.u.getNombre());
-            stmt.setString(2, SingletonsUsu.u.getDni());
-            stmt.setString(3, SingletonsUsu.u.getDepartamento());//localidad
-            stmt.setString(4, SingletonsUsu.u.getFechaNacimiento().toString());
-            //stmt.setString(5, SingletonsUsu.u.getfechaAlta().toString());
-            //stmt.setInt(6, SingletonsUsu.u.AntiguedadAltaUsu());
-            stmt.setString(5, SingletonsUsu.u.getLogin());
-            stmt.setString(6, SingletonsUsu.u.getPassword());
-            stmt.setString(7, SingletonsUsu.u.getEmail());
-            stmt.setString(8, SingletonsUsu.u.getAvatar());
-            stmt.setString(9, SingletonsUsu.u.getDni());
-    
+            stmt.setInt(2, SingletonsUsu.u.getEdad());
+            stmt.setString(3, SingletonsUsu.u.getDni());
+            stmt.setString(4, SingletonsUsu.u.getDepartamento());//localidad
+            stmt.setString(5, SingletonsUsu.u.getFechaNacimiento().toString());            
+            stmt.setString(6, SingletonsUsu.u.getLogin());
+            stmt.setString(7, SingletonsUsu.u.getPassword());
+            stmt.setString(8, SingletonsUsu.u.getEmail());
+            stmt.setString(9, SingletonsUsu.u.getAvatar());
+            stmt.setString(10, SingletonsUsu.u.getTipo());
+            stmt.setString(11, SingletonsUsu.u.getDni());
+            
+
             b = stmt.executeUpdate();
 
         } catch (SQLException ex) {

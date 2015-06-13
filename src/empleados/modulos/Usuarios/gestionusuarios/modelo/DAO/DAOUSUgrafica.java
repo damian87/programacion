@@ -8,6 +8,7 @@ package empleados.modulos.Usuarios.gestionusuarios.modelo.DAO;
 import com.toedter.calendar.JTextFieldDateEditor;
 import empleados.clases.Encriptar;
 import empleados.clases.fecha;
+import static empleados.librerias.FileUploader.PATH_auto;
 import empleados.librerias.validate;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLUSUgrafica;
@@ -22,7 +23,7 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class DAOUSUgrafica {
-    
+
     public static String nombreUsugrafica() {
 
         String nom = "";
@@ -50,7 +51,7 @@ public class DAOUSUgrafica {
         return nom;
 
     }
-    
+
     public static String PoblacionUsugrafica() {
         String descrip = "";
         boolean valida;
@@ -68,7 +69,7 @@ public class DAOUSUgrafica {
         }
         return descrip;
     }
-    
+
     public static String dniUsu() {
         String id = "";
         boolean valida;
@@ -88,7 +89,7 @@ public class DAOUSUgrafica {
         }
         return id;
     }
-    
+
     public static fecha NaciUsugrafica() {
         String fechaAlta = "";
         fecha nac = null;
@@ -99,7 +100,7 @@ public class DAOUSUgrafica {
         nac = new fecha(fechaAlta);
         return nac;
     }
-    
+
     public static String email() {
         String email = "";
         boolean valida;
@@ -116,7 +117,7 @@ public class DAOUSUgrafica {
             //valida=validate.validateNombre(dni);
             valida = validate.email(email);
             if (valida = false) {
-                
+
                 CreaUsu.txtemail.setBackground(Color.red);
                 CreaUsu.txtlogin.requestFocus();
 
@@ -126,7 +127,7 @@ public class DAOUSUgrafica {
         }
         return email;
     }
-    
+
     public static String usuariologin() {
         String usu = "";
         boolean valida;
@@ -143,7 +144,7 @@ public class DAOUSUgrafica {
         }
         return usu;
     }
-    
+
     public static String password() {
         String pass = "";
         boolean valida;
@@ -160,7 +161,7 @@ public class DAOUSUgrafica {
         }
         return pass;
     }
-    
+
     public static void borrarcamposcrea() {
         CreaUsu.txtNombreEF.setText("");
         CreaUsu.txtDepartamentoEF.setText("");
@@ -169,13 +170,11 @@ public class DAOUSUgrafica {
         CreaUsu.txtemail.setText("");
         CreaUsu.txtlogin.setText("");
         CreaUsu.txtpassword.setText("");
-        
+
         CreaUsu.txtNombreEF.requestFocus();
 
     }
-    
 
-    
     public static String modificanombreUSUgrafica() {
         String nom = "";
         boolean valida;
@@ -204,8 +203,7 @@ public class DAOUSUgrafica {
         return nom;
 
     }
-    
-    
+
     public static String modificapoblacionUSUgrafica() {
         String deprt = "";
         boolean valida;
@@ -223,7 +221,7 @@ public class DAOUSUgrafica {
         }
         return deprt;
     }
-    
+
     public static String modificaemail() {
         String email = "";
         boolean valida;
@@ -238,7 +236,7 @@ public class DAOUSUgrafica {
 
             valida = validate.email(email);
             if (valida == false) {
-                
+
                 PerfilUsu.txtemail.setBackground(Color.red);
                 PerfilUsu.txtemail.requestFocus();
 
@@ -248,7 +246,7 @@ public class DAOUSUgrafica {
         }
         return email;
     }
-    
+
     public static String modificausuariologin() {
         String usu = "";
         boolean valida;
@@ -265,7 +263,7 @@ public class DAOUSUgrafica {
         }
         return usu;
     }
-    
+
     public static String modificapassword() {
         String pass = "";
         boolean valida;
@@ -279,11 +277,11 @@ public class DAOUSUgrafica {
         } else {
 
             PerfilUsu.txtpassword.setBackground(Color.green);
-            pass=Encriptar.encriptarTokenMD5(pass);
+            pass = Encriptar.encriptarTokenMD5(pass);
         }
         return pass;
     }
-    
+
     public static fecha fnacUsumodificagrafica() {
         String fechaNacimiento = "";
         fecha nac = null;
@@ -294,17 +292,16 @@ public class DAOUSUgrafica {
         nac = new fecha(fechaNacimiento);
         return nac;
     }
-    
-    /*public static fecha fcontEFmodificagrafica() {
-        String fechaContratacion = "";
 
-        fecha cont = null;
-        //fechaContratacion = ((JTextFieldDateEditor) creaEFgrafica.DatePikerFContEF.getDateEditor()).getText();
-        fechaContratacion = ((JTextFieldDateEditor) PerfilUsu.DatePikerEFCont.getDateEditor()).getText();
-        cont = new fecha(fechaContratacion);
-        return cont;
-    }*/
-    
+    /*public static fecha fcontEFmodificagrafica() {
+     String fechaContratacion = "";
+
+     fecha cont = null;
+     //fechaContratacion = ((JTextFieldDateEditor) creaEFgrafica.DatePikerFContEF.getDateEditor()).getText();
+     fechaContratacion = ((JTextFieldDateEditor) PerfilUsu.DatePikerEFCont.getDateEditor()).getText();
+     cont = new fecha(fechaContratacion);
+     return cont;
+     }*/
     public static void borrarcamposModifica() {
         PerfilUsu.txtNombre.setText("");
         PerfilUsu.txtDepartamento.setText("");
@@ -315,7 +312,7 @@ public class DAOUSUgrafica {
         PerfilUsu.txtpassword.setText("");
         PerfilUsu.txtNombre.requestFocus();
     }
-    
+
     public static void borrarcamposcreaUsu() {
         CreaUsu.txtNombreEF.setText("");
         CreaUsu.txtDepartamentoEF.setText("");
@@ -328,7 +325,7 @@ public class DAOUSUgrafica {
         CreaUsu.txtNombreEF.requestFocus();
 
     }
-    
+
     public static Usuario obtenerUsu(String dni) {
 
         int pos = 0;
@@ -339,7 +336,7 @@ public class DAOUSUgrafica {
         ef1 = SingletonsUsu.usu.get(pos);
         return ef1;
     }
-    
+
     public static void modificaUsugraficallenadodatos() {
 
         //String nombre, departamento;
@@ -357,12 +354,12 @@ public class DAOUSUgrafica {
         PerfilUsu.txtpassword.setText("");
 
     }
-    
+
     public static Usuario creaUsuGrafica() {
         Usuario ef1 = null;
         //nombre
         String nom;
-        String tipo="";
+        String tipo = "";
         int validar, valida;
 
         nom = nombreUsugrafica();
@@ -378,10 +375,10 @@ public class DAOUSUgrafica {
         //eamil
         String email;
         email = email();
-        
+
         //avatar
         String avatar;
-        avatar=CreaUsu.labelavatar.getText();
+        avatar = PATH_auto;
 
         //usuariologin
         String usuario;
@@ -395,52 +392,55 @@ public class DAOUSUgrafica {
         fecha naci = null;
         naci = NaciUsugrafica();
 
-                
-        if(nom.isEmpty() || dni.isEmpty() || pobl.isEmpty() || usuario.isEmpty() || Password.isEmpty() || email.isEmpty() || naci==null){
+        if (nom.isEmpty() || dni.isEmpty() || pobl.isEmpty() || usuario.isEmpty() || Password.isEmpty() || email.isEmpty() || naci == null) {
             JOptionPane.showMessageDialog(null, "Por favor rellene todos los campos");
-        }else{
-        
-        //miramos la diferencia entre la fecha de nacimiento y la actual
-        valida = naci.calcularedad();
+        } else {
 
-        if (valida < 16) {
-            CreaUsu.DatePikerEFNacEF.setBackground(Color.RED);            
-            CreaUsu.DatePikerEFNacEF.requestFocus();
-            JOptionPane.showMessageDialog(null, "No puede registrar a un menor de 16 años");
-        }else{
-            
-             
+            //miramos la diferencia entre la fecha de nacimiento y la actual
+            valida = naci.calcularedad();
+
+            if (valida < 16) {
+                CreaUsu.DatePikerEFNacEF.setBackground(Color.RED);
+                CreaUsu.DatePikerEFNacEF.requestFocus();
+                JOptionPane.showMessageDialog(null, "No puede registrar a un menor de 16 años");
+            } else {
+
+                if (CreaUsu.Usuario.isSelected()) {
+                    tipo = "User";
+                } else if (CreaUsu.Admin.isSelected()) {
+                    tipo = "admin";
+                }
 
         //validamos
-        //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
-        
-        SingletonsUsu.u = new Usuario(nom, dni, pobl, naci, usuario, Password, email, tipo, avatar);
-        //String nombre,  String dni, String departamento, fecha fechaNacimiento, fecha fechaContratacion, String login, String password, String email
+                //ef1 = new empleadofijo(nom, dni, deprt, naci, contr, "", "", "");
+                SingletonsUsu.u = new Usuario(nom, dni, pobl, naci, usuario, Password, email, tipo, avatar);
 
-        CreaUsu.txtNombreEF.setText("");
-        CreaUsu.txtDepartamentoEF.setText("");
-        CreaUsu.DatePikerEFNacEF.setDate(null);        
-        CreaUsu.txtDNIEF.setText("");
-        CreaUsu.txtemail.setText("");
-        CreaUsu.txtlogin.setText("");
-        CreaUsu.txtpassword.setText("");
-        CreaUsu.txtNombreEF.requestFocus();
+                //String nombre,  String dni, String departamento, fecha fechaNacimiento, fecha fechaContratacion, String login, String password, String email
+                JOptionPane.showMessageDialog(null, "Se ha creado correctamente");
 
-        CreaUsu.txtNombreEF.setBackground(Color.WHITE);
-        CreaUsu.txtNombreEF.setBackground(Color.WHITE);
-        CreaUsu.txtDNIEF.setBackground(Color.WHITE);
-        CreaUsu.DatePikerEFNacEF.setBackground(Color.WHITE);        
-        CreaUsu.txtemail.setBackground(Color.WHITE);
-        CreaUsu.txtlogin.setBackground(Color.WHITE);
-        CreaUsu.txtpassword.setBackground(Color.WHITE);
-        }
-        
+                CreaUsu.txtNombreEF.setText("");
+                CreaUsu.txtDepartamentoEF.setText("");
+                CreaUsu.DatePikerEFNacEF.setDate(null);
+                CreaUsu.txtDNIEF.setText("");
+                CreaUsu.txtemail.setText("");
+                CreaUsu.txtlogin.setText("");
+                CreaUsu.txtpassword.setText("");
+                CreaUsu.txtNombreEF.requestFocus();
+
+                CreaUsu.txtNombreEF.setBackground(Color.WHITE);
+                CreaUsu.txtNombreEF.setBackground(Color.WHITE);
+                CreaUsu.txtDNIEF.setBackground(Color.WHITE);
+                CreaUsu.DatePikerEFNacEF.setBackground(Color.WHITE);
+                CreaUsu.txtemail.setBackground(Color.WHITE);
+                CreaUsu.txtlogin.setBackground(Color.WHITE);
+                CreaUsu.txtpassword.setBackground(Color.WHITE);
+            }
+
         }
         return SingletonsUsu.u;
-        
+
         //return ef1;
     }
-
 
     public static void modificaUsugrafica() {
         //empleadofijo ef2=null;
@@ -449,236 +449,252 @@ public class DAOUSUgrafica {
         //          + "estado=?,antiguedad=?,fechaContratacion=?
         fecha mnac, mcont;
         String mnom, mdeprt, mlog, mpass, mmail;
-        mnac=fnacUsumodificagrafica();
+        mnac = fnacUsumodificagrafica();
         //mcont=fcontEFmodificagrafica();
-        mnom=modificanombreUSUgrafica();
-        mdeprt=modificapoblacionUSUgrafica();
-        mlog=modificausuariologin();
-        mpass=modificapassword();
-        mmail=modificaemail();
-        if(mnac==null || mnom.isEmpty() || mdeprt.isEmpty() || mlog.isEmpty() || mpass.isEmpty() || mmail.isEmpty()){
+        mnom = modificanombreUSUgrafica();
+        mdeprt = modificapoblacionUSUgrafica();
+        mlog = modificausuariologin();
+        mpass = modificapassword();
+        mmail = modificaemail();
+        if (mnac == null || mnom.isEmpty() || mdeprt.isEmpty() || mlog.isEmpty() || mpass.isEmpty() || mmail.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
-            
-        }else{
-        SingletonsUsu.u.setNombre(modificanombreUSUgrafica());
-        SingletonsUsu.u.setDepartamento(modificapoblacionUSUgrafica());
-        SingletonsUsu.u.setFechaNacimiento(fnacUsumodificagrafica());
+
+        } else {
+            SingletonsUsu.u.setNombre(modificanombreUSUgrafica());
+            SingletonsUsu.u.setDepartamento(modificapoblacionUSUgrafica());
+            SingletonsUsu.u.setFechaNacimiento(fnacUsumodificagrafica());
         //SingletonsUsu.u.setfechaAlta(fcontEFmodificagrafica());
-        //ArraylistEF.efi.setSueldo(ArraylistEF.efi.calcularsueldo());
-        SingletonsUsu.u.setLogin(modificausuariologin());
-        SingletonsUsu.u.setPassword(modificapassword());
-        SingletonsUsu.u.setEmail(modificaemail());
+            //ArraylistEF.efi.setSueldo(ArraylistEF.efi.calcularsueldo());
+            SingletonsUsu.u.setLogin(modificausuariologin());
+            SingletonsUsu.u.setPassword(modificapassword());
+            SingletonsUsu.u.setEmail(modificaemail());
 
-        JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
+            JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
 
-        borrarcamposModifica();
-        PerfilUsu.txtNombre.setBackground(Color.WHITE);
-        PerfilUsu.txtDepartamento.setBackground(Color.WHITE);
-        PerfilUsu.txtantiguedad.setBackground(Color.WHITE);
-        PerfilUsu.txtedad.setBackground(Color.WHITE);
-        PerfilUsu.DatePiketEFnac.setBackground(Color.WHITE);
-        //PerfilUsu.DatePikerEFCont.setBackground(Color.WHITE);
-        PerfilUsu.txtemail.setBackground(Color.WHITE);
-        PerfilUsu.txtlogin.setBackground(Color.WHITE);
-        PerfilUsu.txtpassword.setBackground(Color.WHITE);
+            borrarcamposModifica();
+            PerfilUsu.txtNombre.setBackground(Color.WHITE);
+            PerfilUsu.txtDepartamento.setBackground(Color.WHITE);
+            PerfilUsu.txtantiguedad.setBackground(Color.WHITE);
+            PerfilUsu.txtedad.setBackground(Color.WHITE);
+            PerfilUsu.DatePiketEFnac.setBackground(Color.WHITE);
+            //PerfilUsu.DatePikerEFCont.setBackground(Color.WHITE);
+            PerfilUsu.txtemail.setBackground(Color.WHITE);
+            PerfilUsu.txtlogin.setBackground(Color.WHITE);
+            PerfilUsu.txtpassword.setBackground(Color.WHITE);
+        }
     }
+
+    public static void Eniviaremail() {
+
+        JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsUsu.u.getEmail() + "Password: " + SingletonsUsu.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
+        //creamos el objeto Mail
+        /*Mail mail = new Mail(SingletonsUsu.u.getEmail(), SingletonsUsu.password.toString());
+
+         //enviamos el mensaje
+         String error = mail.send();
+
+         if (error.equals("")) {
+         JOptionPane.showMessageDialog(null, "Envio Correcto", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+         } else {
+         JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
+         }*/
     }
     /*   
     
     
 
-    public static void borrarcamposcrea() {
-        crearProducto.txtNombreprod.setText("");
-        crearProducto.txtDescripcionProd.setText("");
-        crearProducto.DatePikeraltaProd.setDate(null);
-        crearProducto.txtidProd.setText("");
-        crearProducto.txtNombreprod.requestFocus();
+     public static void borrarcamposcrea() {
+     crearProducto.txtNombreprod.setText("");
+     crearProducto.txtDescripcionProd.setText("");
+     crearProducto.DatePikeraltaProd.setDate(null);
+     crearProducto.txtidProd.setText("");
+     crearProducto.txtNombreprod.requestFocus();
 
-    }
+     }
 
-    public static producto creaProductoGrafica() {
-        producto pr = null;
-        //nombre
-        String nom;
-        int validar, valida;
+     public static producto creaProductoGrafica() {
+     producto pr = null;
+     //nombre
+     String nom;
+     int validar, valida;
 
-        nom = nombreProductografica();
+     nom = nombreProductografica();
 
-        //descripcion
-        String dscrp;
-        dscrp = descripcionProductografica();
+     //descripcion
+     String dscrp;
+     dscrp = descripcionProductografica();
 
-        //idproducto
-        String idprod;
-        idprod = idProductografica();
+     //idproducto
+     String idprod;
+     idprod = idProductografica();
              
 
-        //validar fnac
-        fecha alta = null;
-        alta = AltaProductografica();
+     //validar fnac
+     fecha alta = null;
+     alta = AltaProductografica();
 
-        if (nom.isEmpty() || idprod.isEmpty() || dscrp.isEmpty() || alta == null) {
-            JOptionPane.showMessageDialog(null, "Por favor rellene todos los campos");
-        } else {
-            //comparamos fechas
-            validar = alta.compfechassystem();
+     if (nom.isEmpty() || idprod.isEmpty() || dscrp.isEmpty() || alta == null) {
+     JOptionPane.showMessageDialog(null, "Por favor rellene todos los campos");
+     } else {
+     //comparamos fechas
+     validar = alta.compfechassystem();
 
-            if (validar == 0) {
-                crearProducto.DatePikeraltaProd.setBackground(Color.GREEN);
-                crearProducto.CrearProd.requestFocus();
-            } else if (validar == 1) {
-                crearProducto.DatePikeraltaProd.setBackground(Color.RED);
-                crearProducto.DatePikeraltaProd.requestFocus();
-                JOptionPane.showMessageDialog(null, "La fecha de alta debe ser inferior a la actual");
-            } else if (validar == -1) {
-                crearProducto.DatePikeraltaProd.setBackground(Color.RED);
-                crearProducto.DatePikeraltaProd.requestFocus();
-                JOptionPane.showMessageDialog(null, "La fecha de alta debe ser superior a la actual");
-            }
+     if (validar == 0) {
+     crearProducto.DatePikeraltaProd.setBackground(Color.GREEN);
+     crearProducto.CrearProd.requestFocus();
+     } else if (validar == 1) {
+     crearProducto.DatePikeraltaProd.setBackground(Color.RED);
+     crearProducto.DatePikeraltaProd.requestFocus();
+     JOptionPane.showMessageDialog(null, "La fecha de alta debe ser inferior a la actual");
+     } else if (validar == -1) {
+     crearProducto.DatePikeraltaProd.setBackground(Color.RED);
+     crearProducto.DatePikeraltaProd.requestFocus();
+     JOptionPane.showMessageDialog(null, "La fecha de alta debe ser superior a la actual");
+     }
 
-            singletonsprod.prd = new producto(nom, idprod, alta, dscrp);
+     singletonsprod.prd = new producto(nom, idprod, alta, dscrp);
 
-            crearProducto.txtNombreprod.setText("");
-            crearProducto.txtDescripcionProd.setText("");
-            crearProducto.DatePikeraltaProd.setDate(null);
-            crearProducto.txtidProd.setText("");
-            crearProducto.txtNombreprod.requestFocus();
+     crearProducto.txtNombreprod.setText("");
+     crearProducto.txtDescripcionProd.setText("");
+     crearProducto.DatePikeraltaProd.setDate(null);
+     crearProducto.txtidProd.setText("");
+     crearProducto.txtNombreprod.requestFocus();
 
-            crearProducto.txtNombreprod.setBackground(Color.WHITE);
-            crearProducto.txtDescripcionProd.setBackground(Color.WHITE);
-            crearProducto.txtidProd.setBackground(Color.WHITE);
-            crearProducto.DatePikeraltaProd.setBackground(Color.WHITE);
+     crearProducto.txtNombreprod.setBackground(Color.WHITE);
+     crearProducto.txtDescripcionProd.setBackground(Color.WHITE);
+     crearProducto.txtidProd.setBackground(Color.WHITE);
+     crearProducto.DatePikeraltaProd.setBackground(Color.WHITE);
 
-        }
-        return singletonsprod.prd;
+     }
+     return singletonsprod.prd;
 
-    }
+     }
 
-    public static producto obtenerEF(String dni) {
+     public static producto obtenerEF(String dni) {
 
-        int pos = 0;
-        producto ef1 = null;
+     int pos = 0;
+     producto ef1 = null;
 
-        ef1 = new producto(dni);
-        pos = BLLPRODgrafica.buscar(ef1);
-        ef1 = singletonsprod.prod.get(pos);
-        return ef1;
-    }
+     ef1 = new producto(dni);
+     pos = BLLPRODgrafica.buscar(ef1);
+     ef1 = singletonsprod.prod.get(pos);
+     return ef1;
+     }
 
-    public static String modificanombreproducto() {
-        String nom = "";
-        boolean valida;
+     public static String modificanombreproducto() {
+     String nom = "";
+     boolean valida;
 
-        nom = modificaprod.txtNombre.getText();
+     nom = modificaprod.txtNombre.getText();
 
-        if (nom.isEmpty()) {
+     if (nom.isEmpty()) {
 
-            modificaprod.txtNombre.setBackground(Color.red);
-            modificaprod.txtNombre.requestFocus();
-        } else {
-            valida = validate.validateNombre(nom);
-            if (valida == false) {
-                modificaprod.txtNombre.setBackground(Color.red);
-                modificaprod.txtNombre.requestFocus();
-            } else {
-                modificaprod.txtNombre.setBackground(Color.green);
-            }
+     modificaprod.txtNombre.setBackground(Color.red);
+     modificaprod.txtNombre.requestFocus();
+     } else {
+     valida = validate.validateNombre(nom);
+     if (valida == false) {
+     modificaprod.txtNombre.setBackground(Color.red);
+     modificaprod.txtNombre.requestFocus();
+     } else {
+     modificaprod.txtNombre.setBackground(Color.green);
+     }
 
-        }
-        return nom;
+     }
+     return nom;
 
-    }
+     }
 
-    public static String modificaDescripcionProducto() {
-        String deprt = "";
+     public static String modificaDescripcionProducto() {
+     String deprt = "";
 
-        deprt = modificaprod.txtDescricion.getText();
-        if (deprt.isEmpty()) {
-            modificaprod.txtDescricion.setBackground(Color.red);
-            modificaprod.txtDescricion.requestFocus();
+     deprt = modificaprod.txtDescricion.getText();
+     if (deprt.isEmpty()) {
+     modificaprod.txtDescricion.setBackground(Color.red);
+     modificaprod.txtDescricion.requestFocus();
 
-        } else {
-            modificaprod.txtDescricion.setBackground(Color.green);
-        }
-        return deprt;
-    }
+     } else {
+     modificaprod.txtDescricion.setBackground(Color.green);
+     }
+     return deprt;
+     }
 
-    public static String modificaIdProducto() {
-        String idprod = "";
+     public static String modificaIdProducto() {
+     String idprod = "";
 
-        idprod = modificaprod.txtidprod.getText();
+     idprod = modificaprod.txtidprod.getText();
 
-        if (idprod.isEmpty()) {
+     if (idprod.isEmpty()) {
 
-            modificaprod.txtidprod.setBackground(Color.red);
-            modificaprod.txtidprod.requestFocus();
+     modificaprod.txtidprod.setBackground(Color.red);
+     modificaprod.txtidprod.requestFocus();
 
-        } else {
-            modificaprod.txtidprod.setBackground(Color.red);
-            modificaprod.txtidprod.requestFocus();
-            modificaprod.txtidprod.setBackground(Color.green);
-        }
-        return idprod;
-    }
+     } else {
+     modificaprod.txtidprod.setBackground(Color.red);
+     modificaprod.txtidprod.requestFocus();
+     modificaprod.txtidprod.setBackground(Color.green);
+     }
+     return idprod;
+     }
 
-    public static fecha ModificaAltaProducto() {
-        String Altaprod = "";
-        fecha alta = null;
-        boolean valida;
+     public static fecha ModificaAltaProducto() {
+     String Altaprod = "";
+     fecha alta = null;
+     boolean valida;
 
-        Altaprod = ((JTextFieldDateEditor) modificaprod.DatePiketProdAlta.getDateEditor()).getText();
-        alta = new fecha(Altaprod);
-        return alta;
-    }
+     Altaprod = ((JTextFieldDateEditor) modificaprod.DatePiketProdAlta.getDateEditor()).getText();
+     alta = new fecha(Altaprod);
+     return alta;
+     }
 
-    public static void borrarcamposModifica() {
-        modificaprod.txtNombre.setText("");
-        modificaprod.txtDescricion.setText("");
-        modificaprod.DatePiketProdAlta.setDate(null);
-        modificaprod.txtantiguedad.setText("");
-        modificaprod.txtidprod.setText("");
-        modificaprod.txtprecio.setText("");
-        modificaprod.txtNombre.requestFocus();
-    }
+     public static void borrarcamposModifica() {
+     modificaprod.txtNombre.setText("");
+     modificaprod.txtDescricion.setText("");
+     modificaprod.DatePiketProdAlta.setDate(null);
+     modificaprod.txtantiguedad.setText("");
+     modificaprod.txtidprod.setText("");
+     modificaprod.txtprecio.setText("");
+     modificaprod.txtNombre.requestFocus();
+     }
 
-    public static void modificaprodllenadodatos() {
+     public static void modificaprodllenadodatos() {
 
-        modificaprod.txtNombre.setText(singletonsprod.prd.getNombre());
-        modificaprod.txtDescricion.setText(singletonsprod.prd.getDescripcion());
-        modificaprod.txtantiguedad.setText(Integer.toString(singletonsprod.prd.getAntiguedad()));
-        modificaprod.txtprecio.setText(Float.toString(singletonsprod.prd.getPrecio()));
-        ((JTextFieldDateEditor) modificaprod.DatePiketProdAlta.getDateEditor()).setText(singletonsprod.prd.getFechaentrada().toString());
-        modificaprod.labelavatar.setText(singletonsprod.prd.getAvatar());
-    }
+     modificaprod.txtNombre.setText(singletonsprod.prd.getNombre());
+     modificaprod.txtDescricion.setText(singletonsprod.prd.getDescripcion());
+     modificaprod.txtantiguedad.setText(Integer.toString(singletonsprod.prd.getAntiguedad()));
+     modificaprod.txtprecio.setText(Float.toString(singletonsprod.prd.getPrecio()));
+     ((JTextFieldDateEditor) modificaprod.DatePiketProdAlta.getDateEditor()).setText(singletonsprod.prd.getFechaentrada().toString());
+     modificaprod.labelavatar.setText(singletonsprod.prd.getAvatar());
+     }
 
-    public static void modificaProductografica() {
+     public static void modificaProductografica() {
    
-        fecha entrada;
-        String mnom, dscrp, idprod;
-        entrada = ModificaAltaProducto();
-        mnom = modificanombreproducto();
-        dscrp = modificaDescripcionProducto();
-        idprod = modificaIdProducto();
-        if (entrada == null || mnom.isEmpty() || dscrp.isEmpty() || idprod.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
+     fecha entrada;
+     String mnom, dscrp, idprod;
+     entrada = ModificaAltaProducto();
+     mnom = modificanombreproducto();
+     dscrp = modificaDescripcionProducto();
+     idprod = modificaIdProducto();
+     if (entrada == null || mnom.isEmpty() || dscrp.isEmpty() || idprod.isEmpty()) {
+     JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
 
-        } else {
-            singletonsprod.prd.setNombre(mnom);
-            singletonsprod.prd.setDescripcion(dscrp);
-            singletonsprod.prd.setFechaentrada(entrada);                                   
-            singletonsprod.prd.setIdprod(idprod);
+     } else {
+     singletonsprod.prd.setNombre(mnom);
+     singletonsprod.prd.setDescripcion(dscrp);
+     singletonsprod.prd.setFechaentrada(entrada);                                   
+     singletonsprod.prd.setIdprod(idprod);
             
 
-            JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
+     JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
             
-            borrarcamposModifica();
-            modificaprod.txtNombre.setBackground(Color.WHITE);
-            modificaprod.txtDescricion.setBackground(Color.WHITE);
-            modificaprod.txtantiguedad.setBackground(Color.WHITE);
-            modificaprod.txtprecio.setBackground(Color.WHITE);
-            modificaprod.DatePiketProdAlta.setBackground(Color.WHITE);            
-            modificaprod.labelavatar.setBackground(Color.WHITE);                       
-        }
-    }*/
-             
+     borrarcamposModifica();
+     modificaprod.txtNombre.setBackground(Color.WHITE);
+     modificaprod.txtDescricion.setBackground(Color.WHITE);
+     modificaprod.txtantiguedad.setBackground(Color.WHITE);
+     modificaprod.txtprecio.setBackground(Color.WHITE);
+     modificaprod.DatePiketProdAlta.setBackground(Color.WHITE);            
+     modificaprod.labelavatar.setBackground(Color.WHITE);                       
+     }
+     }*/
+
 }

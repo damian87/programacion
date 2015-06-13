@@ -35,6 +35,7 @@ public class BLLUSUgrafica {
     
      public static void crearUsuarioGrafica() {
         int found = 0;
+        int mail=0;
         DAOUSUgrafica.creaUsuGrafica();
 
         //dni no repes
@@ -42,11 +43,47 @@ public class BLLUSUgrafica {
         if (found != -1) {
             JOptionPane.showMessageDialog(null, "El Dni ya existe, el Usuario no ha sido creado, porfavor revise los datos");
         } else {                       
-            BLLBD_USU guardar = new BLLBD_USU();
-            guardar.nuevoUsu_BD();            
-            ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
+            BLLBD_USU guardar = new BLLBD_USU();               
+            SingletonsUsu.password = SingletonsUsu.u.getPassword();
+            //StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
+            mail= guardar.nuevoUsu_BD();
+            if (mail==1){
+                DAOUSUgrafica.Eniviaremail();
+            }
+            //((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
             //stm.cargar
             //EFBLLgrafica.GuardarSinEnterarse();
+            
+            /*
+            public static void crearEFgrafica() {
+        int found = 0;
+        int mail=0;
+        //empleadofijo efi=null;
+        DAOEFgrafica.creaEFGrafica();
+
+        //dni no repes
+        found = buscar(SingletonsEF.efi);
+        if (found != -1) {
+            JOptionPane.showMessageDialog(null, "El DNI ya existe, el empleado no ha sido creado, porfavor revise los datos");
+        } else {
+            //ArraylistEF.ef.add(efi);
+
+            BLLBD_EF guardar = new BLLBD_EF();
+            SingletonsEF.password = SingletonsEF.efi.getPassword();
+            //StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
+            mail=guardar.nuevoEF_BD();
+            if (mail==1){
+                DAOEFgrafica.Eniviaremail();
+            }
+            
+            //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
+            //stm.cargar
+            //EFBLLgrafica.GuardarSinEnterarse();
+
+        }
+
+    }
+            */
 
         }
 
