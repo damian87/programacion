@@ -5,6 +5,7 @@
  */
 package empleados.librerias;
 
+import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -32,23 +33,23 @@ public class FileUploader {
 
     public static void pintaravatar(JLabel etiqueta, int ancho, int alto) {
 
-            ImageIcon icon = new ImageIcon(SingletonsEF.efilogin.getAvatar());
-            Image img = icon.getImage();
-            Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
-            ImageIcon newIcon = new ImageIcon(newimg);
-            etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
-        
+        //ImageIcon icon = new ImageIcon(SingletonsEF.efilogin.getAvatar());
+        ImageIcon icon = new ImageIcon(SingletonsUsu.usulogin.getAvatar());
+        Image img = icon.getImage();
+        Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon newIcon = new ImageIcon(newimg);
+        etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
 
     }
-    
+
     public static void pintaravataref(JLabel etiqueta, int ancho, int alto) {
 
-            ImageIcon icon = new ImageIcon(SingletonsEF.efi.getAvatar());
-            Image img = icon.getImage();
-            Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
-            ImageIcon newIcon = new ImageIcon(newimg);
-            etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
-        
+        //ImageIcon icon = new ImageIcon(SingletonsEF.efi.getAvatar());
+        ImageIcon icon = new ImageIcon(SingletonsUsu.u.getAvatar());
+        Image img = icon.getImage();
+        Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon newIcon = new ImageIcon(newimg);
+        etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
 
     }
 

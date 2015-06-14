@@ -43,7 +43,8 @@ public class loginBLL {
 
         loginDAO _loginDAO = new loginDAO();
 
-        _resul = _loginDAO.loginusu(_con, dni, password);
+        //_resul = _loginDAO.loginusu(_con, dni, password);
+        _resul = _loginDAO.loginusuario(_con, dni, password);
 
         _conexion_DB.CerrarConexion(_con);
 

@@ -12,6 +12,7 @@ import empleados.librerias.fondopanellogin;
 import empleados.librerias.fondopanelpager;
 import empleados.menuempleados;
 import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
 import empleados.modulos.config.configuracion;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
@@ -46,7 +47,7 @@ import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgraf
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardarxml;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.jComboBox1;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.jTextField1;
-import empleados.modulos.gestionempleados.gestionEF.vista.menupager;
+import empleados.modulos.Usuarios.gestionusuarios.vista.menupager;
 //import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.sorter;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.ModificarEF;
@@ -337,7 +338,8 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.efgraf.info.setName("_INFO");
             this.efgraf.info.addActionListener(this);
 
-            if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+            //if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+            if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
 
                 this.efgraf.botonnuevoEF.setVisible(false);
                 this.efgraf.botonmodificarEF.setVisible(false);

@@ -7,7 +7,9 @@ package empleados.modulos.login.controlador_log;
 
 import empleados.librerias.fondopanellogin;
 import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.Usuarios.gestionusuarios.vista.CreaUsu;
+import empleados.modulos.Usuarios.gestionusuarios.vista.PerfilUsu;
 import empleados.modulos.config.configuracion;
 import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
@@ -21,7 +23,7 @@ import static empleados.modulos.login.controlador_log.controlador_login.recordar
 import empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica;
 import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
-import empleados.modulos.gestionempleados.gestionEF.vista.menupager;
+import empleados.modulos.Usuarios.gestionusuarios.vista.menupager;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
 import empleados.modulos.login.vista_log.recordarcontraseña;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
@@ -63,7 +65,6 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
     public enum Accion {
 
         //inicio
-
         _usuario,
         _password,
         _enter,
@@ -78,7 +79,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
     }
 
     public void Iniciar(int i) {
-      //modulo de inicio login
+        //modulo de inicio login
 
         if (i == 5) {
 
@@ -94,9 +95,9 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             c.add(this.inilog.jPanel1);
             this.inilog.setSize(525, 425);//ancho x alto
             this.inilog.setResizable(false);
-            
+
             SingletonsEF.efilogin = null; //vaciamos el objeto
-            
+
             this.inilog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
 
             this.inilog.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -188,14 +189,14 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
     @Override
     public void actionPerformed(ActionEvent ae) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        switch (Accion.valueOf(ae.getActionCommand())){
+
+        switch (Accion.valueOf(ae.getActionCommand())) {
 
             //modulo login
             case _newusu:
                 inilog.dispose();
                 //new controladorEF(new creaEFgrafica(), 2).Iniciar(2);
-                new controladorUSU(new CreaUsu(), 2).Iniciar(2);                
+                new controladorUSU(new CreaUsu(), 2).Iniciar(2);
 
                 break;
             case _configurador:
@@ -215,13 +216,17 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
                 result = log.loginusu(dni, password);
                 if (result == true) {
                     inilog.dispose();
-                    if ("User".equals(SingletonsEF.efilogin.getTipo())) {
-                    new controladorEF(new modificaEFgrafica(), 3).Iniciar(3);    
-                    }else{
+                    //if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+                    if ("User".equals(SingletonsUsu.usulogin.getTipo())) {  
+                     
+                        //new controladorEF(new modificaEFgrafica(), 3).Iniciar(3);
+                        new controladorUSU(new PerfilUsu(), 3).Iniciar(3);
+                    } else {
                     //new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);  
-                    new controladorEF(new menupager(), 5).Iniciar(5); 
+                        //new controladorEF(new menupager(), 5).Iniciar(5); 
+                        new controladorUSU(new menupager(), 5).Iniciar(5);
                     }
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario o contraseña son incorrectos");
                 }
@@ -245,10 +250,9 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
 
                 loginBLL rest = new loginBLL();
                 rest.resstablecerpass();
-                
 
                 break;
-        }   
+        }
     }
 
     @Override
@@ -262,7 +266,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
     @Override
     public void keyPressed(KeyEvent ke) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        switch (Accion.valueOf(ke.getComponent().getName())){
+        switch (Accion.valueOf(ke.getComponent().getName())) {
             //modulo login
             case _usuario:
                 loginBLL.Usuario();
@@ -278,7 +282,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
     public void keyReleased(KeyEvent ke) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         //switch (Accion.valueOf(ke.getComponent().getName())){
-        switch (Accion.valueOf(ke.getComponent().getName())){
+        switch (Accion.valueOf(ke.getComponent().getName())) {
             //modulo login
             case _usuario:
                 if (ke.getKeyCode() == KeyEvent.VK_ENTER) {

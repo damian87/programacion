@@ -78,8 +78,8 @@ public class DAOBD_USU {
             while (rs.next()) {
                 usr = new Usuario();
                 usr.setNombre(rs.getString("nombre"));
-                usr.setDepartamento(rs.getString("fechaNacimiento"));
-                naci = new fecha(rs.getString("fechaAlta"));
+                usr.setDepartamento(rs.getString("poblacion"));
+                naci = new fecha(rs.getString("fechaNacimiento"));
                 usr.setFechaNacimiento(naci);
                 //alta = new fecha(rs.getString("fechaAlta"));
                 //usr.setfechaAlta(alta);

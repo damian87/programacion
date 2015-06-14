@@ -9,6 +9,7 @@ import empleados.modulos.gestionempleados.gestionEF.controlador.*;
 import empleados.librerias.FileUploader;
 import empleados.librerias.fondopanelconfig;
 import empleados.librerias.fondopanelcrear;
+import empleados.librerias.fondopanellogin;
 import empleados.librerias.fondopanelpager;
 import empleados.menuempleados;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
@@ -28,7 +29,9 @@ import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafi
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardartxt;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardarxml;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.jComboBox1;
+import empleados.modulos.Usuarios.gestionusuarios.vista.menupager;
 import empleados.modulos.config.configuracion;
+import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
 //import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
 //import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
@@ -93,11 +96,12 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
     public static configuracion configu = new configuracion();
     public static Iniciologin inilog = new Iniciologin();
     public static recordarcontraseña recordar = new recordarcontraseña();
+    public static menupager menpa = new menupager();
 
     public controladorUSU(JFrame inicio, int i) {
         /*if (i == 0) {
-            this.subpri = (subprincipal) inicio;
-        }*/
+         this.subpri = (subprincipal) inicio;
+         }*/
 
         if (i == 1) {
             this.efgraf = (interfaceUSUgrafica) inicio;
@@ -116,12 +120,15 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         }
 
         if (i == 5) {
-            this.inilog = (Iniciologin) inicio;
+            this.menpa = (menupager) inicio;
         }
+        /*if (i == 5) {
+         this.inilog = (Iniciologin) inicio;
+         }
         
-        if (i == 6) {
-            this.recordar = (recordarcontraseña) inicio;
-        }
+         if (i == 6) {
+         this.recordar = (recordarcontraseña) inicio;
+         }*/
 
     }
 
@@ -191,44 +198,47 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         _RUSU,
         _RPASS,
         _RRESSTABLECER,
-        _RCANCELAR
+        _RCANCELAR,
+        //menu pager
+        _MENUEMPLEADOS,
+        _MENUUSUARIOS
     }
 
     //en el new controladorEF (new interfaceUSUgrafica(), 0).Iniciar(0);
     //el primer 0 es para entrar al if del controladorEF, y el segundo 0 es para la funion iniciar k 
     public void Iniciar(int i) {
         /*//SUBPRINCIPAL
-        if (i == 0) {
-            this.subpri.setVisible(true);
+         if (i == 0) {
+         this.subpri.setVisible(true);
 
-            this.subpri.setTitle("Bienvenidos a la Gestion de Empleados");
-            this.subpri.setLocationRelativeTo(null);
-            this.subpri.setSize(525, 425);//ancho x alto
-            this.subpri.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            this.subpri.setIconImage(icono);
+         this.subpri.setTitle("Bienvenidos a la Gestion de Empleados");
+         this.subpri.setLocationRelativeTo(null);
+         this.subpri.setSize(525, 425);//ancho x alto
+         this.subpri.setResizable(false);
+         Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
+         this.subpri.setIconImage(icono);
 
-            this.subpri.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+         this.subpri.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
 
-            this.subpri.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            subpri.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-                    subpri.dispose();
-                    System.exit(0);
-                }
-            });
+         this.subpri.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+         subpri.addWindowListener(new WindowAdapter() {
+         @Override
+         public void windowClosing(WindowEvent e) {
+         JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
+         subpri.dispose();
+         System.exit(0);
+         }
+         });
 
-            this.subpri.configEF.setActionCommand("_CONFIGURACION");
-            this.subpri.configEF.setName("_CONFIGURACION");
-            this.subpri.configEF.addActionListener(this);
+         this.subpri.configEF.setActionCommand("_CONFIGURACION");
+         this.subpri.configEF.setName("_CONFIGURACION");
+         this.subpri.configEF.addActionListener(this);
 
-            this.subpri.imprimirEF.setActionCommand("_GESTIONEF");
-            this.subpri.imprimirEF.setName("_GESTIONEF");
-            this.subpri.imprimirEF.addActionListener(this);
+         this.subpri.imprimirEF.setActionCommand("_GESTIONEF");
+         this.subpri.imprimirEF.setName("_GESTIONEF");
+         this.subpri.imprimirEF.addActionListener(this);
 
-        }*/
+         }*/
 
         if (i == 1) {
 
@@ -374,8 +384,8 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.creaUSU.setContentPane(c);
             this.creaUSU.jPanel1.setOpaque(false);
             c.add(this.creaUSU.jPanel1);
-            
-             this.creaUSU.Usuario.doClick();
+
+            this.creaUSU.Usuario.doClick();
             //this.creaUSU.setSize(525, 425);//ancho x alto
 
             this.creaUSU.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -428,7 +438,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.creaUSU.cargarimgavatar.setActionCommand("_CargaAvatar");
             this.creaUSU.cargarimgavatar.setName("_CargaAvatar");
             this.creaUSU.cargarimgavatar.addKeyListener(this);
-            
+
             if (SingletonsUsu.usulogin == null) {
                 this.creaUSU.jPanel2.setVisible(false);
             } else if ("admin".equals(SingletonsUsu.usulogin.getTipo())) {
@@ -581,103 +591,144 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.configu.TXT.addActionListener(this);
 
         }
-        //modulo de inicio login
+
         if (i == 5) {
+            //configuracion
 
-            this.inilog.setVisible(true);
+            this.menpa.setVisible(true);
 
-            this.inilog.setTitle("Bienvenidos a la Gestion de Empleados");
-            this.inilog.setLocationRelativeTo(null);
-            this.inilog.setSize(525, 425);//ancho x alto
-            this.inilog.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            this.inilog.setIconImage(icono);
+            this.menpa.setTitle("Configuracion");
+            this.menpa.setLocationRelativeTo(null);
+            this.menpa.setSize(525, 425);//ancho x alto
+            this.menpa.setResizable(false);
+            Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
+            this.menpa.setIconImage(icono);
+            this.menpa.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
 
-            this.inilog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+            fondopanellogin c = new fondopanellogin();
+            this.menpa.setContentPane(c);
+            this.menpa.jPanel1.setOpaque(false);
+            c.add(this.menpa.jPanel1);
 
-            this.inilog.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            inilog.addWindowListener(new WindowAdapter() {
+            this.menpa.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+            menpa.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-                    inilog.dispose();
-                    System.exit(0);
-                }
-            });
+                    menpa.dispose();
 
-            this.inilog.txtusuario.setActionCommand("_usuario");
-            this.inilog.txtusuario.setName("_usuario");
-            this.inilog.txtusuario.addActionListener(this);
-            this.inilog.txtusuario.addKeyListener(this);
-
-            this.inilog.txtpassword.setActionCommand("_password");
-            this.inilog.txtpassword.setName("_password");
-            this.inilog.txtpassword.addActionListener(this);
-            this.inilog.txtpassword.addKeyListener(this);
-
-            this.inilog.botonenter.setActionCommand("_enter");
-            this.inilog.botonenter.setName("_enter");
-            this.inilog.botonenter.addActionListener(this);
-
-            this.inilog.botonolvidarpass.setActionCommand("_olvidarpass");
-            this.inilog.botonolvidarpass.setName("_olvidarpass");
-            this.inilog.botonolvidarpass.addActionListener(this);
-
-            this.inilog.newusu.setActionCommand("_newusu");
-            this.inilog.newusu.setName("_newusu");
-            this.inilog.newusu.addActionListener(this);
-
-            this.inilog.configEF.setActionCommand("_configurador");
-            this.inilog.configEF.setName("_configurador");
-            this.inilog.configEF.addActionListener(this);
-
-        }
-        //Reestablecer password
-        if (i == 6) {
-
-            this.recordar.setVisible(true);
-
-            this.recordar.setTitle("Restablecer Password");
-            this.recordar.setLocationRelativeTo(null);
-            this.recordar.setSize(525, 425);//ancho x alto
-            this.recordar.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            this.recordar.setIconImage(icono);
-            this.recordar.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-            this.recordar.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            recordar.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Ha cancelado la operacion");
-                    recordar.dispose();
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
                     new controlador_login(new Iniciologin(), 5).Iniciar(5);
-
                 }
             });
 
-            this.recordar.txtlogin.setActionCommand("_RUSU");
-            this.recordar.txtlogin.setName("_RUSU");
-            this.recordar.txtlogin.addActionListener(this);
-            this.recordar.txtlogin.addKeyListener(this);
+            this.menpa.btnempleados.setActionCommand("_MENUEMPLEADOS");
+            this.menpa.btnempleados.setName("_MENUEMPLEADOS");
+            this.menpa.btnempleados.addActionListener(this);
 
-            this.recordar.txtpassword.setActionCommand("_RPASS");
-            this.recordar.txtpassword.setName("_RPASS");
-            this.recordar.txtpassword.addActionListener(this);
-            this.recordar.txtpassword.addKeyListener(this);
-
-            this.recordar.botonreestablecer.setActionCommand("_RRESSTABLECER");
-            this.recordar.botonreestablecer.setName("_RRESSTABLECER");
-            this.recordar.botonreestablecer.addActionListener(this);
-
-            this.recordar.botoncancelar.setActionCommand("_RCANCELAR");
-            this.recordar.botoncancelar.setName("_RCANCELAR");
-            this.recordar.botoncancelar.addActionListener(this);
+            this.menpa.btnusuarios.setActionCommand("_MENUUSUARIOS");
+            this.menpa.btnusuarios.setName("_MENUUSUARIOS");
+            this.menpa.btnusuarios.addActionListener(this);
 
         }
 
     }
+    /*//modulo de inicio login
+     if (i == 5) {
+
+     this.inilog.setVisible(true);
+
+     this.inilog.setTitle("Bienvenidos a la Gestion de Empleados");
+     this.inilog.setLocationRelativeTo(null);
+     this.inilog.setSize(525, 425);//ancho x alto
+     this.inilog.setResizable(false);
+     Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
+     this.inilog.setIconImage(icono);
+
+     this.inilog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+
+     this.inilog.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+     inilog.addWindowListener(new WindowAdapter() {
+     @Override
+     public void windowClosing(WindowEvent e) {
+     JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
+     inilog.dispose();
+     System.exit(0);
+     }
+     });
+
+     this.inilog.txtusuario.setActionCommand("_usuario");
+     this.inilog.txtusuario.setName("_usuario");
+     this.inilog.txtusuario.addActionListener(this);
+     this.inilog.txtusuario.addKeyListener(this);
+
+     this.inilog.txtpassword.setActionCommand("_password");
+     this.inilog.txtpassword.setName("_password");
+     this.inilog.txtpassword.addActionListener(this);
+     this.inilog.txtpassword.addKeyListener(this);
+
+     this.inilog.botonenter.setActionCommand("_enter");
+     this.inilog.botonenter.setName("_enter");
+     this.inilog.botonenter.addActionListener(this);
+
+     this.inilog.botonolvidarpass.setActionCommand("_olvidarpass");
+     this.inilog.botonolvidarpass.setName("_olvidarpass");
+     this.inilog.botonolvidarpass.addActionListener(this);
+
+     this.inilog.newusu.setActionCommand("_newusu");
+     this.inilog.newusu.setName("_newusu");
+     this.inilog.newusu.addActionListener(this);
+
+     this.inilog.configEF.setActionCommand("_configurador");
+     this.inilog.configEF.setName("_configurador");
+     this.inilog.configEF.addActionListener(this);
+
+     }
+     //Reestablecer password
+     if (i == 6) {
+
+     this.recordar.setVisible(true);
+
+     this.recordar.setTitle("Restablecer Password");
+     this.recordar.setLocationRelativeTo(null);
+     this.recordar.setSize(525, 425);//ancho x alto
+     this.recordar.setResizable(false);
+     Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
+     this.recordar.setIconImage(icono);
+     this.recordar.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+
+     this.recordar.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+     recordar.addWindowListener(new WindowAdapter() {
+     @Override
+     public void windowClosing(WindowEvent e) {
+     JOptionPane.showMessageDialog(null, "Ha cancelado la operacion");
+     recordar.dispose();
+     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
+     new controlador_login(new Iniciologin(), 5).Iniciar(5);
+
+     }
+     });
+
+     this.recordar.txtlogin.setActionCommand("_RUSU");
+     this.recordar.txtlogin.setName("_RUSU");
+     this.recordar.txtlogin.addActionListener(this);
+     this.recordar.txtlogin.addKeyListener(this);
+
+     this.recordar.txtpassword.setActionCommand("_RPASS");
+     this.recordar.txtpassword.setName("_RPASS");
+     this.recordar.txtpassword.addActionListener(this);
+     this.recordar.txtpassword.addKeyListener(this);
+
+     this.recordar.botonreestablecer.setActionCommand("_RRESSTABLECER");
+     this.recordar.botonreestablecer.setName("_RRESSTABLECER");
+     this.recordar.botonreestablecer.addActionListener(this);
+
+     this.recordar.botoncancelar.setActionCommand("_RCANCELAR");
+     this.recordar.botoncancelar.setName("_RCANCELAR");
+     this.recordar.botoncancelar.addActionListener(this);
+
+     }
+
+     }*/
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -735,16 +786,16 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 break;
 
             /*//subprincipal
-            case _GESTIONEF:
-                subpri.dispose();
-                new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
-                break;
+             case _GESTIONEF:
+             subpri.dispose();
+             new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
+             break;
 
-            case _CONFIGURACION:
-                subpri.dispose();
-                new controladorUSU(new configuracion(), 4).Iniciar(4);
+             case _CONFIGURACION:
+             subpri.dispose();
+             new controladorUSU(new configuracion(), 4).Iniciar(4);
 
-                break;*/
+             break;*/
             //interfaz
             case _BTN_ANTERIOR:
                 pagina.currentPageIndex -= 1;
@@ -834,6 +885,17 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
                 break;
 
+            //menupager
+            case _MENUEMPLEADOS:
+
+                new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
+
+                break;
+            case _MENUUSUARIOS:
+
+                new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
+
+                break;
             //crea
             case _CREAREF:
 
