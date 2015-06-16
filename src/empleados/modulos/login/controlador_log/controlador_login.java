@@ -97,6 +97,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             this.inilog.setResizable(false);
 
             SingletonsEF.efilogin = null; //vaciamos el objeto
+            SingletonsUsu.usulogin = null; //vaciamos el objeto
 
             this.inilog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
 

@@ -89,7 +89,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new STMUSU());
     public static AutocompleteJComboBox combo = null;
-    public static interfaceUSUgrafica efgraf = new interfaceUSUgrafica();
+    public static interfaceUSUgrafica usugraf = new interfaceUSUgrafica();
     //public static subprincipal subpri = new subprincipal();
     public static CreaUsu creaUSU = new CreaUsu();
     public static PerfilUsu modiUSU = new PerfilUsu();
@@ -104,7 +104,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
          }*/
 
         if (i == 1) {
-            this.efgraf = (interfaceUSUgrafica) inicio;
+            this.usugraf = (interfaceUSUgrafica) inicio;
         }
 
         if (i == 2) {
@@ -243,7 +243,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         if (i == 1) {
 
             //interfazEFgrafica
-            this.efgraf.setVisible(true);
+            this.usugraf.setVisible(true);
 
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -251,19 +251,19 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             }
 
             //initComponents();    
-            this.efgraf.setLocationRelativeTo(null);
-            this.efgraf.setTitle("GestionEmpleados Fijos");
-            this.efgraf.setResizable(true);
+            this.usugraf.setLocationRelativeTo(null);
+            this.usugraf.setTitle("GestionEmpleados Fijos");
+            this.usugraf.setResizable(true);
             fondopanelpager c = new fondopanelpager();
-            this.efgraf.setContentPane(c);
-            this.efgraf.jPanel6.setOpaque(false);
-            c.add(this.efgraf.jPanel6);
-            //this.efgraf.setSize(525, 425);//ancho x alto
-            this.efgraf.jPanel1.setOpaque(false);
-            this.efgraf.jPanel2.setOpaque(false);
-            this.efgraf.jPanel3.setOpaque(false);
-            this.efgraf.jPanel4.setOpaque(false);
-            this.efgraf.jPanel5.setOpaque(false);
+            this.usugraf.setContentPane(c);
+            this.usugraf.jPanel6.setOpaque(false);
+            c.add(this.usugraf.jPanel6);
+            //this.usugraf.setSize(525, 425);//ancho x alto
+            this.usugraf.jPanel1.setOpaque(false);
+            this.usugraf.jPanel2.setOpaque(false);
+            this.usugraf.jPanel3.setOpaque(false);
+            this.usugraf.jPanel4.setOpaque(false);
+            this.usugraf.jPanel5.setOpaque(false);
 
             TABLA.setModel(new STMUSU());
             ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
@@ -273,11 +273,11 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             pagina.inicializa();
             pagina.initLinkBox();
 
-            this.efgraf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            this.efgraf.addWindowListener(new WindowAdapter() {
+            this.usugraf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+            this.usugraf.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    efgraf.dispose();
+                    usugraf.dispose();
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
                     new controlador_login(new Iniciologin(), 5).Iniciar(5);
 
@@ -291,8 +291,8 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             StringSearchable searchable = new StringSearchable(myWords);
             combo = new AutocompleteJComboBox(searchable);
-            this.efgraf.jPanel3.setLayout(new java.awt.BorderLayout());
-            this.efgraf.jPanel3.add(combo);
+            this.usugraf.jPanel3.setLayout(new java.awt.BorderLayout());
+            this.usugraf.jPanel3.add(combo);
 
             combo.addActionListener(new java.awt.event.ActionListener() {
                 @Override
@@ -301,65 +301,67 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 }
             });
 
-            this.efgraf.guardartxt.doClick();
+            this.usugraf.guardartxt.doClick();
+            
+            FileUploader.pintaravatar(this.usugraf.labelavatar, 90, 90);
 
-            this.efgraf.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
-            this.efgraf.ANTERIOR.setName("_BTN_ANTERIOR");
-            this.efgraf.ANTERIOR.addActionListener(this);
+            this.usugraf.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
+            this.usugraf.ANTERIOR.setName("_BTN_ANTERIOR");
+            this.usugraf.ANTERIOR.addActionListener(this);
 
-            this.efgraf.SIGUIENTE.setActionCommand("_BTN_SIGUIENTE");
-            this.efgraf.SIGUIENTE.setName("_BTN_SIGUIENTE");
-            this.efgraf.SIGUIENTE.addActionListener(this);
+            this.usugraf.SIGUIENTE.setActionCommand("_BTN_SIGUIENTE");
+            this.usugraf.SIGUIENTE.setName("_BTN_SIGUIENTE");
+            this.usugraf.SIGUIENTE.addActionListener(this);
 
-            this.efgraf.ultimo.setActionCommand("_BTN_ULTIMO");
-            this.efgraf.ultimo.setName("_BTN_ULTIMO");
-            this.efgraf.ultimo.addActionListener(this);
+            this.usugraf.ultimo.setActionCommand("_BTN_ULTIMO");
+            this.usugraf.ultimo.setName("_BTN_ULTIMO");
+            this.usugraf.ultimo.addActionListener(this);
 
-            this.efgraf.primero.setActionCommand("_BTN_PRIMERO");
-            this.efgraf.primero.setName("_BTN_PRIMERO");
-            this.efgraf.primero.addActionListener(this);
+            this.usugraf.primero.setActionCommand("_BTN_PRIMERO");
+            this.usugraf.primero.setName("_BTN_PRIMERO");
+            this.usugraf.primero.addActionListener(this);
 
-            this.efgraf.jComboBox1.setActionCommand("_COMBOX");
-            this.efgraf.jComboBox1.setName("_COMBOX");
-            this.efgraf.jComboBox1.addActionListener(this);
+            this.usugraf.jComboBox1.setActionCommand("_COMBOX");
+            this.usugraf.jComboBox1.setName("_COMBOX");
+            this.usugraf.jComboBox1.addActionListener(this);
 
-            this.efgraf.botonarchivoEF.setActionCommand("_GUARDAR");
-            this.efgraf.botonarchivoEF.setName("_GUARDAR");
-            this.efgraf.botonarchivoEF.addActionListener(this);
+            this.usugraf.botonarchivoEF.setActionCommand("_GUARDAR");
+            this.usugraf.botonarchivoEF.setName("_GUARDAR");
+            this.usugraf.botonarchivoEF.addActionListener(this);
 
-            this.efgraf.jButton1.setActionCommand("_VOLVER");
-            this.efgraf.jButton1.setName("_VOLVER");
-            this.efgraf.jButton1.addActionListener(this);
+            this.usugraf.jButton1.setActionCommand("_VOLVER");
+            this.usugraf.jButton1.setName("_VOLVER");
+            this.usugraf.jButton1.addActionListener(this);
 
-            this.efgraf.botonedadmedia.setActionCommand("_BTNMEDIA");
-            this.efgraf.botonedadmedia.setName("_BTNMEDIA");
-            this.efgraf.botonedadmedia.addActionListener(this);
+            this.usugraf.botonedadmedia.setActionCommand("_BTNMEDIA");
+            this.usugraf.botonedadmedia.setName("_BTNMEDIA");
+            this.usugraf.botonedadmedia.addActionListener(this);
 
-            this.efgraf.botonmayormenor.setActionCommand("_BTNMAYMEN");
-            this.efgraf.botonmayormenor.setName("_BTNMAYMEN");
-            this.efgraf.botonmayormenor.addActionListener(this);
+            this.usugraf.botonmayormenor.setActionCommand("_BTNMAYMEN");
+            this.usugraf.botonmayormenor.setName("_BTNMAYMEN");
+            this.usugraf.botonmayormenor.addActionListener(this);
 
-            this.efgraf.info.setActionCommand("_INFO");
-            this.efgraf.info.setName("_INFO");
-            this.efgraf.info.addActionListener(this);
+            this.usugraf.info.setActionCommand("_INFO");
+            this.usugraf.info.setName("_INFO");
+            this.usugraf.info.addActionListener(this);
 
             if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
 
-                this.efgraf.botonnuevoEF.setVisible(false);
-                this.efgraf.botonmodificarEF.setVisible(false);
-                this.efgraf.botoneliminarEF.setVisible(false);
+                this.usugraf.botonnuevoEF.setVisible(false);
+                this.usugraf.botonmodificarEF.setVisible(false);
+                this.usugraf.botoneliminarEF.setVisible(false);
             } else {
-                this.efgraf.botonnuevoEF.setActionCommand("_NCREAR");
-                this.efgraf.botonnuevoEF.setName("_NCREAR");
-                this.efgraf.botonnuevoEF.addActionListener(this);
+                this.usugraf.botonnuevoEF.setActionCommand("_NCREAR");
+                this.usugraf.botonnuevoEF.setName("_NCREAR");
+                this.usugraf.botonnuevoEF.addActionListener(this);
 
-                this.efgraf.botoneliminarEF.setActionCommand("_ELIMINAR");
-                this.efgraf.botoneliminarEF.setName("_ELIMINAR");
-                this.efgraf.botoneliminarEF.addActionListener(this);
+                this.usugraf.botoneliminarEF.setActionCommand("_ELIMINAR");
+                this.usugraf.botoneliminarEF.setName("_ELIMINAR");
+                this.usugraf.botoneliminarEF.addActionListener(this);
 
-                this.efgraf.botonmodificarEF.setActionCommand("_MODIFICAR");
-                this.efgraf.botonmodificarEF.setName("_MODIFICAR");
-                this.efgraf.botonmodificarEF.addActionListener(this);
+                this.usugraf.botonmodificarEF.setActionCommand("_MODIFICAR");
+                this.usugraf.botonmodificarEF.setName("_MODIFICAR");
+                this.usugraf.botonmodificarEF.addActionListener(this);
 
             }
 
@@ -386,6 +388,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             c.add(this.creaUSU.jPanel1);
 
             this.creaUSU.Usuario.doClick();
+            this.creaUSU.txtdniEF.setVisible(false);
             //this.creaUSU.setSize(525, 425);//ancho x alto
 
             this.creaUSU.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -419,9 +422,9 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.creaUSU.txtDepartamentoEF.setName("_DEPARTAMENTOEF");
             this.creaUSU.txtDepartamentoEF.addKeyListener(this);
 
-            this.creaUSU.txtdniEF.setActionCommand("_DNIEF");
-            this.creaUSU.txtdniEF.setName("_DNIEF");
-            this.creaUSU.txtdniEF.addKeyListener(this);
+            this.creaUSU.txtDNIEF.setActionCommand("_DNIEF");
+            this.creaUSU.txtDNIEF.setName("_DNIEF");
+            this.creaUSU.txtDNIEF.addKeyListener(this);
 
             this.creaUSU.txtemail.setActionCommand("_Email");
             this.creaUSU.txtemail.setName("_Email");
@@ -593,7 +596,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         }
 
         if (i == 5) {
-            //configuracion
+            //menu opcionaes pager
 
             this.menpa.setVisible(true);
 
@@ -839,14 +842,14 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 break;
 
             case _ELIMINAR:
-                Usuario pos = null;
+                //Usuario pos = null;
 
                 BLLUSUgrafica.eliminaUsuariograficatabla();
 
                 break;
 
             case _NCREAR:
-                efgraf.dispose();
+                usugraf.dispose();
 
                 new controladorUSU(new CreaUsu(), 2).Iniciar(2);
 
@@ -854,13 +857,13 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             case _MODIFICAR:
 
-                efgraf.dispose();
+                usugraf.dispose();
                 new controladorUSU(new PerfilUsu(), 3).Iniciar(3);
 
                 break;
 
             case _VOLVER:
-                efgraf.dispose();
+                usugraf.dispose();
                 JOptionPane.showMessageDialog(null, "Cerrando sesion, hasta pronto");
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
                 new controlador_login(new Iniciologin(), 5).Iniciar(5);
@@ -880,19 +883,21 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 usuariomedia.Usuario_MenorMayorBLL();
                 break;
             case _INFO:
-                ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
+                //((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
                 BLLUSUgrafica.masinfo();
 
                 break;
 
             //menupager
             case _MENUEMPLEADOS:
-
+                
+                menpa.dispose();                
                 new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
 
                 break;
             case _MENUUSUARIOS:
-
+                
+                menpa.dispose();
                 new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
 
                 break;
@@ -907,10 +912,11 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 break;
 
             case _CANCELAR_CREAEF:
-                BLLUSUgrafica.borrarcamporUsuarioModifica();
+                /*BLLUSUgrafica.borrarcamporUsuarioModifica();
                 creaUSU.dispose();
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                new controlador_login(new Iniciologin(), 5).Iniciar(5);*/
+                BLLUSUgrafica.BorrarcamposUsuarioCreagrafica();
                 break;
 
             case _CargaAvatar:

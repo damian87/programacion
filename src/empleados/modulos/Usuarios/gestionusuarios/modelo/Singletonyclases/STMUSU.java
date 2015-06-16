@@ -33,7 +33,7 @@ import javax.swing.JComboBox;
 public class STMUSU extends AbstractTableModel{
     public static ArrayList<Usuario> datos = new ArrayList<Usuario>();
     public static ArrayList<Usuario> datosaux = new ArrayList<Usuario>();
-    String[] columnas = {"DNI", "Nombre", "Departamento", "Edad", "Antigüedad", "Fecha Nac.", "Fecha Cont."};
+    String[] columnas = {"DNI", "Nombre", "Poblacion", "Edad", "Fecha Nac."};
 
     ////////////////////estos métodos son necesarios para que jtable funcione/////////////////////
     @Override

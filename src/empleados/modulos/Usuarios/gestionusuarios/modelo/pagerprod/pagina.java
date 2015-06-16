@@ -54,7 +54,8 @@ public class pagina {
     public static void initLinkBox() {
         
                    //empleados.modulos.gestionempleados.gestionEF.vista.interfaceUSUgrafica.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
-                   empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
+                   //empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
+                   empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
 
                         @Override public boolean include(RowFilter.Entry<? extends TableModel, ? extends Integer> entry) {
                             int ti = currentPageIndex - 1;

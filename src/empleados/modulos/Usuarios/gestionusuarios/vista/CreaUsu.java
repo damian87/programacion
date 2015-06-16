@@ -30,6 +30,7 @@ public class CreaUsu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         NombreEF = new javax.swing.JLabel();
         DepartamentoEF = new javax.swing.JLabel();
@@ -89,8 +90,10 @@ public class CreaUsu extends javax.swing.JFrame {
 
         cargarimgavatar.setText("Cargar Avatar");
 
+        buttonGroup1.add(Usuario);
         Usuario.setText("Usuario");
 
+        buttonGroup1.add(Admin);
         Admin.setText("Administrador");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -168,7 +171,6 @@ public class CreaUsu extends javax.swing.JFrame {
                                         .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(175, 175, 175)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cargarimgavatar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelavatar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -260,6 +262,7 @@ public class CreaUsu extends javax.swing.JFrame {
     private javax.swing.JLabel Login;
     private javax.swing.JLabel NombreEF;
     public static javax.swing.JRadioButton Usuario;
+    private javax.swing.ButtonGroup buttonGroup1;
     public static javax.swing.JButton cargarimgavatar;
     public static javax.swing.JPanel jPanel1;
     public static javax.swing.JPanel jPanel2;

@@ -76,18 +76,19 @@ public class DAOBD_USU {
             rs = stmt.executeQuery();
             Usuario usr = null;
             while (rs.next()) {
-                usr = new Usuario();
+                usr = new Usuario();                                
                 usr.setNombre(rs.getString("nombre"));
+                usr.setDni(rs.getString("dni"));
                 usr.setDepartamento(rs.getString("poblacion"));
                 naci = new fecha(rs.getString("fechaNacimiento"));
-                usr.setFechaNacimiento(naci);
-                //alta = new fecha(rs.getString("fechaAlta"));
-                //usr.setfechaAlta(alta);
+                usr.setFechaNacimiento(naci);                
                 usr.setLogin(rs.getString("login"));
                 usr.setEmail(rs.getString("email"));
+                usr.setAvatar(rs.getString("avatar"));
+                usr.setTipo(rs.getString("tipo"));
 
                 SingletonsUsu.usu.add(usr);
-
+               
             }
 
         } catch (SQLException ex) {

@@ -6,6 +6,10 @@
 package empleados.modulos.Usuarios.gestionusuarios.modelo.BLL;
 
 import empleados.clases.Encriptar;
+import empleados.librerias.FileUploader;
+import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
+import static empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU.creaUSU;
+import static empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU.modiUSU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.DAO.DAOUSUgrafica;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.STMUSU;
@@ -13,6 +17,8 @@ import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.Single
 import empleados.modulos.Usuarios.gestionusuarios.modelo.pagerprod.pagina;
 import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.TABLA;
+import empleados.modulos.login.controlador_log.controlador_login;
+import empleados.modulos.login.vista_log.Iniciologin;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,40 +56,7 @@ public class BLLUSUgrafica {
             if (mail==1){
                 DAOUSUgrafica.Eniviaremail();
             }
-            //((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
-            //stm.cargar
-            //EFBLLgrafica.GuardarSinEnterarse();
             
-            /*
-            public static void crearEFgrafica() {
-        int found = 0;
-        int mail=0;
-        //empleadofijo efi=null;
-        DAOEFgrafica.creaEFGrafica();
-
-        //dni no repes
-        found = buscar(SingletonsEF.efi);
-        if (found != -1) {
-            JOptionPane.showMessageDialog(null, "El DNI ya existe, el empleado no ha sido creado, porfavor revise los datos");
-        } else {
-            //ArraylistEF.ef.add(efi);
-
-            BLLBD_EF guardar = new BLLBD_EF();
-            SingletonsEF.password = SingletonsEF.efi.getPassword();
-            //StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
-            mail=guardar.nuevoEF_BD();
-            if (mail==1){
-                DAOEFgrafica.Eniviaremail();
-            }
-            
-            //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
-            //stm.cargar
-            //EFBLLgrafica.GuardarSinEnterarse();
-
-        }
-
-    }
-            */
 
         }
 
@@ -143,11 +116,40 @@ public class BLLUSUgrafica {
     
    
     public static void BorrarcamposUsuarioCreagrafica() {
-        DAOUSUgrafica.borrarcamposcrea();
+        
+        if (SingletonsUsu.usulogin == null) {
+            DAOUSUgrafica.borrarcamposcrea();
+            creaUSU.dispose();
+            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+
+        } else if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
+
+            DAOUSUgrafica.borrarcamposcrea();
+            creaUSU.dispose();
+            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+
+        } else {
+            DAOUSUgrafica.borrarcamposcrea();
+            creaUSU.dispose();
+            new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
+        }
     }
+        
+    
 
     public static void borrarcamporUsuarioModifica() {
-        DAOUSUgrafica.borrarcamposModifica();
+        
+        if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
+            DAOUSUgrafica.borrarcamposModifica();
+            modiUSU.dispose();
+            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+        } else {
+
+            DAOUSUgrafica.borrarcamposModifica();
+            modiUSU.dispose();
+
+            new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
+        }
     }
     
     public static void eliminaUsuariograficatabla() {
@@ -167,7 +169,7 @@ public class BLLUSUgrafica {
                 usr = DAOUSUgrafica.obtenerUsu(SingletonsUsu.u.getDni());
 
                 //remove
-                SingletonsUsu.usu.remove(usr);
+                SingletonsUsu.usu.remove(SingletonsUsu.u);
                 BLLBD_USU elimina = new BLLBD_USU();
                 elimina.eliminarUsu();
                 JOptionPane.showMessageDialog(null, "El Usuario a sido eliminado satisfactoriamente");
@@ -178,6 +180,8 @@ public class BLLUSUgrafica {
             }
         }
     }
+   
+    
     
     public static void modificaUsuariograficallenacampos() {
 
@@ -192,35 +196,45 @@ public class BLLUSUgrafica {
             } else {
                 String dniusu = (String) TABLA.getModel().getValueAt(selec2, 0);                
                 SingletonsUsu.usulog = new Usuario(dniusu);
+                SingletonsUsu.u = DAOUSUgrafica.obtenerUsu(SingletonsUsu.usulog.getDni());
+                DAOUSUgrafica.modificaUsugraficallenadodatos();
+                FileUploader.pintaravatar(modiUSU.labelavatar, 90, 90);
             }
         }        
-        SingletonsUsu.u = DAOUSUgrafica.obtenerUsu(SingletonsUsu.usulog.getDni());
+        //SingletonsUsu.u = DAOUSUgrafica.obtenerUsu(SingletonsUsu.usulog.getDni());
 
     }
+   
     
     public static void masinfo() {
 
-        int inicio1, selec2;
+        int inicio1,
+                selec2;
 
         if (TABLA.getModel().getRowCount() != 0) {
             int selec = TABLA.getSelectedRow();
             inicio1 = (pagina.currentPageIndex - 1) * pagina.itemsPerPage;
             selec2 = inicio1 + selec;
             if (selec2 == -1) {
-                JOptionPane.showMessageDialog(null, "Seleccione primero un Empleado Fijo");
+                JOptionPane.showMessageDialog(null, "Seleccione primero un Usuario");
             } else {
                String dni = (String) TABLA.getModel().getValueAt(selec2, 0); 
                 //ArraylistEF.efi = new empleadofijo(dni);
-                 SingletonsUsu.usulog = new Usuario(dni);
+                //SingletonsUsu.u = new Usuario(dni);                                                
+                SingletonsUsu.usulogin = new Usuario(dni);
+                SingletonsUsu.u = DAOUSUgrafica.obtenerUsu(SingletonsUsu.usulogin.getDni());
+                JOptionPane.showMessageDialog(null, "La informacion completa del trabajador es" + SingletonsUsu.u.toString());
             }
         }
         
-        SingletonsUsu.u = DAOUSUgrafica.obtenerUsu(SingletonsUsu.u.getDni());
+        //SingletonsUsu.u = DAOUSUgrafica.obtenerUsu(SingletonsUsu.u.getDni());
         //poner para imprimir la misma pantalla de modifica pero la llamaremos imprimir y le pondremos al controlador
         //que no muestre los botones de modifica ni modificar avata, solo el cancelar, asi podremos ver solo los datos
-        JOptionPane.showMessageDialog(null, "La informacion completa del trabajador es" + SingletonsUsu.u.toString());
+        //JOptionPane.showMessageDialog(null, "La informacion completa del trabajador es" + SingletonsUsu.u.toString());
 
     }
+    
+    
     
     public static void modificaUsugrafica() {               
         DAOUSUgrafica.modificaUsugrafica();        
@@ -230,5 +244,7 @@ public class BLLUSUgrafica {
         ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
 
     }  
+    
+    
     
 }
