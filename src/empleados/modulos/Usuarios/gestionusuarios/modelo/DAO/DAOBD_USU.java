@@ -153,6 +153,52 @@ public class DAOBD_USU {
         return b;
 
     }
+    
+    public int modificarUsuariologin(Connection con) {
+
+        PreparedStatement stmt = null;
+        int b = 0;
+        try {
+            /*
+            "INSERT INTO EFBBDD.usuarios"
+                    + "(nombre,edad,dni,poblacion,fechaNacimiento,"
+                    + "login,password,email,avatar,tipo)"
+            */
+            stmt = con.prepareStatement("UPDATE EFBBDD.usuarios SET nombre=?,edad=?,dni=?,"
+                    + "poblacion=?,fechaNacimiento=?,"
+                    + "login=?, password=?, email=?, avatar=?, tipo=? WHERE dni=? ");
+
+            stmt.setString(1, SingletonsUsu.usulogin.getNombre());
+            stmt.setInt(2, SingletonsUsu.usulogin.getEdad());
+            stmt.setString(3, SingletonsUsu.usulogin.getDni());
+            stmt.setString(4, SingletonsUsu.usulogin.getDepartamento());//localidad
+            stmt.setString(5, SingletonsUsu.usulogin.getFechaNacimiento().toString());            
+            stmt.setString(6, SingletonsUsu.usulogin.getLogin());
+            stmt.setString(7, SingletonsUsu.usulogin.getPassword());
+            stmt.setString(8, SingletonsUsu.usulogin.getEmail());
+            stmt.setString(9, SingletonsUsu.usulogin.getAvatar());
+            stmt.setString(10, SingletonsUsu.usulogin.getTipo());
+            stmt.setString(11, SingletonsUsu.usulogin.getDni());
+            
+
+            b = stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al actualizar el Usuario!");
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+
+                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+                }
+            }
+        }
+        return b;
+
+    }
 
     public int borrarUsuario(Connection con) {
 

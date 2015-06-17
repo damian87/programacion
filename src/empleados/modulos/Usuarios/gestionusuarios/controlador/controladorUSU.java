@@ -150,6 +150,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         _BTNMEDIA,
         _BTNMAYMEN,
         _INFO,
+        _FILTRARUSU,
         //BOTONES CREA
         _CREAREF,
         _BORRAR_CAMPOSEF,
@@ -242,7 +243,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
         if (i == 1) {
 
-            //interfazEFgrafica
+            //interfazUSUgrafica
             this.usugraf.setVisible(true);
 
             try {
@@ -302,7 +303,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             });
 
             this.usugraf.guardartxt.doClick();
-            
+
             FileUploader.pintaravatar(this.usugraf.labelavatar, 90, 90);
 
             this.usugraf.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
@@ -320,6 +321,10 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.usugraf.primero.setActionCommand("_BTN_PRIMERO");
             this.usugraf.primero.setName("_BTN_PRIMERO");
             this.usugraf.primero.addActionListener(this);
+
+            this.usugraf.jTextField1.setActionCommand("_FILTRARUSU");
+            this.usugraf.jTextField1.setName("_FILTRARUSU");
+            this.usugraf.jTextField1.addActionListener(this);
 
             this.usugraf.jComboBox1.setActionCommand("_COMBOX");
             this.usugraf.jComboBox1.setName("_COMBOX");
@@ -468,8 +473,15 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.modiUSU.jPanel1.setOpaque(false);
             c.add(this.modiUSU.jPanel1);
 
-            BLLUSUgrafica.modificaUsuariograficallenacampos();
-            DAOUSUgrafica.modificaUsugraficallenadodatos();
+            if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
+                DAOUSUgrafica.modificaUsugraficallenadodatos();
+                FileUploader.pintaravatar(this.modiUSU.labelavatar, 90, 90);
+            } else {
+
+                BLLUSUgrafica.modificaUsuariograficallenacampos();
+                FileUploader.pintaravataref(this.modiUSU.labelavatar, 90, 90);
+            }
+
             FileUploader.pintaravatar(this.modiUSU.labelavatar, 90, 90);
 
             this.modiUSU.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -484,8 +496,6 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             });
 
             this.modiUSU.txtedad.setEditable(false);
-            this.modiUSU.txtantiguedad.setEditable(false);
-            this.modiUSU.txtsueldo.setEditable(false);
 
             this.modiUSU.ModificarEF.setActionCommand("_MMODIFICA");
             this.modiUSU.ModificarEF.setName("_MMODIFICA");
@@ -870,6 +880,11 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 //new subprincipal().setVisible(true);
                 break;
 
+            case _FILTRARUSU:
+                STMUSU filtra = new STMUSU();
+                filtra.filtrar();
+                break;
+
             case _BTNMEDIA:
                 BLLBD_USU usuario = new BLLBD_USU();
 
@@ -890,13 +905,13 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             //menupager
             case _MENUEMPLEADOS:
-                
-                menpa.dispose();                
+
+                menpa.dispose();
                 new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
 
                 break;
             case _MENUUSUARIOS:
-                
+
                 menpa.dispose();
                 new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
 
@@ -913,9 +928,9 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             case _CANCELAR_CREAEF:
                 /*BLLUSUgrafica.borrarcamporUsuarioModifica();
-                creaUSU.dispose();
-                //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);*/
+                 creaUSU.dispose();
+                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
+                 new controlador_login(new Iniciologin(), 5).Iniciar(5);*/
                 BLLUSUgrafica.BorrarcamposUsuarioCreagrafica();
                 break;
 
@@ -936,7 +951,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 BLLUSUgrafica.borrarcamporUsuarioModifica();
                 modiUSU.dispose();
 
-                new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
+                //new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
                 break;
 
             case _TABLAEF:

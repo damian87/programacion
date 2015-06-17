@@ -306,7 +306,7 @@ public class DAOUSUgrafica {
         PerfilUsu.txtNombre.setText("");
         PerfilUsu.txtDepartamento.setText("");
         PerfilUsu.DatePiketEFnac.setDate(null);
-        PerfilUsu.DatePikerEFCont.setDate(null);
+        //PerfilUsu.DatePikerEFCont.setDate(null);
         PerfilUsu.txtemail.setText("");
         PerfilUsu.txtlogin.setText("");
         PerfilUsu.txtpassword.setText("");
@@ -342,15 +342,15 @@ public class DAOUSUgrafica {
         //String nombre, departamento;
         //int pos = 0;
         //fecha fnac = null, fcont = null;
-        PerfilUsu.txtNombre.setText(SingletonsUsu.u.getNombre());
-        PerfilUsu.txtDepartamento.setText(SingletonsUsu.u.getDepartamento());
-        PerfilUsu.txtantiguedad.setText(Integer.toString(SingletonsUsu.u.AntiguedadAltaUsu()));
-        PerfilUsu.txtedad.setText(Integer.toString(SingletonsUsu.u.getEdad()));
+        PerfilUsu.txtNombre.setText(SingletonsUsu.usulogin.getNombre());
+        PerfilUsu.txtDepartamento.setText(SingletonsUsu.usulogin.getDepartamento());
+        //PerfilUsu.txtantiguedad.setText(Integer.toString(SingletonsUsu.u.AntiguedadAltaUsu()));
+        PerfilUsu.txtedad.setText(Integer.toString(SingletonsUsu.usulogin.getEdad()));
         //PerfilUsu.txtsueldo.setText(Float.toString(SingletonsUsu.u.calcularsueldo()));
-        ((JTextFieldDateEditor) PerfilUsu.DatePiketEFnac.getDateEditor()).setText(SingletonsUsu.u.getFechaNacimiento().toString());
-        ((JTextFieldDateEditor) PerfilUsu.DatePikerEFCont.getDateEditor()).setText(SingletonsUsu.u.getfechaAlta().toString());
-        PerfilUsu.txtemail.setText(SingletonsUsu.u.getEmail());
-        PerfilUsu.txtlogin.setText(SingletonsUsu.u.getLogin());
+        ((JTextFieldDateEditor) PerfilUsu.DatePiketEFnac.getDateEditor()).setText(SingletonsUsu.usulogin.getFechaNacimiento().toString());
+        //((JTextFieldDateEditor) PerfilUsu.DatePikerEFCont.getDateEditor()).setText(SingletonsUsu.u.getfechaAlta().toString());
+        PerfilUsu.txtemail.setText(SingletonsUsu.usulogin.getEmail());
+        PerfilUsu.txtlogin.setText(SingletonsUsu.usulogin.getLogin());
         PerfilUsu.txtpassword.setText("");
 
     }
@@ -460,21 +460,21 @@ public class DAOUSUgrafica {
             JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
 
         } else {
-            SingletonsUsu.u.setNombre(modificanombreUSUgrafica());
-            SingletonsUsu.u.setDepartamento(modificapoblacionUSUgrafica());
-            SingletonsUsu.u.setFechaNacimiento(fnacUsumodificagrafica());
+            SingletonsUsu.usulogin.setNombre(modificanombreUSUgrafica());
+            SingletonsUsu.usulogin.setDepartamento(modificapoblacionUSUgrafica());
+            SingletonsUsu.usulogin.setFechaNacimiento(fnacUsumodificagrafica());
         //SingletonsUsu.u.setfechaAlta(fcontEFmodificagrafica());
             //ArraylistEF.efi.setSueldo(ArraylistEF.efi.calcularsueldo());
-            SingletonsUsu.u.setLogin(modificausuariologin());
-            SingletonsUsu.u.setPassword(modificapassword());
-            SingletonsUsu.u.setEmail(modificaemail());
+            SingletonsUsu.usulogin.setLogin(modificausuariologin());
+            SingletonsUsu.usulogin.setPassword(modificapassword());
+            SingletonsUsu.usulogin.setEmail(modificaemail());
 
             JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
 
             borrarcamposModifica();
             PerfilUsu.txtNombre.setBackground(Color.WHITE);
             PerfilUsu.txtDepartamento.setBackground(Color.WHITE);
-            PerfilUsu.txtantiguedad.setBackground(Color.WHITE);
+            //PerfilUsu.txtantiguedad.setBackground(Color.WHITE);
             PerfilUsu.txtedad.setBackground(Color.WHITE);
             PerfilUsu.DatePiketEFnac.setBackground(Color.WHITE);
             //PerfilUsu.DatePikerEFCont.setBackground(Color.WHITE);

@@ -7,6 +7,7 @@ package empleados.modulos.Usuarios.gestionusuarios.modelo.BLL;
 
 import empleados.clases.conexionBBDD;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.DAO.DAOBD_USU;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -52,14 +53,21 @@ public class BLLBD_USU {
     public int modificarUsu_BD() {
 
         Connection _con;
+        int rd;
         //producto ProductoModificado = null;
         conexionBBDD conexion_DB = new conexionBBDD();
         _con = conexion_DB.AbrirConexion();
-
-        //JOptionPane.showMessageDialog(null, ArraylistEF.efi.toString());
         DAOBD_USU usu_DAO = new DAOBD_USU();
+        //JOptionPane.showMessageDialog(null, ArraylistEF.efi.toString());
+        if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
+             rd = usu_DAO.modificarUsuariologin(_con);
+        } else {
 
-        int rd = usu_DAO.modificarUsuario(_con);
+             rd = usu_DAO.modificarUsuario(_con);
+        }
+        
+
+         
 
         conexion_DB.CerrarConexion(_con);
         return rd;

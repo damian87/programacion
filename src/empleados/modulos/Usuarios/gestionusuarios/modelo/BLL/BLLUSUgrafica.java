@@ -241,7 +241,7 @@ public class BLLUSUgrafica {
 
         BLLBD_USU modi = new BLLBD_USU();        
         modi.modificarUsu_BD();
-        ((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
+        //((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
 
     }  
     

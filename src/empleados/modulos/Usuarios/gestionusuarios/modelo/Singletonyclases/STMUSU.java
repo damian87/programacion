@@ -14,6 +14,7 @@ import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import static empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU.combo;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLBD_USU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.pagerprod.pagina;
+import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
 //import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.combo;
 //import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
 //import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
@@ -174,14 +175,16 @@ public class STMUSU extends AbstractTableModel{
     }
 
     public void filtrar() {
+        
         datos.clear();
         
         int cont=0;
         //String nom=interfazEF.jTextField1.getText();
-        String nom=(String) ((JComboBox)combo).getSelectedItem(); 
+        //String nom=(String) ((JComboBox)combo).getSelectedItem(); 
+        String nom = interfaceUSUgrafica.jTextField1.getText();
         for(int i=0;i<datosaux.size();i++) {
-            //if(datosaux.get(i).getNombre().contains(nom)){
-            if(datosaux.get(i).getNombre().toLowerCase().startsWith(nom.toLowerCase())){
+            if(datosaux.get(i).getNombre().contains(nom)){
+            //if(datosaux.get(i).getNombre().toLowerCase().startsWith(nom.toLowerCase())){
                 addRow(datosaux.get(i));
                 cont++;
             }
