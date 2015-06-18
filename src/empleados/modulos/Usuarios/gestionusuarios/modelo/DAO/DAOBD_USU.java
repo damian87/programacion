@@ -83,6 +83,7 @@ public class DAOBD_USU {
                 naci = new fecha(rs.getString("fechaNacimiento"));
                 usr.setFechaNacimiento(naci);                
                 usr.setLogin(rs.getString("login"));
+                usr.setPassword(rs.getString("password"));
                 usr.setEmail(rs.getString("email"));
                 usr.setAvatar(rs.getString("avatar"));
                 usr.setTipo(rs.getString("tipo"));

@@ -273,6 +273,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             pagina.inicializa();
             pagina.initLinkBox();
+            
 
             this.usugraf.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             this.usugraf.addWindowListener(new WindowAdapter() {
