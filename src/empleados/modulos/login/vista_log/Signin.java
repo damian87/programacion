@@ -9,12 +9,12 @@ package empleados.modulos.login.vista_log;
  *
  * @author damian
  */
-public class Iniciologin extends javax.swing.JFrame {
+public class Signin extends javax.swing.JFrame {
 
     /**
      * Creates new form inicio
      */
-    public Iniciologin() {
+    public Signin() {
         initComponents();
     }
 

@@ -11,7 +11,7 @@ import empleados.librerias.fondopanelconfig;
 import empleados.librerias.fondopanelcrear;
 import empleados.librerias.fondopanellogin;
 import empleados.librerias.fondopanelpager;
-import empleados.menuempleados;
+import empleados.Mainapli;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLBD_USU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.BLL.BLLUSUgrafica;
@@ -32,42 +32,19 @@ import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafi
 import empleados.modulos.Usuarios.gestionusuarios.vista.menupager;
 import empleados.modulos.config.configuracion;
 import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
-//import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
-//import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
-//import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOEFgrafica;
-//import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
-//import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
-//import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-//import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
-//import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
-//import empleados.modulos.gestionempleados.gestionEF.vista.AutocompleteJComboBox;
-//import empleados.modulos.gestionempleados.gestionEF.vista.StringSearchable;
-//import empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.combo;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.comboActionPerformed;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardarjson;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardartxt;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.guardarxml;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.jComboBox1;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.sorter;
-//import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.ModificarEF;
-//import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.txtDepartamento;
 import empleados.modulos.login.vista_log.recordarcontraseña;
-import empleados.modulos.login.vista_log.Iniciologin;
+import empleados.modulos.login.vista_log.Signin;
 import empleados.modulos.login.controlador_log.controlador_login;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -89,19 +66,16 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new STMUSU());
     public static AutocompleteJComboBox combo = null;
-    public static interfaceUSUgrafica usugraf = new interfaceUSUgrafica();
-    //public static subprincipal subpri = new subprincipal();
+    public static interfaceUSUgrafica usugraf = new interfaceUSUgrafica();   
     public static CreaUsu creaUSU = new CreaUsu();
     public static PerfilUsu modiUSU = new PerfilUsu();
     public static configuracion configu = new configuracion();
-    public static Iniciologin inilog = new Iniciologin();
+    public static Signin inilog = new Signin();
     public static recordarcontraseña recordar = new recordarcontraseña();
     public static menupager menpa = new menupager();
 
     public controladorUSU(JFrame inicio, int i) {
-        /*if (i == 0) {
-         this.subpri = (subprincipal) inicio;
-         }*/
+        
 
         if (i == 1) {
             this.usugraf = (interfaceUSUgrafica) inicio;
@@ -122,13 +96,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         if (i == 5) {
             this.menpa = (menupager) inicio;
         }
-        /*if (i == 5) {
-         this.inilog = (Iniciologin) inicio;
-         }
         
-         if (i == 6) {
-         this.recordar = (recordarcontraseña) inicio;
-         }*/
 
     }
 
@@ -208,38 +176,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
     //en el new controladorEF (new interfaceUSUgrafica(), 0).Iniciar(0);
     //el primer 0 es para entrar al if del controladorEF, y el segundo 0 es para la funion iniciar k 
     public void Iniciar(int i) {
-        /*//SUBPRINCIPAL
-         if (i == 0) {
-         this.subpri.setVisible(true);
-
-         this.subpri.setTitle("Bienvenidos a la Gestion de Empleados");
-         this.subpri.setLocationRelativeTo(null);
-         this.subpri.setSize(525, 425);//ancho x alto
-         this.subpri.setResizable(false);
-         Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-         this.subpri.setIconImage(icono);
-
-         this.subpri.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-         this.subpri.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-         subpri.addWindowListener(new WindowAdapter() {
-         @Override
-         public void windowClosing(WindowEvent e) {
-         JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-         subpri.dispose();
-         System.exit(0);
-         }
-         });
-
-         this.subpri.configEF.setActionCommand("_CONFIGURACION");
-         this.subpri.configEF.setName("_CONFIGURACION");
-         this.subpri.configEF.addActionListener(this);
-
-         this.subpri.imprimirEF.setActionCommand("_GESTIONEF");
-         this.subpri.imprimirEF.setName("_GESTIONEF");
-         this.subpri.imprimirEF.addActionListener(this);
-
-         }*/
+       
 
         if (i == 1) {
 
@@ -281,7 +218,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 public void windowClosing(WindowEvent e) {
                     usugraf.dispose();
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Signin(), 5).Iniciar(5);
 
                 }
             });
@@ -401,10 +338,8 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             creaUSU.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    creaUSU.dispose();
-                    //EFBLLgrafica.GuardarSinEnterarse();
-                    //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    creaUSU.dispose();                    
+                    new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
 
@@ -454,7 +389,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 this.creaUSU.jPanel2.setVisible(true);
             }
 
-            //FALTAN COLOCAR LOS KEYPRESSET Y KEYRELEASSED
+            
         }
 
         if (i == 3) {
@@ -491,8 +426,8 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 public void windowClosing(WindowEvent e) {
                     modiUSU.dispose();
 
-                    //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    
+                    new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
 
@@ -564,7 +499,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                     configu.dispose();
 
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
 
@@ -631,7 +566,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                     menpa.dispose();
 
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
 
@@ -646,103 +581,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         }
 
     }
-    /*//modulo de inicio login
-     if (i == 5) {
-
-     this.inilog.setVisible(true);
-
-     this.inilog.setTitle("Bienvenidos a la Gestion de Empleados");
-     this.inilog.setLocationRelativeTo(null);
-     this.inilog.setSize(525, 425);//ancho x alto
-     this.inilog.setResizable(false);
-     Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-     this.inilog.setIconImage(icono);
-
-     this.inilog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-     this.inilog.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-     inilog.addWindowListener(new WindowAdapter() {
-     @Override
-     public void windowClosing(WindowEvent e) {
-     JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-     inilog.dispose();
-     System.exit(0);
-     }
-     });
-
-     this.inilog.txtusuario.setActionCommand("_usuario");
-     this.inilog.txtusuario.setName("_usuario");
-     this.inilog.txtusuario.addActionListener(this);
-     this.inilog.txtusuario.addKeyListener(this);
-
-     this.inilog.txtpassword.setActionCommand("_password");
-     this.inilog.txtpassword.setName("_password");
-     this.inilog.txtpassword.addActionListener(this);
-     this.inilog.txtpassword.addKeyListener(this);
-
-     this.inilog.botonenter.setActionCommand("_enter");
-     this.inilog.botonenter.setName("_enter");
-     this.inilog.botonenter.addActionListener(this);
-
-     this.inilog.botonolvidarpass.setActionCommand("_olvidarpass");
-     this.inilog.botonolvidarpass.setName("_olvidarpass");
-     this.inilog.botonolvidarpass.addActionListener(this);
-
-     this.inilog.newusu.setActionCommand("_newusu");
-     this.inilog.newusu.setName("_newusu");
-     this.inilog.newusu.addActionListener(this);
-
-     this.inilog.configEF.setActionCommand("_configurador");
-     this.inilog.configEF.setName("_configurador");
-     this.inilog.configEF.addActionListener(this);
-
-     }
-     //Reestablecer password
-     if (i == 6) {
-
-     this.recordar.setVisible(true);
-
-     this.recordar.setTitle("Restablecer Password");
-     this.recordar.setLocationRelativeTo(null);
-     this.recordar.setSize(525, 425);//ancho x alto
-     this.recordar.setResizable(false);
-     Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-     this.recordar.setIconImage(icono);
-     this.recordar.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-     this.recordar.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-     recordar.addWindowListener(new WindowAdapter() {
-     @Override
-     public void windowClosing(WindowEvent e) {
-     JOptionPane.showMessageDialog(null, "Ha cancelado la operacion");
-     recordar.dispose();
-     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-     new controlador_login(new Iniciologin(), 5).Iniciar(5);
-
-     }
-     });
-
-     this.recordar.txtlogin.setActionCommand("_RUSU");
-     this.recordar.txtlogin.setName("_RUSU");
-     this.recordar.txtlogin.addActionListener(this);
-     this.recordar.txtlogin.addKeyListener(this);
-
-     this.recordar.txtpassword.setActionCommand("_RPASS");
-     this.recordar.txtpassword.setName("_RPASS");
-     this.recordar.txtpassword.addActionListener(this);
-     this.recordar.txtpassword.addKeyListener(this);
-
-     this.recordar.botonreestablecer.setActionCommand("_RRESSTABLECER");
-     this.recordar.botonreestablecer.setName("_RRESSTABLECER");
-     this.recordar.botonreestablecer.addActionListener(this);
-
-     this.recordar.botoncancelar.setActionCommand("_RCANCELAR");
-     this.recordar.botoncancelar.setName("_RCANCELAR");
-     this.recordar.botoncancelar.addActionListener(this);
-
-     }
-
-     }*/
+   
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -782,14 +621,14 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             case _olvidarpass:
                 inilog.dispose();
                 //new controladorEF(new recordarcontraseña(), 6).Iniciar(6);
-                new controlador_login(new Iniciologin(), 6).Iniciar(6);
+                new controlador_login(new Signin(), 6).Iniciar(6);
 
                 break;
             //resstablecer
             case _RCANCELAR:
                 inilog.dispose();
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                new controlador_login(new Signin(), 5).Iniciar(5);
                 break;
 
             case _RRESSTABLECER:
@@ -799,17 +638,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
                 break;
 
-            /*//subprincipal
-             case _GESTIONEF:
-             subpri.dispose();
-             new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
-             break;
-
-             case _CONFIGURACION:
-             subpri.dispose();
-             new controladorUSU(new configuracion(), 4).Iniciar(4);
-
-             break;*/
+           
             //interfaz
             case _BTN_ANTERIOR:
                 pagina.currentPageIndex -= 1;
@@ -877,7 +706,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 usugraf.dispose();
                 JOptionPane.showMessageDialog(null, "Cerrando sesion, hasta pronto");
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                new controlador_login(new Signin(), 5).Iniciar(5);
                 //new subprincipal().setVisible(true);
                 break;
 
@@ -928,10 +757,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 break;
 
             case _CANCELAR_CREAEF:
-                /*BLLUSUgrafica.borrarcamporUsuarioModifica();
-                 creaUSU.dispose();
-                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                 new controlador_login(new Iniciologin(), 5).Iniciar(5);*/
+                
                 BLLUSUgrafica.BorrarcamposUsuarioCreagrafica();
                 break;
 
@@ -991,40 +817,40 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             //config
             case _CVOLVER:
                 configu.dispose();
-                //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                
+                new controlador_login(new Signin(), 5).Iniciar(5);
                 break;
 
             case _CEUROS:
-                menuempleados.conf.setMoneda('€');
+                Mainapli.conf.setMoneda('€');
                 break;
 
             case _CLIBRAS:
-                menuempleados.conf.setMoneda('£');
+                Mainapli.conf.setMoneda('£');
                 break;
 
             case _CDOLARES:
-                menuempleados.conf.setMoneda('$');
+                Mainapli.conf.setMoneda('$');
                 break;
 
             case _CUNDECI:
-                menuempleados.conf.setDecimales(1);
+                Mainapli.conf.setDecimales(1);
                 break;
 
             case _CDOSDECI:
-                menuempleados.conf.setDecimales(2);
+                Mainapli.conf.setDecimales(2);
                 break;
 
             case _CJSON:
-                menuempleados.conf.setFichero(1);
+                Mainapli.conf.setFichero(1);
                 break;
 
             case _CXML:
-                menuempleados.conf.setFichero(2);
+                Mainapli.conf.setFichero(2);
                 break;
 
             case _CTXT:
-                menuempleados.conf.setFichero(3);
+                Mainapli.conf.setFichero(3);
                 break;
 
         }
@@ -1042,8 +868,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
     @Override
     public void keyPressed(KeyEvent em) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        //_MNOMBRE,
-        //_MDEPARTAMENTO,
+        
         switch (Accion.valueOf(em.getComponent().getName())) {
             //modulo login
             case _usuario:

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package empleados.palmentem;
+package empleados.Utiles;
 
 import empleados.clases.conexionBBDD;
 import empleados.clases.configuracion;
-import static empleados.menuempleados.conf;
+import static empleados.Mainapli.conf;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOBD_EF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.dummiesef;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;

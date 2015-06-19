@@ -1,5 +1,5 @@
 package empleados.clases;
-import empleados.menuempleados;
+import empleados.Mainapli;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,7 +9,6 @@ import java.util.GregorianCalendar;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import empleados.modulos.gestionempleados.clases.empleado;
-import empleados.palmentem.*;
 import javax.swing.JOptionPane;
 
 @XStreamAlias ("fecha")
@@ -348,17 +347,17 @@ public boolean compruebafecha (){
 				*/
 		String fecha=null;
 		
-		if (menuempleados.conf==null){
+		if (Mainapli.conf==null){
 			fecha=this.dia+"/"+this.mes+"/"+this.año;
 		}
 		
-		else if (menuempleados.conf.getFormatofecha().equals("dd/mm/yyyy")){//dd/mm/yyyy
+		else if (Mainapli.conf.getFormatofecha().equals("dd/mm/yyyy")){//dd/mm/yyyy
 			fecha=this.dia+"/"+this.mes+"/"+this.año;
 		}
-		else if (menuempleados.conf.getFormatofecha().equals("mm/dd/yyyy")){//mm/dd/yyyy
+		else if (Mainapli.conf.getFormatofecha().equals("mm/dd/yyyy")){//mm/dd/yyyy
 			fecha=this.mes+"/"+this.dia+"/"+this.año;
 		}
-		else if (menuempleados.conf.getFormatofecha().equals("yyyy/mm/dd")){//yyyy/mm/dd
+		else if (Mainapli.conf.getFormatofecha().equals("yyyy/mm/dd")){//yyyy/mm/dd
 			fecha=this.año+"/"+this.mes+"/"+this.dia;
 	}
 		return fecha;

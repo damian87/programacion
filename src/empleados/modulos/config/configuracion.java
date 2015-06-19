@@ -12,7 +12,7 @@ package empleados.modulos.config;
 
 import empleados.modulos.gestionempleados.gestionEF.vista.*;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
-import empleados.menuempleados;
+import empleados.Mainapli;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;

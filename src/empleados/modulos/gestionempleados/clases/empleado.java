@@ -6,7 +6,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import empleados.clases.fecha;
 import empleados.librerias.formato;
-import empleados.menuempleados;
+import empleados.Mainapli;
 
 @XStreamAlias ("empleado")
 public class empleado implements Comparable<empleado>, Serializable{
@@ -180,17 +180,17 @@ public class empleado implements Comparable<empleado>, Serializable{
 		String s="";
 		String s1="";
 		
-		if (menuempleados.conf==null){
+		if (Mainapli.conf==null){
 			s=formato.UnDecimale(sueldo);
 			//imprimir.append ("sueldo: "+formato.UnDecimale(sueldo)+"\n");
 		}
 		
 		
-		else if (menuempleados.conf.getDecimales()==1){
+		else if (Mainapli.conf.getDecimales()==1){
 			s=formato.UnDecimale(sueldo);
 			//imprimir.append ("sueldo: "+formato.UnDecimale(sueldo)+"\n");
 		}
-		else if (menuempleados.conf.getDecimales()==2){
+		else if (Mainapli.conf.getDecimales()==2){
 			s=formato.dosDecimales(sueldo);
 			//imprimir.append ("sueldo: "+formato.dosDecimales(sueldo)+"\n");
 		}

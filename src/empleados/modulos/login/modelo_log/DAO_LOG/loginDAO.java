@@ -6,7 +6,7 @@
 package empleados.modulos.login.modelo_log.DAO_LOG;
 
 import empleados.clases.fecha;
-import empleados.clases.Encriptar;
+import empleados.librerias.Encriptar;
 import empleados.librerias.validate;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
@@ -14,7 +14,7 @@ import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
-import empleados.modulos.login.vista_log.Iniciologin;
+import empleados.modulos.login.vista_log.Signin;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,8 +31,8 @@ public class loginDAO {
 
     public static void PideUsuario() {
 
-        if (Iniciologin.txtusuario.getText().isEmpty()) {
-            Iniciologin.txtusuario.setForeground(Color.red);
+        if (Signin.txtusuario.getText().isEmpty()) {
+            Signin.txtusuario.setForeground(Color.red);
             //Iniciologin.txtusuario.setText("Introduzca usuario");
             //Iniciologin.txtusuario.requestFocus();
             return;
@@ -49,8 +49,8 @@ public class loginDAO {
 
     public static void PidePassword() {
 
-        if (Iniciologin.txtpassword.getText().isEmpty()) {
-            Iniciologin.txtpassword.setForeground(Color.red);
+        if (Signin.txtpassword.getText().isEmpty()) {
+            Signin.txtpassword.setForeground(Color.red);
             //Iniciologin.txtpassword.setText("Introduzca password");
             //Iniciologin.txtpassword.requestFocus();
             return;
@@ -61,8 +61,8 @@ public class loginDAO {
 
     public static void confirmarlog() {
 
-        String dni = Iniciologin.txtusuario.getText();
-        String password = Iniciologin.txtpassword.getText();
+        String dni = Signin.txtusuario.getText();
+        String password = Signin.txtpassword.getText();
         boolean login;
         String conectado = "no";
 
@@ -81,11 +81,11 @@ public class loginDAO {
              this.Inicio.jInternalFrame1.setContentPane(p);
              this.Inicio.labelAvatarInicio.setBorder(BorderFactory.createLineBorder(Color.black));*/
         } else {
-            Iniciologin.txtpassword.setForeground(Color.red);
-            Iniciologin.txtpassword.setText("Contraseña incorrecta");
-            Iniciologin.txtusuario.setForeground(Color.red);
-            Iniciologin.txtusuario.setText("Usuario incorrecto");
-            Iniciologin.txtusuario.requestFocus();
+            Signin.txtpassword.setForeground(Color.red);
+            Signin.txtpassword.setText("Contraseña incorrecta");
+            Signin.txtusuario.setForeground(Color.red);
+            Signin.txtusuario.setText("Usuario incorrecto");
+            Signin.txtusuario.requestFocus();
             return;
         }
 

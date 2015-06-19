@@ -9,7 +9,7 @@ package empleados.modulos.gestionempleados.gestionEF.modelo.DAO;
 import com.toedter.calendar.JTextFieldDateEditor;
 import empleados.clases.fecha;
 import empleados.clases.Mail;
-import empleados.clases.Encriptar;
+import empleados.librerias.Encriptar;
 import static empleados.librerias.FileUploader.PATH_auto;
 import empleados.librerias.validate;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
@@ -17,7 +17,7 @@ import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.Single
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
 import empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
-import empleados.menuempleados;
+import empleados.Mainapli;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.STMEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.pager.pagina1;
 import static empleados.modulos.gestionempleados.gestionEF.vista.creaEFgrafica.txtDNIEF;

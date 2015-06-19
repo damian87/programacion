@@ -5,7 +5,7 @@
  */
 package empleados.modulos.gestionempleados.gestionEF.modelo.BLL;
 
-import empleados.clases.Encriptar;
+import empleados.librerias.Encriptar;
 import empleados.librerias.FileUploader;
 import empleados.modulos.gestionempleados.clases.empleado;
 import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
@@ -20,7 +20,7 @@ import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
 import empleados.modulos.login.controlador_log.controlador_login;
-import empleados.modulos.login.vista_log.Iniciologin;
+import empleados.modulos.login.vista_log.Signin;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -107,13 +107,13 @@ public class EFBLLgrafica {
         if (SingletonsEF.efilogin == null) {
             DAOEFgrafica.borrarcamposcrea();
             creaEF.dispose();
-            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+            new controlador_login(new Signin(), 5).Iniciar(5);
 
         } else if ("User".equals(SingletonsEF.efilogin.getTipo())) {
 
             DAOEFgrafica.borrarcamposcrea();
             creaEF.dispose();
-            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+            new controlador_login(new Signin(), 5).Iniciar(5);
 
         } else {
             DAOEFgrafica.borrarcamposcrea();
@@ -126,7 +126,7 @@ public class EFBLLgrafica {
         if ("User".equals(SingletonsEF.efilogin.getTipo())) {
             DAOEFgrafica.borrarcamposModifica();
             modief.dispose();
-            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+            new controlador_login(new Signin(), 5).Iniciar(5);
         } else {
 
             DAOEFgrafica.borrarcamposModifica();

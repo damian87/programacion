@@ -5,7 +5,7 @@
  */
 package empleados.modulos.gestionempleados.gestionEF.modelo.DAO;
 
-import empleados.clases.Encriptar;
+import empleados.librerias.Encriptar;
 import empleados.clases.fecha;
 import static empleados.modulos.gestionempleados.gestionEF.modelo.DAO.dummiesef.dummies;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;

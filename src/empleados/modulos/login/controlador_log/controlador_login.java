@@ -27,7 +27,7 @@ import empleados.modulos.Usuarios.gestionusuarios.vista.menupager;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
 import empleados.modulos.login.vista_log.recordarcontraseña;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
-import empleados.modulos.login.vista_log.Iniciologin;
+import empleados.modulos.login.vista_log.Signin;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -49,12 +49,12 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  */
 public class controlador_login implements ActionListener, KeyListener, MouseListener {
 
-    public static Iniciologin inilog = new Iniciologin();
+    public static Signin inilog = new Signin();
     public static recordarcontraseña recordar = new recordarcontraseña();
 
     public controlador_login(JFrame inicio, int i) {
         if (i == 5) {
-            this.inilog = (Iniciologin) inicio;
+            this.inilog = (Signin) inicio;
         }
         if (i == 6) {
             this.recordar = (recordarcontraseña) inicio;
@@ -161,7 +161,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
                 public void windowClosing(WindowEvent e) {
                     JOptionPane.showMessageDialog(null, "Ha cancelado la operacion");
                     recordar.dispose();
-                    new controladorEF(new Iniciologin(), 5).Iniciar(5);
+                    new controladorEF(new Signin(), 5).Iniciar(5);
 
                 }
             });
@@ -244,7 +244,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             case _RCANCELAR:
                 recordar.dispose();
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                new controlador_login(new Signin(), 5).Iniciar(5);
                 break;
 
             case _RRESSTABLECER:

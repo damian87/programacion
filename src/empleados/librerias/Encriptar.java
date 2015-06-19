@@ -1,4 +1,4 @@
-package empleados.clases;
+package empleados.librerias;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import java.security.spec.KeySpec;

@@ -5,7 +5,7 @@
  */
 package empleados.modulos.Usuarios.gestionusuarios.modelo.DAO;
 
-import empleados.clases.Encriptar;
+import empleados.librerias.Encriptar;
 import empleados.clases.fecha;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;

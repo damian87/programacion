@@ -1,4 +1,4 @@
-package empleados.palmentem;
+package empleados.Utiles;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;

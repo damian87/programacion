@@ -5,7 +5,7 @@
  */
 package empleados.modulos.Usuarios.gestionusuarios.modelo.BLL;
 
-import empleados.clases.Encriptar;
+import empleados.librerias.Encriptar;
 import empleados.librerias.FileUploader;
 import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
 import static empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU.creaUSU;
@@ -18,7 +18,7 @@ import empleados.modulos.Usuarios.gestionusuarios.modelo.pagerprod.pagina;
 import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.TABLA;
 import empleados.modulos.login.controlador_log.controlador_login;
-import empleados.modulos.login.vista_log.Iniciologin;
+import empleados.modulos.login.vista_log.Signin;
 import javax.swing.JOptionPane;
 
 /**
@@ -120,13 +120,13 @@ public class BLLUSUgrafica {
         if (SingletonsUsu.usulogin == null) {
             DAOUSUgrafica.borrarcamposcrea();
             creaUSU.dispose();
-            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+            new controlador_login(new Signin(), 5).Iniciar(5);
 
         } else if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
 
             DAOUSUgrafica.borrarcamposcrea();
             creaUSU.dispose();
-            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+            new controlador_login(new Signin(), 5).Iniciar(5);
 
         } else {
             DAOUSUgrafica.borrarcamposcrea();
@@ -142,7 +142,7 @@ public class BLLUSUgrafica {
         if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
             DAOUSUgrafica.borrarcamposModifica();
             modiUSU.dispose();
-            new controlador_login(new Iniciologin(), 5).Iniciar(5);
+            new controlador_login(new Signin(), 5).Iniciar(5);
         } else {
 
             DAOUSUgrafica.borrarcamposModifica();

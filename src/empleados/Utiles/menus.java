@@ -1,13 +1,13 @@
-package empleados.palmentem;
+package empleados.Utiles;
 
-import empleados.menuempleados;
+import empleados.Mainapli;
 import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
 
 //import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.EFDAO;
-import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.ArraylistEF;
 /*import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.OrdenaEdad;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.OrdenaNombre;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.OrdenarAntiguedad;
@@ -102,11 +102,11 @@ public class menus {
 		JOptionPane.QUESTION_MESSAGE,null,tipo1,tipo1[0]);
 		
 		if(resp1 == 0)
-			menuempleados.conf.setMoneda('€');
+			Mainapli.conf.setMoneda('€');
 		else if(resp1 == 1)
-			menuempleados.conf.setMoneda('£');
+			Mainapli.conf.setMoneda('£');
 		else if(resp1 == 2)
-			menuempleados.conf.setMoneda('$');
+			Mainapli.conf.setMoneda('$');
 		
 		}
 	
@@ -118,11 +118,11 @@ public class menus {
 		JOptionPane.QUESTION_MESSAGE,null,tipo1,tipo1[0]);
 		
 		if(resp1 == 0)
-			menuempleados.conf.setFormatofecha("dd/mm/yyyy");
+			Mainapli.conf.setFormatofecha("dd/mm/yyyy");
 		else if(resp1 == 1)
-			menuempleados.conf.setFormatofecha("mm/dd/yyyy");
+			Mainapli.conf.setFormatofecha("mm/dd/yyyy");
 		else if(resp1 == 2)
-			menuempleados.conf.setFormatofecha("yyyy/mm/dd");
+			Mainapli.conf.setFormatofecha("yyyy/mm/dd");
 		
 		}
 		
@@ -164,9 +164,9 @@ public class menus {
 		JOptionPane.QUESTION_MESSAGE,null,tipo1,tipo1[0]);
 		
 		if(resp1 == 0)
-			menuempleados.conf.setDecimales(1);
+			Mainapli.conf.setDecimales(1);
 		else if(resp1 == 1)
-			menuempleados.conf.setDecimales(2);
+			Mainapli.conf.setDecimales(2);
 		
 		}
 	
@@ -229,11 +229,11 @@ public class menus {
 				JOptionPane.QUESTION_MESSAGE,null,tipo,tipo[0]);
 		
 		if(resp == 0){
-			menuempleados.conf.setFichero(1);
+			Mainapli.conf.setFichero(1);
 		}else if(resp == 1){
-			menuempleados.conf.setFichero(2);
+			Mainapli.conf.setFichero(2);
 		}else if(resp == 2){
-			menuempleados.conf.setFichero(3);
+			Mainapli.conf.setFichero(3);
 		}	
 	}
 	

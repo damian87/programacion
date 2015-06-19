@@ -6,7 +6,7 @@
 package empleados.modulos.login.modelo_log.BLL_LOG;
 
 import empleados.clases.conexionBBDD;
-import empleados.clases.Encriptar;
+import empleados.librerias.Encriptar;
 //import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.recordar;
 import static empleados.modulos.login.controlador_log.controlador_login.recordar;
 

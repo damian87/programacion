@@ -10,7 +10,7 @@ import empleados.librerias.fondopanelconfig;
 import empleados.librerias.fondopanelcrear;
 import empleados.librerias.fondopanellogin;
 import empleados.librerias.fondopanelpager;
-import empleados.menuempleados;
+import empleados.Mainapli;
 import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
@@ -53,7 +53,7 @@ import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.ModificarEF;
 import static empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica.txtDepartamento;
 import empleados.modulos.login.vista_log.recordarcontraseña;
-import empleados.modulos.login.vista_log.Iniciologin;
+import empleados.modulos.login.vista_log.Signin;
 import empleados.modulos.login.controlador_log.controlador_login;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -80,7 +80,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
     public static creaEFgrafica creaEF = new creaEFgrafica();
     public static modificaEFgrafica modief = new modificaEFgrafica();
     public static configuracion configu = new configuracion();
-    public static Iniciologin inilog = new Iniciologin();
+    public static Signin inilog = new Signin();
     public static recordarcontraseña recordar = new recordarcontraseña();
     public static menupager menpa = new menupager();
 
@@ -267,7 +267,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 public void windowClosing(WindowEvent e) {
                     efgraf.dispose();
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Signin(), 5).Iniciar(5);
 
                 }
             });
@@ -394,7 +394,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                     creaEF.dispose();
                     //EFBLLgrafica.GuardarSinEnterarse();
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
 
@@ -482,7 +482,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                     modief.dispose();
 
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
 
@@ -556,7 +556,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                     configu.dispose();
 
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
 
@@ -623,7 +623,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                     menpa.dispose();
 
                     //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                    new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
 
@@ -727,7 +727,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 efgraf.dispose();
                 JOptionPane.showMessageDialog(null, "Cerrando sesion, hasta pronto");
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                new controlador_login(new Signin(), 5).Iniciar(5);
                 //new subprincipal().setVisible(true);
                 break;
 
@@ -832,39 +832,39 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             case _CVOLVER:
                 configu.dispose();
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Iniciologin(), 5).Iniciar(5);
+                new controlador_login(new Signin(), 5).Iniciar(5);
                 break;
 
             case _CEUROS:
-                menuempleados.conf.setMoneda('€');
+                Mainapli.conf.setMoneda('€');
                 break;
 
             case _CLIBRAS:
-                menuempleados.conf.setMoneda('£');
+                Mainapli.conf.setMoneda('£');
                 break;
 
             case _CDOLARES:
-                menuempleados.conf.setMoneda('$');
+                Mainapli.conf.setMoneda('$');
                 break;
 
             case _CUNDECI:
-                menuempleados.conf.setDecimales(1);
+                Mainapli.conf.setDecimales(1);
                 break;
 
             case _CDOSDECI:
-                menuempleados.conf.setDecimales(2);
+                Mainapli.conf.setDecimales(2);
                 break;
 
             case _CJSON:
-                menuempleados.conf.setFichero(1);
+                Mainapli.conf.setFichero(1);
                 break;
 
             case _CXML:
-                menuempleados.conf.setFichero(2);
+                Mainapli.conf.setFichero(2);
                 break;
 
             case _CTXT:
-                menuempleados.conf.setFichero(3);
+                Mainapli.conf.setFichero(3);
                 break;
 
         }
