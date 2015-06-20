@@ -14,7 +14,7 @@ import empleados.Mainapli;
 import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica;
-import empleados.modulos.config.configuracion;
+import empleados.modulos.login.vista_log.configuracion;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.BLLBD_EF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
@@ -75,19 +75,15 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
 
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new STMEF());
     public static AutocompleteJComboBox combo = null;
-    public static interfaceEFgrafica efgraf = new interfaceEFgrafica();
-    //public static subprincipal subpri = new subprincipal();
+    public static interfaceEFgrafica efgraf = new interfaceEFgrafica();    
     public static creaEFgrafica creaEF = new creaEFgrafica();
-    public static modificaEFgrafica modief = new modificaEFgrafica();
-    public static configuracion configu = new configuracion();
+    public static modificaEFgrafica modief = new modificaEFgrafica();    
     public static Signin inilog = new Signin();
     public static recordarcontraseña recordar = new recordarcontraseña();
     public static menupager menpa = new menupager();
 
     public controladorEF(JFrame inicio, int i) {
-        /*if (i == 0) {
-         this.subpri = (subprincipal) inicio;
-         }*/
+        
 
         if (i == 1) {
             this.efgraf = (interfaceEFgrafica) inicio;
@@ -99,18 +95,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
 
         if (i == 3) {
             this.modief = (modificaEFgrafica) inicio;
-        }
-
-        if (i == 4) {
-            this.configu = (configuracion) inicio;
-        }
-
-        /*if (i == 5) {
-            this.inilog = (Iniciologin) inicio;
-        }
-        if (i == 6) {
-            this.recordar = (recordarcontraseña) inicio;
-        }*/
+        }     
 
         if (i == 5) {
             this.menpa = (menupager) inicio;
@@ -195,38 +180,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
     //en el new controladorEF (new interfaceEFgrafica(), 0).Iniciar(0);
     //el primer 0 es para entrar al if del controladorEF, y el segundo 0 es para la funion iniciar k 
     public void Iniciar(int i) {
-        /*//SUBPRINCIPAL
-         if (i == 0) {
-         this.subpri.setVisible(true);
-
-         this.subpri.setTitle("Bienvenidos a la Gestion de Empleados");
-         this.subpri.setLocationRelativeTo(null);
-         this.subpri.setSize(525, 425);//ancho x alto
-         this.subpri.setResizable(false);
-         Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-         this.subpri.setIconImage(icono);
-
-         this.subpri.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-         this.subpri.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-         subpri.addWindowListener(new WindowAdapter() {
-         @Override
-         public void windowClosing(WindowEvent e) {
-         JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-         subpri.dispose();
-         System.exit(0);
-         }
-         });
-
-         this.subpri.configEF.setActionCommand("_CONFIGURACION");
-         this.subpri.configEF.setName("_CONFIGURACION");
-         this.subpri.configEF.addActionListener(this);
-
-         this.subpri.imprimirEF.setActionCommand("_GESTIONEF");
-         this.subpri.imprimirEF.setName("_GESTIONEF");
-         this.subpri.imprimirEF.addActionListener(this);
-
-         }*/
+        
 
         if (i == 1) {
 
@@ -530,73 +484,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.modief.cargarimgavatar.addActionListener(this);
 
         }
-
-        if (i == 4) {
-            //configuracion
-
-            this.configu.setVisible(true);
-
-            this.configu.setTitle("Configuracion");
-            this.configu.setLocationRelativeTo(null);
-            this.configu.setSize(525, 425);//ancho x alto
-            this.configu.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
-            this.configu.setIconImage(icono);
-            this.configu.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-            fondopanelconfig c = new fondopanelconfig();
-            this.configu.setContentPane(c);
-            this.configu.FondoConfig.setOpaque(false);
-            c.add(this.configu.FondoConfig);
-
-            this.configu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            configu.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    configu.dispose();
-
-                    //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Signin(), 5).Iniciar(5);
-                }
-            });
-
-            this.configu.Volver.setActionCommand("_CVOLVER");
-            this.configu.Volver.setName("_CVOLVER");
-            this.configu.Volver.addActionListener(this);
-
-            this.configu.Euros.setActionCommand("_CEUROS");
-            this.configu.Euros.setName("_CEUROS");
-            this.configu.Euros.addActionListener(this);
-
-            this.configu.Libras.setActionCommand("_CLIBRAS");
-            this.configu.Libras.setName("_CLIBRAS");
-            this.configu.Libras.addActionListener(this);
-
-            this.configu.Dolares.setActionCommand("_CDOLARES");
-            this.configu.Dolares.setName("_CDOLARES");
-            this.configu.Dolares.addActionListener(this);
-
-            this.configu.UnDecimal.setActionCommand("_CUNDECI");
-            this.configu.UnDecimal.setName("_CUNDECI");
-            this.configu.UnDecimal.addActionListener(this);
-
-            this.configu.DosDecimales.setActionCommand("_CDOSDECI");
-            this.configu.DosDecimales.setName("_CDOSDECI");
-            this.configu.DosDecimales.addActionListener(this);
-
-            this.configu.JSON.setActionCommand("_CJSON");
-            this.configu.JSON.setName("_CJSON");
-            this.configu.JSON.addActionListener(this);
-
-            this.configu.XML.setActionCommand("_CXML");
-            this.configu.XML.setName("_CXML");
-            this.configu.XML.addActionListener(this);
-
-            this.configu.TXT.setActionCommand("_CTXT");
-            this.configu.TXT.setName("_CTXT");
-            this.configu.TXT.addActionListener(this);
-
-        }
+        
 
         if (i == 5) {
             //configuracion
@@ -644,17 +532,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
 
         switch (Accion.valueOf(e.getActionCommand())) {
 
-            //subprincipal
-            /*case _GESTIONEF:
-             subpri.dispose();
-             new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
-             break;
-
-             case _CONFIGURACION:
-             subpri.dispose();
-             new controladorEF(new configuracion(), 4).Iniciar(4);
-
-             break;*/
+            
             //interfaz
             case _BTN_ANTERIOR:
                 pagina1.currentPageIndex -= 1;
@@ -826,46 +704,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             case _MAvatar:
                 FileUploader.pintar_guardar_imag(this.modief.labelavatar, 90, 90);
 
-                break;
-
-            //config
-            case _CVOLVER:
-                configu.dispose();
-                //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                new controlador_login(new Signin(), 5).Iniciar(5);
-                break;
-
-            case _CEUROS:
-                Mainapli.conf.setMoneda('€');
-                break;
-
-            case _CLIBRAS:
-                Mainapli.conf.setMoneda('£');
-                break;
-
-            case _CDOLARES:
-                Mainapli.conf.setMoneda('$');
-                break;
-
-            case _CUNDECI:
-                Mainapli.conf.setDecimales(1);
-                break;
-
-            case _CDOSDECI:
-                Mainapli.conf.setDecimales(2);
-                break;
-
-            case _CJSON:
-                Mainapli.conf.setFichero(1);
-                break;
-
-            case _CXML:
-                Mainapli.conf.setFichero(2);
-                break;
-
-            case _CTXT:
-                Mainapli.conf.setFichero(3);
-                break;
+                break;           
 
         }
     }

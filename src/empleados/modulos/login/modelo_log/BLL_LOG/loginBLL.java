@@ -10,8 +10,9 @@ import empleados.librerias.Encriptar;
 //import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.recordar;
 import static empleados.modulos.login.controlador_log.controlador_login.recordar;
 
-import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOBD_EF;
+//import empleados.modulos.gestionempleados.gestionEF.modelo.DAO.DAOBD_EF;
 import empleados.modulos.login.modelo_log.DAO_LOG.loginDAO;
+import empleados.modulos.login.modelo_log.DAO_LOG.loginDAO_BD;
 import java.awt.Color;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -63,7 +64,8 @@ public class loginBLL {
 
         _con = _conexion_DB.AbrirConexion();
 
-        DAOBD_EF _resetpassword = new DAOBD_EF();
+        //DAOBD_EF _resetpassword = new DAOBD_EF();
+        loginDAO_BD _resetpassword = new loginDAO_BD();
 
         _resul = _resetpassword.restartpass(_con, usu, pass);
 

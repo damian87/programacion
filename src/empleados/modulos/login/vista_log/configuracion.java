@@ -8,7 +8,7 @@
  *
  * Created on 14-mar-2015, 12:55:23
  */
-package empleados.modulos.config;
+package empleados.modulos.login.vista_log;
 
 import empleados.modulos.gestionempleados.gestionEF.vista.*;
 import empleados.modulos.gestionempleados.gestionEF.modelo.BLL.EFBLLgrafica;

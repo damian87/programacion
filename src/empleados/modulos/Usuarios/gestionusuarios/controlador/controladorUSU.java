@@ -30,7 +30,7 @@ import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafi
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.guardarxml;
 import static empleados.modulos.Usuarios.gestionusuarios.vista.interfaceUSUgrafica.jComboBox1;
 import empleados.modulos.Usuarios.gestionusuarios.vista.menupager;
-import empleados.modulos.config.configuracion;
+import empleados.modulos.login.vista_log.configuracion;
 import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
 import java.awt.event.ActionListener;
@@ -68,8 +68,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
     public static AutocompleteJComboBox combo = null;
     public static interfaceUSUgrafica usugraf = new interfaceUSUgrafica();   
     public static CreaUsu creaUSU = new CreaUsu();
-    public static PerfilUsu modiUSU = new PerfilUsu();
-    public static configuracion configu = new configuracion();
+    public static PerfilUsu modiUSU = new PerfilUsu();    
     public static Signin inilog = new Signin();
     public static recordarcontraseña recordar = new recordarcontraseña();
     public static menupager menpa = new menupager();
@@ -87,11 +86,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
         if (i == 3) {
             this.modiUSU = (PerfilUsu) inicio;
-        }
-
-        if (i == 4) {
-            this.configu = (configuracion) inicio;
-        }
+        }        
 
         if (i == 5) {
             this.menpa = (menupager) inicio;
@@ -232,6 +227,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             combo = new AutocompleteJComboBox(searchable);
             this.usugraf.jPanel3.setLayout(new java.awt.BorderLayout());
             this.usugraf.jPanel3.add(combo);
+            this.usugraf.jPanel3.setVisible(false);
 
             combo.addActionListener(new java.awt.event.ActionListener() {
                 @Override
@@ -472,74 +468,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.modiUSU.cargarimgavatar.setName("_MAvatar");
             this.modiUSU.cargarimgavatar.addActionListener(this);
 
-        }
-
-        if (i == 4) {
-            //configuracion
-
-            this.configu.setVisible(true);
-
-            this.configu.setTitle("Configuracion");
-            this.configu.setLocationRelativeTo(null);
-            this.configu.setSize(525, 425);//ancho x alto
-            this.configu.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
-            this.configu.setIconImage(icono);
-            this.configu.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-            fondopanelconfig c = new fondopanelconfig();
-            this.configu.setContentPane(c);
-            this.configu.FondoConfig.setOpaque(false);
-            c.add(this.configu.FondoConfig);
-
-            this.configu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            configu.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    configu.dispose();
-
-                    //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Signin(), 5).Iniciar(5);
-                }
-            });
-
-            this.configu.Volver.setActionCommand("_CVOLVER");
-            this.configu.Volver.setName("_CVOLVER");
-            this.configu.Volver.addActionListener(this);
-
-            this.configu.Euros.setActionCommand("_CEUROS");
-            this.configu.Euros.setName("_CEUROS");
-            this.configu.Euros.addActionListener(this);
-
-            this.configu.Libras.setActionCommand("_CLIBRAS");
-            this.configu.Libras.setName("_CLIBRAS");
-            this.configu.Libras.addActionListener(this);
-
-            this.configu.Dolares.setActionCommand("_CDOLARES");
-            this.configu.Dolares.setName("_CDOLARES");
-            this.configu.Dolares.addActionListener(this);
-
-            this.configu.UnDecimal.setActionCommand("_CUNDECI");
-            this.configu.UnDecimal.setName("_CUNDECI");
-            this.configu.UnDecimal.addActionListener(this);
-
-            this.configu.DosDecimales.setActionCommand("_CDOSDECI");
-            this.configu.DosDecimales.setName("_CDOSDECI");
-            this.configu.DosDecimales.addActionListener(this);
-
-            this.configu.JSON.setActionCommand("_CJSON");
-            this.configu.JSON.setName("_CJSON");
-            this.configu.JSON.addActionListener(this);
-
-            this.configu.XML.setActionCommand("_CXML");
-            this.configu.XML.setName("_CXML");
-            this.configu.XML.addActionListener(this);
-
-            this.configu.TXT.setActionCommand("_CTXT");
-            this.configu.TXT.setName("_CTXT");
-            this.configu.TXT.addActionListener(this);
-
-        }
+        }       
 
         if (i == 5) {
             //menu opcionaes pager
@@ -655,7 +584,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 break;
 
             case _BTN_PRIMERO:
-                pagina.currentPageIndex -= 1;
+                pagina.currentPageIndex -= pagina.maxPageIndex - 1;
                 pagina.initLinkBox();
                 break;
 
@@ -812,46 +741,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             case _MAvatar:
                 FileUploader.pintar_guardar_imag(this.modiUSU.labelavatar, 90, 90);
 
-                break;
-
-            //config
-            case _CVOLVER:
-                configu.dispose();
-                
-                new controlador_login(new Signin(), 5).Iniciar(5);
-                break;
-
-            case _CEUROS:
-                Mainapli.conf.setMoneda('€');
-                break;
-
-            case _CLIBRAS:
-                Mainapli.conf.setMoneda('£');
-                break;
-
-            case _CDOLARES:
-                Mainapli.conf.setMoneda('$');
-                break;
-
-            case _CUNDECI:
-                Mainapli.conf.setDecimales(1);
-                break;
-
-            case _CDOSDECI:
-                Mainapli.conf.setDecimales(2);
-                break;
-
-            case _CJSON:
-                Mainapli.conf.setFichero(1);
-                break;
-
-            case _CXML:
-                Mainapli.conf.setFichero(2);
-                break;
-
-            case _CTXT:
-                Mainapli.conf.setFichero(3);
-                break;
+                break;          
 
         }
     }

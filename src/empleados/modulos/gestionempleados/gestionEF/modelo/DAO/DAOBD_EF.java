@@ -293,42 +293,5 @@ public class DAOBD_EF {
         }
 
     }
-
-    public int restartpass(Connection con, String usu, String pass) {
-//boolean
-
-        //JOptionPane.showMessageDialog(null, efijo.toString());
-        PreparedStatement stmt = null;
-        int b = 0;
-        try {
-
-            stmt = con.prepareStatement("UPDATE EFBBDD.Empleadofijo SET password=? WHERE login=? ");
-            //stmt = con.prepareStatement("UPDATE efbbdd.empleadofijo SET password=? WHERE login=? ");
-            //VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-
-            //stmt = con.prepareStatement("UPDATE usuarios SET usuario=?, password=?, nombre=?, apellido=?, fecha_Nacimiento=?, edad=?,"
-            //      + "fecha_alta=?, telefono=?, ciudad=?, codigo_postal=?, email=?, tipo=? WHERE dni=?");
-            stmt.setString(1, pass);
-            stmt.setString(2, usu);
-
-            //stmt.executeUpdate();
-            b = stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "La contraseña ha sido modificada correctamente!");
-
-        } catch (SQLException ex) {
-            //throw new Exception("Ha habido un problema al insertar la factura "+ex.getMessage());
-            JOptionPane.showMessageDialog(null, "Ha habido un problema al actualizar el password!");
-        } finally {
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException ex) {
-                    //Logger.getLogger(alumnoPresencialDAO.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
-                }
-            }
-        }
-        return b;
-
-    }
+    
 }
