@@ -488,6 +488,8 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             this.menpa.jPanel1.setOpaque(false);
             c.add(this.menpa.jPanel1);
 
+            SingletonsUsu.selectmenuUSU=0;
+            SingletonsUsu.selectmenuEF=0;
             this.menpa.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             menpa.addWindowListener(new WindowAdapter() {
                 @Override
@@ -664,13 +666,13 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             //menupager
             case _MENUEMPLEADOS:
-
+                SingletonsUsu.selectmenuEF=1;                
                 menpa.dispose();
                 new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
 
                 break;
             case _MENUUSUARIOS:
-
+                SingletonsUsu.selectmenuUSU=1;
                 menpa.dispose();
                 new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
 

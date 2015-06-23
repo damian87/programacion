@@ -5,8 +5,10 @@
  */
 package empleados.modulos.login.modelo_log.DAO_LOG;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import empleados.clases.fecha;
 import empleados.librerias.Encriptar;
+import static empleados.librerias.FileUploader.PATH_auto;
 import empleados.librerias.validate;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.clase.Usuario;
@@ -14,6 +16,7 @@ import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.SingletonsEF;
 import empleados.modulos.gestionempleados.gestionEF.modelo.ordenaryclases.empleadofijo;
+import static empleados.modulos.login.controlador_log.controlador_login.creaUSUlog;
 import empleados.modulos.login.vista_log.Signin;
 import java.awt.Color;
 import java.sql.Connection;
@@ -28,6 +31,261 @@ import javax.swing.JPanel;
  * @author damian
  */
 public class loginDAO {
+    
+    public static String nombreUsugrafica() {
+
+        String nom = "";
+        boolean valida;
+        nom = creaUSUlog.txtNombreEF.getText();        
+
+        if (nom.isEmpty()) {
+
+            creaUSUlog.txtNombreEF.setBackground(Color.red);
+            creaUSUlog.txtNombreEF.requestFocus();
+
+        } else {
+
+            valida = validate.validateNombre(nom);
+            if (valida = false) {
+
+                creaUSUlog.txtNombreEF.setBackground(Color.red);
+                creaUSUlog.txtNombreEF.requestFocus();
+
+            } else {
+                creaUSUlog.txtNombreEF.setBackground(Color.green);
+            }
+
+        }
+        return nom;
+
+    }
+
+    public static String PoblacionUsugrafica() {
+        String descrip = "";
+        boolean valida;
+
+        descrip = creaUSUlog.txtDepartamentoEF.getText();
+        if (descrip.isEmpty()) {
+            //JOptionPane.showMessageDialog(null, "El campo del Departamento esta vacio, porfavor introduzca un Departamento");
+            creaUSUlog.txtDepartamentoEF.setBackground(Color.red);
+            creaUSUlog.txtDepartamentoEF.requestFocus();
+
+        } else {
+
+            //deprt=creaUSUlog.txtDescripcionProd.getText();
+            creaUSUlog.txtDepartamentoEF.setBackground(Color.green);
+        }
+        return descrip;
+    }
+
+    public static String dniUsu() {
+        String id = "";
+        boolean valida;
+
+        id = creaUSUlog.txtDNIEF.getText();
+
+        if (id.isEmpty()) {
+            //JOptionPane.showMessageDialog(null, "El campo del DNI esta vacio, porfavor introduzca un DNI");
+            creaUSUlog.txtDNIEF.setBackground(Color.red);
+            creaUSUlog.txtDNIEF.requestFocus();
+
+        } else {
+
+            creaUSUlog.txtDNIEF.setBackground(Color.red);
+            creaUSUlog.txtDNIEF.requestFocus();
+            creaUSUlog.txtDNIEF.setBackground(Color.green);
+        }
+        return id;
+    }
+
+    public static fecha NaciUsugrafica() {
+        String fechaAlta = "";
+        fecha nac = null;
+        boolean valida;
+
+        
+        fechaAlta = ((JTextFieldDateEditor) creaUSUlog.DatePikerEFNacEF.getDateEditor()).getText();
+        nac = new fecha(fechaAlta);
+        return nac;
+    }
+
+    public static String email() {
+        String email = "";
+        boolean valida;
+
+        email = creaUSUlog.txtemail.getText();
+
+        if (email.isEmpty()) {
+            
+            creaUSUlog.txtemail.setBackground(Color.red);
+            creaUSUlog.txtemail.requestFocus();
+
+        } else {
+            
+            valida = validate.email(email);
+            if (valida = false) {
+
+                creaUSUlog.txtemail.setBackground(Color.red);
+                creaUSUlog.txtlogin.requestFocus();
+
+            }
+
+            creaUSUlog.txtemail.setBackground(Color.green);
+        }
+        return email;
+    }
+
+    public static String usuariologin() {
+        String usu = "";
+        boolean valida;
+
+        usu = creaUSUlog.txtlogin.getText();
+        if (usu.isEmpty()) {
+            
+            creaUSUlog.txtlogin.setBackground(Color.red);
+            creaUSUlog.txtlogin.requestFocus();
+
+        } else {
+
+            creaUSUlog.txtlogin.setBackground(Color.green);
+        }
+        return usu;
+    }
+
+    public static String password() {
+        String pass = "";
+        boolean valida;
+
+        pass = creaUSUlog.txtpassword.getText();
+        if (pass.isEmpty()) {
+            
+            creaUSUlog.txtpassword.setBackground(Color.red);
+            creaUSUlog.txtpassword.requestFocus();
+
+        } else {
+
+            creaUSUlog.txtpassword.setBackground(Color.green);
+        }
+        return pass;
+    }
+    
+    
+    public static Usuario creaUsuGrafica() {
+        Usuario ef1 = null;
+        //nombre
+        String nom;
+        String tipo = "";
+        int validar, valida;
+
+        nom = nombreUsugrafica();
+
+        //departamento
+        String pobl;
+        pobl = PoblacionUsugrafica();
+
+        //DNI
+        String dni;
+        dni = dniUsu();
+
+        //eamil
+        String email;
+        email = email();
+
+        //avatar
+        String avatar;
+        avatar = PATH_auto;
+
+        //usuariologin
+        String usuario;
+        usuario = usuariologin();
+
+        //password
+        String Password;
+        Password = password();
+
+        //validar fnac
+        fecha naci = null;
+        naci = NaciUsugrafica();
+
+        if (nom.isEmpty() || dni.isEmpty() || pobl.isEmpty() || usuario.isEmpty() || Password.isEmpty() || email.isEmpty() || naci == null) {
+            JOptionPane.showMessageDialog(null, "Por favor rellene todos los campos");
+        } else {
+
+            //miramos la diferencia entre la fecha de nacimiento y la actual
+            valida = naci.calcularedad();
+
+            if (valida < 16) {
+                creaUSUlog.DatePikerEFNacEF.setBackground(Color.RED);
+                creaUSUlog.DatePikerEFNacEF.requestFocus();
+                JOptionPane.showMessageDialog(null, "No puede registrar a un menor de 16 años");
+            } else {
+
+                if (creaUSUlog.Usuario.isSelected()) {
+                    tipo = "User";
+                } else if (creaUSUlog.Admin.isSelected()) {
+                    tipo = "admin";
+                }
+
+        //validamos
+                
+                SingletonsUsu.u = new Usuario(nom, dni, pobl, naci, usuario, Password, email, tipo, avatar);
+
+                
+                JOptionPane.showMessageDialog(null, "Se ha creado correctamente");
+
+                creaUSUlog.txtNombreEF.setText("");
+                creaUSUlog.txtDepartamentoEF.setText("");
+                creaUSUlog.DatePikerEFNacEF.setDate(null);
+                creaUSUlog.txtDNIEF.setText("");
+                creaUSUlog.txtemail.setText("");
+                creaUSUlog.txtlogin.setText("");
+                creaUSUlog.txtpassword.setText("");
+                creaUSUlog.txtNombreEF.requestFocus();
+
+                creaUSUlog.txtNombreEF.setBackground(Color.WHITE);
+                creaUSUlog.txtNombreEF.setBackground(Color.WHITE);
+                creaUSUlog.txtDNIEF.setBackground(Color.WHITE);
+                creaUSUlog.DatePikerEFNacEF.setBackground(Color.WHITE);
+                creaUSUlog.txtemail.setBackground(Color.WHITE);
+                creaUSUlog.txtlogin.setBackground(Color.WHITE);
+                creaUSUlog.txtpassword.setBackground(Color.WHITE);
+            }
+
+        }
+        return SingletonsUsu.u;
+
+        
+    }
+    
+    public static void Eniviaremail() {
+
+        JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsUsu.u.getEmail() + "Password: " + SingletonsUsu.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
+        //creamos el objeto Mail
+        /*Mail mail = new Mail(SingletonsUsu.u.getEmail(), SingletonsUsu.password.toString());
+
+         //enviamos el mensaje
+         String error = mail.send();
+
+         if (error.equals("")) {
+         JOptionPane.showMessageDialog(null, "Envio Correcto", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+         } else {
+         JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
+         }*/
+    }
+    
+    public static void borrarcamposcrea() {
+        creaUSUlog.txtNombreEF.setText("");
+        creaUSUlog.txtDepartamentoEF.setText("");
+        creaUSUlog.DatePikerEFNacEF.setDate(null);
+        creaUSUlog.txtDNIEF.setText("");
+        creaUSUlog.txtemail.setText("");
+        creaUSUlog.txtlogin.setText("");
+        creaUSUlog.txtpassword.setText("");
+
+        creaUSUlog.txtNombreEF.requestFocus();
+
+    }
+    
 
     public static void PideUsuario() {
 

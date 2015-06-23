@@ -6,7 +6,9 @@
 package empleados.modulos.login.controlador_log;
 
 import empleados.Mainapli;
+import empleados.librerias.FileUploader;
 import empleados.librerias.fondopanelconfig;
+import empleados.librerias.fondopanelcrear;
 import empleados.librerias.fondopanellogin;
 import empleados.modulos.Usuarios.gestionusuarios.controlador.controladorUSU;
 import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
@@ -27,9 +29,11 @@ import empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica;
 import static empleados.modulos.gestionempleados.gestionEF.vista.interfaceEFgrafica.TABLA;
 import empleados.modulos.Usuarios.gestionusuarios.vista.menupager;
 import empleados.modulos.gestionempleados.gestionEF.vista.modificaEFgrafica;
+import static empleados.modulos.login.controlador_log.controlador_login.creaUSUlog;
 import empleados.modulos.login.vista_log.recordarcontraseña;
 import empleados.modulos.login.modelo_log.BLL_LOG.loginBLL;
 import empleados.modulos.login.vista_log.Signin;
+import empleados.modulos.login.vista_log.Singup;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -43,6 +47,7 @@ import java.awt.event.WindowEvent;
 import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
@@ -52,10 +57,15 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 public class controlador_login implements ActionListener, KeyListener, MouseListener {
 
     public static Signin inilog = new Signin();
+    public static Singup creaUSUlog = new Singup();
     public static recordarcontraseña recordar = new recordarcontraseña();
     public static configuracion configu = new configuracion();
 
     public controlador_login(JFrame inicio, int i) {
+        if (i == 2) {
+            this.creaUSUlog = (Singup) inicio;
+        }
+        
         if (i == 4) {
             this.configu = (configuracion) inicio;
         }
@@ -87,7 +97,19 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
         _enter,
         _olvidarpass,
         _newusu,
-        _configurador,
+        _configurador,        
+        //BOTONES CREA
+        _CREAREF,
+        _BORRAR_CAMPOSEF,
+        _CANCELAR_CREAEF,
+        _NOMBREEF,
+        _DEPARTAMENTOEF,
+        _DNIEF,
+        _Email,
+        _Password,
+        _Usuario,
+        _CargaAvatar,
+        _PintaAvatar,
         //reestablecer contraseña
         _RUSU,
         _RPASS,
@@ -96,6 +118,88 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
     }
 
     public void Iniciar(int i) {
+        if (i == 2) {
+            //CreaUsu
+
+            this.creaUSUlog.setVisible(true);
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception e) {
+            }
+            this.creaUSUlog.setTitle("Alta Empleado Fijo");
+            this.creaUSUlog.setLocationRelativeTo(null);
+
+            this.creaUSUlog.setResizable(false);
+            //Image icono=Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
+            //this.creaUSUlog.setIconImage(icono);
+            this.creaUSUlog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
+            fondopanelcrear c = new fondopanelcrear();
+            this.creaUSUlog.setContentPane(c);
+            this.creaUSUlog.jPanel1.setOpaque(false);
+            c.add(this.creaUSUlog.jPanel1);
+
+            this.creaUSUlog.Usuario.doClick();
+            this.creaUSUlog.txtdniEF.setVisible(false);
+            //this.creaUSUlog.setSize(525, 425);//ancho x alto
+
+            this.creaUSUlog.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+            creaUSUlog.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    creaUSUlog.dispose();                    
+                    new controlador_login(new Signin(), 5).Iniciar(5);
+                }
+            });
+
+            this.creaUSUlog.CrearEF.setActionCommand("_CREAREF");
+            this.creaUSUlog.CrearEF.setName("_CREAREF");
+            this.creaUSUlog.CrearEF.addActionListener(this);
+
+            this.creaUSUlog.BorrarEF.setActionCommand("_BORRAR_CAMPOSEF");
+            this.creaUSUlog.BorrarEF.setName("_BORRAR_CAMPOSEF");
+            this.creaUSUlog.BorrarEF.addActionListener(this);
+
+            this.creaUSUlog.CancelarEF.setActionCommand("_CANCELAR_CREAEF");
+            this.creaUSUlog.CancelarEF.setName("_CANCELAR_CREAEF");
+            this.creaUSUlog.CancelarEF.addActionListener(this);
+
+            this.creaUSUlog.txtNombreEF.setActionCommand("_NOMBREEF");
+            this.creaUSUlog.txtNombreEF.setName("_NOMBREEF");
+            this.creaUSUlog.txtNombreEF.addKeyListener(this);
+
+            this.creaUSUlog.txtDepartamentoEF.setActionCommand("_DEPARTAMENTOEF");
+            this.creaUSUlog.txtDepartamentoEF.setName("_DEPARTAMENTOEF");
+            this.creaUSUlog.txtDepartamentoEF.addKeyListener(this);
+
+            this.creaUSUlog.txtDNIEF.setActionCommand("_DNIEF");
+            this.creaUSUlog.txtDNIEF.setName("_DNIEF");
+            this.creaUSUlog.txtDNIEF.addKeyListener(this);
+
+            this.creaUSUlog.txtemail.setActionCommand("_Email");
+            this.creaUSUlog.txtemail.setName("_Email");
+            this.creaUSUlog.txtemail.addKeyListener(this);
+
+            this.creaUSUlog.txtpassword.setActionCommand("_Password");
+            this.creaUSUlog.txtpassword.setName("_Password");
+            this.creaUSUlog.txtpassword.addKeyListener(this);
+
+            this.creaUSUlog.txtlogin.setActionCommand("_Usuario");
+            this.creaUSUlog.txtlogin.setName("_Usuario");
+            this.creaUSUlog.txtlogin.addKeyListener(this);
+
+            this.creaUSUlog.cargarimgavatar.setActionCommand("_CargaAvatar");
+            this.creaUSUlog.cargarimgavatar.setName("_CargaAvatar");
+            this.creaUSUlog.cargarimgavatar.addKeyListener(this);
+
+            if (SingletonsUsu.usulogin == null) {
+                this.creaUSUlog.jPanel2.setVisible(false);
+            } else if ("admin".equals(SingletonsUsu.usulogin.getTipo())) {
+                this.creaUSUlog.jPanel2.setVisible(true);
+            }
+
+            
+        }
+        
         if (i == 4) {
             //configuracion
 
@@ -278,14 +382,12 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
 
             //modulo login
             case _newusu:
-                inilog.dispose();
-                //new controladorEF(new creaEFgrafica(), 2).Iniciar(2);
-                new controladorUSU(new CreaUsu(), 2).Iniciar(2);
+                inilog.dispose();                
+                new controlador_login(new Singup(), 2).Iniciar(2);
 
                 break;
             case _configurador:
-                inilog.dispose();
-                //new controladorEF(new configuracion(), 4).Iniciar(4);
+                inilog.dispose();                
                 new controlador_login(new configuracion(), 4).Iniciar(4);
                 break;
 
@@ -375,6 +477,27 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             case _CTXT:
                 Mainapli.conf.setFichero(3);
                 break;
+                
+                //crea
+            case _CREAREF:
+
+                loginBLL.crearUsuarioGrafica();
+                break;
+
+            case _BORRAR_CAMPOSEF:
+                loginBLL.BorrarcamposUsuarioCreagrafica();
+                break;
+
+            case _CANCELAR_CREAEF:
+                
+                loginBLL.BorrarcamposUsuarioCreagrafica();
+                break;
+
+            case _CargaAvatar:
+
+                FileUploader.pintar_guardar_imag(this.creaUSUlog.labelavatar, 90, 90);
+
+                break;
         }
     }
 
@@ -397,6 +520,36 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
 
             case _password:
                 loginBLL.Password();
+                break;
+                //crea
+            case _NOMBREEF:
+                loginBLL.nombreUsuariografica();
+                break;
+
+            case _DEPARTAMENTOEF:
+                loginBLL.PoblacionUsugrafica();
+                break;
+
+            case _DNIEF:
+                loginBLL.dniUsugrafica();
+                break;
+
+            case _Email:
+                loginBLL.emailUsuariografica();
+                break;
+
+            case _Password:
+                loginBLL.passwordUsuariografica();
+                break;
+
+            case _Usuario:
+                loginBLL.loginUsuariografica();
+                break;
+
+            case _CargaAvatar:
+
+                FileUploader.pintar_guardar_imag(this.creaUSUlog.labelavatar, 90, 90);
+
                 break;
         }
     }

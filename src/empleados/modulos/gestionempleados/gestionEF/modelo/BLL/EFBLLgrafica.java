@@ -7,6 +7,7 @@ package empleados.modulos.gestionempleados.gestionEF.modelo.BLL;
 
 import empleados.librerias.Encriptar;
 import empleados.librerias.FileUploader;
+import empleados.modulos.Usuarios.gestionusuarios.modelo.Singletonyclases.SingletonsUsu;
 import empleados.modulos.gestionempleados.clases.empleado;
 import empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF;
 import static empleados.modulos.gestionempleados.gestionEF.controlador.controladorEF.creaEF;
@@ -32,7 +33,7 @@ public class EFBLLgrafica {
 
     public static void crearEFgrafica() {
         int found = 0;
-        int mail=0;
+        int mail = 0;
         //empleadofijo efi=null;
         DAOEFgrafica.creaEFGrafica();
 
@@ -46,15 +47,14 @@ public class EFBLLgrafica {
             BLLBD_EF guardar = new BLLBD_EF();
             SingletonsEF.password = SingletonsEF.efi.getPassword();
             //StringEncrypter.encriptarTokenMD5(ArraylistEF.efi.getPassword());
-            mail=guardar.nuevoEF_BD();
-            if (mail==1){
+            mail = guardar.nuevoEF_BD();
+            if (mail == 1) {
                 DAOEFgrafica.Eniviaremail();
             }
-            
+
             //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
             //stm.cargar
             //EFBLLgrafica.GuardarSinEnterarse();
-
         }
 
     }
@@ -104,26 +104,33 @@ public class EFBLLgrafica {
     }
 
     public static void borrarcamporEFgrafica() {
-        if (SingletonsEF.efilogin == null) {
+        //if (SingletonsEF.efilogin == null) {
+        if (SingletonsUsu.usulogin == null) {
+
             DAOEFgrafica.borrarcamposcrea();
+            JOptionPane.showMessageDialog(null, "1 if");
             creaEF.dispose();
             new controlador_login(new Signin(), 5).Iniciar(5);
 
-        } else if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+            //} else if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+        } else if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
 
             DAOEFgrafica.borrarcamposcrea();
+            JOptionPane.showMessageDialog(null, "2 if");
             creaEF.dispose();
             new controlador_login(new Signin(), 5).Iniciar(5);
 
         } else {
             DAOEFgrafica.borrarcamposcrea();
+            JOptionPane.showMessageDialog(null, "3 if");
             creaEF.dispose();
             new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
         }
     }
 
     public static void borrarcamporEFModifica() {
-        if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+        //if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+        if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
             DAOEFgrafica.borrarcamposModifica();
             modief.dispose();
             new controlador_login(new Signin(), 5).Iniciar(5);
@@ -138,20 +145,19 @@ public class EFBLLgrafica {
 
     public static void eliminaEFgraficatabla() {
         empleadofijo ef1 = null;
-         int inicio,
-         selec1;
-         if (TABLA.getModel().getRowCount() != 0) {
-         int selec = TABLA.getSelectedRow();
-         inicio = (pagina1.currentPageIndex - 1) * pagina1.itemsPerPage;
-         selec1 = inicio + selec;
-         if (selec1 == -1) {
-         JOptionPane.showMessageDialog(null, "Seleccione primero un Empleado Fijo");
-         } else {
-         String dni = (String) TABLA.getModel().getValueAt(selec1, 0);
-         SingletonsEF.efi = new empleadofijo(dni);
+        int inicio,
+                selec1;
+        if (TABLA.getModel().getRowCount() != 0) {
+            int selec = TABLA.getSelectedRow();
+            inicio = (pagina1.currentPageIndex - 1) * pagina1.itemsPerPage;
+            selec1 = inicio + selec;
+            if (selec1 == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione primero un Empleado Fijo");
+            } else {
+                String dni = (String) TABLA.getModel().getValueAt(selec1, 0);
+                SingletonsEF.efi = new empleadofijo(dni);
 
-         ef1 = DAOEFgrafica.obtenerEF(SingletonsEF.efi.getDni());
-       
+                ef1 = DAOEFgrafica.obtenerEF(SingletonsEF.efi.getDni());
 
                 //remove
                 SingletonsEF.ef.remove(SingletonsEF.efi);

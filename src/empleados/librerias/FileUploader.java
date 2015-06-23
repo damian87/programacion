@@ -44,12 +44,21 @@ public class FileUploader {
 
     public static void pintaravataref(JLabel etiqueta, int ancho, int alto) {
 
-        //ImageIcon icon = new ImageIcon(SingletonsEF.efi.getAvatar());
-        ImageIcon icon = new ImageIcon(SingletonsUsu.u.getAvatar());
+        if (SingletonsUsu.selectmenuUSU == 1) {
+            ImageIcon icon = new ImageIcon(SingletonsUsu.u.getAvatar());
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
+        }else if (SingletonsUsu.selectmenuEF == 1){
+
+        ImageIcon icon = new ImageIcon(SingletonsEF.efi.getAvatar());
+        //ImageIcon icon = new ImageIcon(SingletonsUsu.u.getAvatar());
         Image img = icon.getImage();
         Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
         ImageIcon newIcon = new ImageIcon(newimg);
         etiqueta.setIcon(newIcon); //pintamos la imagen en jlabel1
+        }
 
     }
 

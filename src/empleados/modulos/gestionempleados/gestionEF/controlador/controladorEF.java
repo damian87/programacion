@@ -340,7 +340,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.txtdniEF.setVisible(false);
 
             this.creaEF.Usuario.doClick();
-            this.creaEF.jPanel2.setVisible(false);
+            this.creaEF.jPanel2.setVisible(true);
             this.creaEF.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             creaEF.addWindowListener(new WindowAdapter() {
                 @Override
@@ -395,11 +395,11 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.cargarimgavatar.setName("_CargaAvatar");
             this.creaEF.cargarimgavatar.addKeyListener(this);
 
-            if (SingletonsEF.efilogin == null) {
+            /*if (SingletonsEF.efilogin == null) {
                 this.creaEF.jPanel2.setVisible(false);
             } else if ("admin".equals(SingletonsEF.efilogin.getTipo())) {
                 this.creaEF.jPanel2.setVisible(true);
-            }
+            }*/
 
             //FALTAN COLOCAR LOS KEYPRESSET Y KEYRELEASSED
         }
@@ -421,14 +421,14 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.modief.jPanel1.setOpaque(false);
             c.add(this.modief.jPanel1);
 
-            if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+            /*if ("User".equals(SingletonsEF.efilogin.getTipo())) {
                 DAOEFgrafica.modificaEFgraficallenadodatosPerfil();
-                FileUploader.pintaravatar(this.modief.labelavatar, 90, 90);
-            } else {
+                FileUploader.pintaravatar(this.modief.labelavatar, 90, 90);*/
+            //} else {
 
                 EFBLLgrafica.modificaEFgraficallenacampos();
                 FileUploader.pintaravataref(this.modief.labelavatar, 90, 90);
-            }
+            //}
             this.modief.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             modief.addWindowListener(new WindowAdapter() {
                 @Override

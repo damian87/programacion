@@ -22,5 +22,7 @@ public class SingletonsUsu {
     public static Usuario usulogin;
     public static Usuario usulog;
     public static String password="";
+    public static int selectmenuUSU=0;
+    public static int selectmenuEF=0;
 
 }
