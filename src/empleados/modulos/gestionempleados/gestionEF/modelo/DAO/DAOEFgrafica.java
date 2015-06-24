@@ -532,7 +532,7 @@ public class DAOEFgrafica {
             SingletonsEF.efi.setLogin(modificausuariologin());
             SingletonsEF.efi.setPassword(modificapassword());
             SingletonsEF.efi.setEmail(modificaemail());
-            SingletonsEF.efilogin.setAvatar(PATH_auto);
+            SingletonsEF.efi.setAvatar(PATH_auto);
 
             JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
 
@@ -594,9 +594,9 @@ public class DAOEFgrafica {
 
     public static void Eniviaremail() {
 
-        JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsEF.efi.getEmail() + "Password: " + SingletonsEF.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
+        //JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsEF.efi.getEmail() + "Password: " + SingletonsEF.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
         //creamos el objeto Mail
-        /*Mail mail = new Mail(ArraylistEF.efi.getEmail(), ArraylistEF.password.toString());
+        Mail mail = new Mail(SingletonsEF.efi.getEmail(), SingletonsEF.password.toString());
 
          //enviamos el mensaje
          String error = mail.send();
@@ -605,6 +605,6 @@ public class DAOEFgrafica {
          JOptionPane.showMessageDialog(null, "Envio Correcto", "Correcto", JOptionPane.INFORMATION_MESSAGE);
          } else {
          JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
-         }*/
+         }
     }
 }

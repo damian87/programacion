@@ -236,14 +236,44 @@ public class BLLUSUgrafica {
     
     
     
-    public static void modificaUsugrafica() {               
-        DAOUSUgrafica.modificaUsugrafica();        
+    public static void modificaUsugrafica() { 
+        
+        if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
+            DAOUSUgrafica.modificaUsugrafica();
+
+        } else {
+            DAOUSUgrafica.modificaUsugraficalogin();
+
+        }
+              
 
         BLLBD_USU modi = new BLLBD_USU();        
         modi.modificarUsu_BD();
         //((STMUSU) interfaceUSUgrafica.TABLA.getModel()).cargar();
 
     }  
+    
+    /*
+    public static void modificaEFgrafica() {
+
+        //empleadofijo modificado = new empleadofijo();
+        //modificado=DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
+        if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+            DAOEFgrafica.modificaEFlogin();
+
+        } else {
+            DAOEFgrafica.modificaEFgrafica();
+
+        }
+
+        //JOptionPane.showMessageDialog(null, ArraylistEF.efi.toString());
+        BLLBD_EF modi = new BLLBD_EF();
+        //modificado=ArraylistEF.efi;
+        modi.modificarEF_BD();
+
+        //((STMEF) interfaceEFgrafica.TABLA.getModel()).cargar();
+    }
+    */
     
     
     

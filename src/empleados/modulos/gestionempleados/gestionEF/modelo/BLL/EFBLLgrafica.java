@@ -223,7 +223,7 @@ public class EFBLLgrafica {
 
         //empleadofijo modificado = new empleadofijo();
         //modificado=DAOEFgrafica.obtenerEF(ArraylistEF.efi.getDni());
-        if ("User".equals(SingletonsEF.efilogin.getTipo())) {
+        if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
             DAOEFgrafica.modificaEFlogin();
 
         } else {

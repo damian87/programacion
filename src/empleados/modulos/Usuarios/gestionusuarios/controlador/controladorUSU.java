@@ -406,7 +406,7 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
             c.add(this.modiUSU.jPanel1);
 
             if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
-                DAOUSUgrafica.modificaUsugraficallenadodatos();
+                DAOUSUgrafica.modificaUsugraficallenadodatosPerfil();
                 FileUploader.pintaravatar(this.modiUSU.labelavatar, 90, 90);
             } else {
 

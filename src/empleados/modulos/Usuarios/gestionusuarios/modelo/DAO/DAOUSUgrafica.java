@@ -6,6 +6,7 @@
 package empleados.modulos.Usuarios.gestionusuarios.modelo.DAO;
 
 import com.toedter.calendar.JTextFieldDateEditor;
+import empleados.clases.Mail;
 import empleados.librerias.Encriptar;
 import empleados.clases.fecha;
 import static empleados.librerias.FileUploader.PATH_auto;
@@ -330,6 +331,19 @@ public class DAOUSUgrafica {
     public static void modificaUsugraficallenadodatos() {
 
         
+        PerfilUsu.txtNombre.setText(SingletonsUsu.u.getNombre());
+        PerfilUsu.txtDepartamento.setText(SingletonsUsu.u.getDepartamento());        
+        PerfilUsu.txtedad.setText(Integer.toString(SingletonsUsu.u.getEdad()));        
+        ((JTextFieldDateEditor) PerfilUsu.DatePiketEFnac.getDateEditor()).setText(SingletonsUsu.u.getFechaNacimiento().toString());        
+        PerfilUsu.txtemail.setText(SingletonsUsu.u.getEmail());
+        PerfilUsu.txtlogin.setText(SingletonsUsu.u.getLogin());
+        PerfilUsu.txtpassword.setText("");
+
+    }
+    
+    public static void modificaUsugraficallenadodatosPerfil() {
+
+        
         PerfilUsu.txtNombre.setText(SingletonsUsu.usulogin.getNombre());
         PerfilUsu.txtDepartamento.setText(SingletonsUsu.usulogin.getDepartamento());        
         PerfilUsu.txtedad.setText(Integer.toString(SingletonsUsu.usulogin.getEdad()));        
@@ -462,12 +476,50 @@ public class DAOUSUgrafica {
             PerfilUsu.txtpassword.setBackground(Color.WHITE);
         }
     }
+    
+    public static void modificaUsugraficalogin() {
+        
+        fecha mnac, mcont;
+        String mnom, mdeprt, mlog, mpass, mmail;
+        mnac = fnacUsumodificagrafica();
+        //mcont=fcontEFmodificagrafica();
+        mnom = modificanombreUSUgrafica();
+        mdeprt = modificapoblacionUSUgrafica();
+        mlog = modificausuariologin();
+        mpass = modificapassword();
+        mmail = modificaemail();
+        if (mnac == null || mnom.isEmpty() || mdeprt.isEmpty() || mlog.isEmpty() || mpass.isEmpty() || mmail.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Porfavor rellene todos los campos");
+
+        } else {
+            SingletonsUsu.u.setNombre(modificanombreUSUgrafica());
+            SingletonsUsu.u.setDepartamento(modificapoblacionUSUgrafica());
+            SingletonsUsu.u.setFechaNacimiento(fnacUsumodificagrafica());
+        
+            SingletonsUsu.u.setLogin(modificausuariologin());
+            SingletonsUsu.u.setPassword(modificapassword());
+            SingletonsUsu.u.setEmail(modificaemail());
+
+            JOptionPane.showMessageDialog(null, "El Empleado ha sido modificado satisfactoriamente");
+
+            borrarcamposModifica();
+            PerfilUsu.txtNombre.setBackground(Color.WHITE);
+            PerfilUsu.txtDepartamento.setBackground(Color.WHITE);            
+            PerfilUsu.txtedad.setBackground(Color.WHITE);
+            PerfilUsu.DatePiketEFnac.setBackground(Color.WHITE);            
+            PerfilUsu.txtemail.setBackground(Color.WHITE);
+            PerfilUsu.txtlogin.setBackground(Color.WHITE);
+            PerfilUsu.txtpassword.setBackground(Color.WHITE);
+        }
+    }
+    
+    
 
     public static void Eniviaremail() {
 
-        JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsUsu.u.getEmail() + "Password: " + SingletonsUsu.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
+        //JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsUsu.u.getEmail() + "Password: " + SingletonsUsu.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
         //creamos el objeto Mail
-        /*Mail mail = new Mail(SingletonsUsu.u.getEmail(), SingletonsUsu.password.toString());
+        Mail mail = new Mail(SingletonsUsu.u.getEmail(), SingletonsUsu.password.toString());
 
          //enviamos el mensaje
          String error = mail.send();
@@ -476,7 +528,7 @@ public class DAOUSUgrafica {
          JOptionPane.showMessageDialog(null, "Envio Correcto", "Correcto", JOptionPane.INFORMATION_MESSAGE);
          } else {
          JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
-         }*/
+         }
     }
     
 
