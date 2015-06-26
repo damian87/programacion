@@ -91,7 +91,7 @@ public class BLLUSUgrafica {
     }
     
     public static void ModificaloginUsuariografica() {
-        DAOUSUgrafica.modificaUsugrafica();
+        DAOUSUgrafica.modificausuariologin();
     }
     
     public static void ModificanombreUsuariografica() {

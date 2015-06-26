@@ -517,9 +517,9 @@ public class DAOUSUgrafica {
 
     public static void Eniviaremail() {
 
-        //JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsUsu.u.getEmail() + "Password: " + SingletonsUsu.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Envio Correcto, sus datos son: " + "Email: " + SingletonsUsu.u.getEmail() + "Password: " + SingletonsUsu.password.toString(), "Correcto", JOptionPane.INFORMATION_MESSAGE);
         //creamos el objeto Mail
-        Mail mail = new Mail(SingletonsUsu.u.getEmail(), SingletonsUsu.password.toString());
+        /*Mail mail = new Mail(SingletonsUsu.u.getEmail(), SingletonsUsu.password.toString());
 
          //enviamos el mensaje
          String error = mail.send();
@@ -528,7 +528,7 @@ public class DAOUSUgrafica {
          JOptionPane.showMessageDialog(null, "Envio Correcto", "Correcto", JOptionPane.INFORMATION_MESSAGE);
          } else {
          JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
-         }
+         }*/
     }
     
 

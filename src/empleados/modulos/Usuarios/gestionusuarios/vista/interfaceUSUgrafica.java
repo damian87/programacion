@@ -84,14 +84,18 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         botonnuevoEF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ark_new.png"))); // NOI18N
+        botonnuevoEF.setContentAreaFilled(false);
 
         botonmodificarEF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/attach.png"))); // NOI18N
+        botonmodificarEF.setContentAreaFilled(false);
 
         botoneliminarEF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel.png"))); // NOI18N
+        botoneliminarEF.setContentAreaFilled(false);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Guardar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12))); // NOI18N
 
         botonarchivoEF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/filesave.png"))); // NOI18N
+        botonarchivoEF.setContentAreaFilled(false);
 
         grupoguardar.add(guardarjson);
         guardarjson.setText("JSON");
@@ -141,7 +145,8 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
 
         info.setText("+ info");
 
-        jButton1.setText("cerrar sesion");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenesproyecto/cerrar sesion damian.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
 
         TABLA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,7 +214,7 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,7 +231,7 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116))))
+                        .addGap(92, 92, 92))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,9 +277,9 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
                         .addComponent(botoneliminarEF))
                     .addComponent(info))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelavatar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelavatar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
