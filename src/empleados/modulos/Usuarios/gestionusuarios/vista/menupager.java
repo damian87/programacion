@@ -37,10 +37,12 @@ public class menupager extends javax.swing.JFrame {
         etitexto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         etitexto.setText("¿Que datos desea cargar?");
 
-        btnempleados.setText("Datos Empleados");
+        btnempleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenesproyecto/gestionempleados.png"))); // NOI18N
+        btnempleados.setText("Empleados");
         btnempleados.setContentAreaFilled(false);
 
-        btnusuarios.setText("Datos Usuarios");
+        btnusuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenesproyecto/gestionusuario.png"))); // NOI18N
+        btnusuarios.setText("Usuarios");
         btnusuarios.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -67,7 +69,7 @@ public class menupager extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnusuarios)
                     .addComponent(btnempleados))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

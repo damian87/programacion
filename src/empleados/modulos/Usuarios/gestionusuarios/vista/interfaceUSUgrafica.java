@@ -137,9 +137,11 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
                 .addGap(0, 23, Short.MAX_VALUE))
         );
 
-        botonedadmedia.setText("Edad Media");
+        botonedadmedia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenesproyecto/Edad media.png"))); // NOI18N
+        botonedadmedia.setContentAreaFilled(false);
 
-        botonmayormenor.setText("Mayor - Menor");
+        botonmayormenor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenesproyecto/mayormenor.png"))); // NOI18N
+        botonmayormenor.setContentAreaFilled(false);
 
         labelavatar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -214,7 +216,7 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,9 +266,9 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(botonnuevoEF)
                 .addGap(231, 231, 231)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonmayormenor)
-                    .addComponent(botonedadmedia, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonmayormenor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonedadmedia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -276,7 +278,7 @@ public class interfaceUSUgrafica extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(botoneliminarEF))
                     .addComponent(info))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelavatar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

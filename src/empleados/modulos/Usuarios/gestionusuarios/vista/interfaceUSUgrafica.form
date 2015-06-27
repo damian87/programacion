@@ -49,9 +49,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="botonnuevoEF" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="botonmayormenor" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonedadmedia" min="-2" pref="103" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="botonmayormenor" max="32767" attributes="0"/>
+                      <Component id="botonedadmedia" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
@@ -64,7 +64,7 @@
                       </Group>
                       <Component id="info" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="80" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jButton1" min="-2" pref="111" max="-2" attributes="0"/>
                       <Component id="labelavatar" max="32767" attributes="0"/>
@@ -244,7 +244,10 @@
         </Container>
         <Component class="javax.swing.JButton" name="botonedadmedia">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edad Media"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagenes/imagenesproyecto/Edad media.png"/>
+            </Property>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -252,7 +255,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="botonmayormenor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mayor - Menor"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagenes/imagenesproyecto/mayormenor.png"/>
+            </Property>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -299,7 +305,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="67" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jPanel2" min="-2" pref="501" max="-2" attributes="0"/>

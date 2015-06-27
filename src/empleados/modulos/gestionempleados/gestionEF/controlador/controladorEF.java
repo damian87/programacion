@@ -80,7 +80,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
     public static modificaEFgrafica modief = new modificaEFgrafica();    
     public static Signin inilog = new Signin();
     public static recordarcontraseña recordar = new recordarcontraseña();
-    public static menupager menpa = new menupager();
+    //public static menupager menpa = new menupager();
 
     public controladorEF(JFrame inicio, int i) {
         
@@ -97,9 +97,9 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.modief = (modificaEFgrafica) inicio;
         }     
 
-        if (i == 5) {
+        /*if (i == 5) {
             this.menpa = (menupager) inicio;
-        }
+        }*/
 
     }
 
@@ -486,7 +486,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
         }
         
 
-        if (i == 5) {
+        /*if (i == 5) {
             //configuracion
 
             this.menpa.setVisible(true);
@@ -523,7 +523,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.menpa.btnusuarios.setName("_MENUUSUARIOS");
             this.menpa.btnusuarios.addActionListener(this);
 
-        }
+        }*/
 
     }
 
@@ -627,7 +627,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
 
                 break;
 
-            //menupager
+            /*//menupager
             case _MENUEMPLEADOS:
                 
                 new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
@@ -638,7 +638,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
                 new controladorUSU(new interfaceUSUgrafica(), 1).Iniciar(1);
                 
 
-                break;
+                break;*/
 
             //crea
             case _CREAREF:
