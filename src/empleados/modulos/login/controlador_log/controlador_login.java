@@ -65,7 +65,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
         if (i == 2) {
             this.creaUSUlog = (Singup) inicio;
         }
-        
+
         if (i == 4) {
             this.configu = (configuracion) inicio;
         }
@@ -97,7 +97,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
         _enter,
         _olvidarpass,
         _newusu,
-        _configurador,        
+        _configurador,
         //BOTONES CREA
         _CREAREF,
         _BORRAR_CAMPOSEF,
@@ -126,12 +126,12 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception e) {
             }
-            this.creaUSUlog.setTitle("Alta Empleado Fijo");
+            this.creaUSUlog.setTitle("Alta Nuevo Usuario");
             this.creaUSUlog.setLocationRelativeTo(null);
 
             this.creaUSUlog.setResizable(false);
-            //Image icono=Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            //this.creaUSUlog.setIconImage(icono);
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
+            this.creaUSUlog.setIconImage(icono);
             this.creaUSUlog.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
             fondopanelcrear c = new fondopanelcrear();
             this.creaUSUlog.setContentPane(c);
@@ -146,7 +146,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             creaUSUlog.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    creaUSUlog.dispose();                    
+                    creaUSUlog.dispose();
                     new controlador_login(new Signin(), 5).Iniciar(5);
                 }
             });
@@ -197,9 +197,8 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
                 this.creaUSUlog.jPanel2.setVisible(true);
             }
 
-            
         }
-        
+
         if (i == 4) {
             //configuracion
 
@@ -209,7 +208,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             this.configu.setLocationRelativeTo(null);
             this.configu.setSize(525, 425);//ancho x alto
             this.configu.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
             this.configu.setIconImage(icono);
             this.configu.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
 
@@ -272,9 +271,9 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
 
             this.inilog.setVisible(true);
 
-            this.inilog.setTitle("Bienvenidos a la Gestion de Empleados");
+            this.inilog.setTitle("Bienvenidos a la Gestion de Outlet Products");
             this.inilog.setLocationRelativeTo(null);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
             this.inilog.setIconImage(icono);
             fondopanellogin c = new fondopanellogin();
             this.inilog.setContentPane(c);
@@ -334,7 +333,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             this.recordar.setLocationRelativeTo(null);
             this.recordar.setSize(525, 425);//ancho x alto
             this.recordar.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
             this.recordar.setIconImage(icono);
             this.recordar.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
             fondopanellogin c = new fondopanellogin();
@@ -382,12 +381,12 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
 
             //modulo login
             case _newusu:
-                inilog.dispose();                
+                inilog.dispose();
                 new controlador_login(new Singup(), 2).Iniciar(2);
 
                 break;
             case _configurador:
-                inilog.dispose();                
+                inilog.dispose();
                 new controlador_login(new configuracion(), 4).Iniciar(4);
                 break;
 
@@ -439,7 +438,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
 
                 break;
                 //configuracion
-                
+
             case _CVOLVER:
                 configu.dispose();
                 //new controladorEF(new Iniciologin(), 5).Iniciar(5);
@@ -477,8 +476,8 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             case _CTXT:
                 Mainapli.conf.setFichero(3);
                 break;
-                
-                //crea
+
+            //crea
             case _CREAREF:
 
                 loginBLL.crearUsuarioGrafica();
@@ -489,7 +488,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
                 break;
 
             case _CANCELAR_CREAEF:
-                
+
                 loginBLL.BorrarcamposUsuarioCreagrafica();
                 break;
 
@@ -521,7 +520,7 @@ public class controlador_login implements ActionListener, KeyListener, MouseList
             case _password:
                 loginBLL.Password();
                 break;
-                //crea
+            //crea
             case _NOMBREEF:
                 loginBLL.nombreUsuariografica();
                 break;

@@ -64,19 +64,19 @@
                               <Group type="102" attributes="0">
                                   <Component id="etiAntiguedadEF" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="ModificarEF" min="-2" max="-2" attributes="0"/>
-                                              <Component id="CancelarEF" min="-2" pref="115" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="txtantiguedad" min="-2" pref="37" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="ModificarEF" pref="0" max="32767" attributes="0"/>
+                                              <Component id="CancelarEF" min="-2" pref="115" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="79" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="cargarimgavatar" min="-2" pref="113" max="-2" attributes="0"/>
                                       <Component id="labelavatar" max="32767" attributes="0"/>
@@ -205,7 +205,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -243,7 +243,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="ModificarEF">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Modificar"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagenes/imagenesproyecto/modificar damian.png"/>
+            </Property>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>

@@ -194,12 +194,15 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
 
             //initComponents();    
             this.efgraf.setLocationRelativeTo(null);
-            this.efgraf.setTitle("GestionEmpleados Fijos");
+            this.efgraf.setTitle("Gestion Empleados Fijos");
             this.efgraf.setResizable(true);
             fondopanelpager c = new fondopanelpager();
             this.efgraf.setContentPane(c);
             this.efgraf.jPanel6.setOpaque(false);
             c.add(this.efgraf.jPanel6);
+            
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
+            this.efgraf.setIconImage(icono);
             //this.efgraf.setSize(525, 425);//ancho x alto
             this.efgraf.jPanel1.setOpaque(false);
             this.efgraf.jPanel2.setOpaque(false);
@@ -327,8 +330,8 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.setLocationRelativeTo(null);
 
             this.creaEF.setResizable(false);
-            //Image icono=Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            //this.creaEF.setIconImage(icono);
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
+            this.creaEF.setIconImage(icono);
             this.creaEF.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
             fondopanelcrear c = new fondopanelcrear();
             this.creaEF.setContentPane(c);
@@ -395,11 +398,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.creaEF.cargarimgavatar.setName("_CargaAvatar");
             this.creaEF.cargarimgavatar.addKeyListener(this);
 
-            /*if (SingletonsEF.efilogin == null) {
-                this.creaEF.jPanel2.setVisible(false);
-            } else if ("admin".equals(SingletonsEF.efilogin.getTipo())) {
-                this.creaEF.jPanel2.setVisible(true);
-            }*/
+            
 
             //FALTAN COLOCAR LOS KEYPRESSET Y KEYRELEASSED
         }
@@ -413,7 +412,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.modief.setLocationRelativeTo(null);
             this.modief.setSize(525, 425);//ancho x alto
             this.modief.setResizable(false);
-            java.awt.Image icono = java.awt.Toolkit.getDefaultToolkit().getImage("imagenes/modificar.png");
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
             this.modief.setIconImage(icono);
             this.modief.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
             fondopanelcrear c = new fondopanelcrear();
@@ -484,46 +483,7 @@ public class controladorEF implements ActionListener, KeyListener, MouseListener
             this.modief.cargarimgavatar.addActionListener(this);
 
         }
-        
-
-        /*if (i == 5) {
-            //configuracion
-
-            this.menpa.setVisible(true);
-
-            this.menpa.setTitle("Configuracion");
-            this.menpa.setLocationRelativeTo(null);
-            this.menpa.setSize(525, 425);//ancho x alto
-            this.menpa.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
-            this.menpa.setIconImage(icono);
-            this.menpa.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
-
-            fondopanellogin c = new fondopanellogin();
-            this.menpa.setContentPane(c);
-            this.menpa.jPanel1.setOpaque(false);
-            c.add(this.menpa.jPanel1);
-
-            this.menpa.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            menpa.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    menpa.dispose();
-
-                    //new controladorEF(new Iniciologin(), 5).Iniciar(5);
-                    new controlador_login(new Signin(), 5).Iniciar(5);
-                }
-            });
-
-            this.menpa.btnempleados.setActionCommand("_MENUEMPLEADOS");
-            this.menpa.btnempleados.setName("_MENUEMPLEADOS");
-            this.menpa.btnempleados.addActionListener(this);
-
-            this.menpa.btnusuarios.setActionCommand("_MENUUSUARIOS");
-            this.menpa.btnusuarios.setName("_MENUUSUARIOS");
-            this.menpa.btnusuarios.addActionListener(this);
-
-        }*/
+                
 
     }
 

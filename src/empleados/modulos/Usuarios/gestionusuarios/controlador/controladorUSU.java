@@ -185,12 +185,14 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             //initComponents();    
             this.usugraf.setLocationRelativeTo(null);
-            this.usugraf.setTitle("GestionEmpleados Fijos");
+            this.usugraf.setTitle("Gestion Usuarios");
             this.usugraf.setResizable(true);
             fondopanelpager c = new fondopanelpager();
             this.usugraf.setContentPane(c);
             this.usugraf.jPanel6.setOpaque(false);
             c.add(this.usugraf.jPanel6);
+            Image icono=Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
+            this.usugraf.setIconImage(icono);
             //this.usugraf.setSize(525, 425);//ancho x alto
             this.usugraf.jPanel1.setOpaque(false);
             this.usugraf.jPanel2.setOpaque(false);
@@ -314,12 +316,12 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception e) {
             }
-            this.creaUSU.setTitle("Alta Empleado Fijo");
+            this.creaUSU.setTitle("Alta Usuario");
             this.creaUSU.setLocationRelativeTo(null);
 
             this.creaUSU.setResizable(false);
-            //Image icono=Toolkit.getDefaultToolkit().getImage("imagenes/new.png");
-            //this.creaUSU.setIconImage(icono);
+            Image icono=Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
+            this.usugraf.setIconImage(icono);
             this.creaUSU.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
             fondopanelcrear c = new fondopanelcrear();
             this.creaUSU.setContentPane(c);
@@ -389,15 +391,15 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
         }
 
         if (i == 3) {
-            //PerfilUsu
+            //modifica usu
 
             this.modiUSU.setVisible(true);
 
-            this.modiUSU.setTitle("Modifcar Empleado Fijo");
+            this.modiUSU.setTitle("Modifica Usuario");
             this.modiUSU.setLocationRelativeTo(null);
             this.modiUSU.setSize(525, 425);//ancho x alto
             this.modiUSU.setResizable(false);
-            java.awt.Image icono = java.awt.Toolkit.getDefaultToolkit().getImage("imagenes/modificar.png");
+            java.awt.Image icono = java.awt.Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
             this.modiUSU.setIconImage(icono);
             this.modiUSU.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
             fondopanelcrear c = new fondopanelcrear();
@@ -475,11 +477,11 @@ public class controladorUSU implements ActionListener, KeyListener, MouseListene
 
             this.menpa.setVisible(true);
 
-            this.menpa.setTitle("Configuracion");
+            this.menpa.setTitle("Opciones");
             this.menpa.setLocationRelativeTo(null);
             this.menpa.setSize(525, 425);//ancho x alto
             this.menpa.setResizable(false);
-            Image icono = Toolkit.getDefaultToolkit().getImage("imprimir/new.png");
+            java.awt.Image icono = java.awt.Toolkit.getDefaultToolkit().getImage("src/imagenes/imagenesproyecto/IconOP.png");
             this.menpa.setIconImage(icono);
             this.menpa.setExtendedState(JFrame.MAXIMIZED_BOTH); //la aplicación se abre maximizada
 

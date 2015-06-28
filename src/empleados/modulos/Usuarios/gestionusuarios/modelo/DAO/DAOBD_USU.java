@@ -89,7 +89,7 @@ public class DAOBD_USU {
                 usr.setTipo(rs.getString("tipo"));
 
                 SingletonsUsu.usu.add(usr);
-               
+                
             }
 
         } catch (SQLException ex) {

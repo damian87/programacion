@@ -107,22 +107,19 @@ public class EFBLLgrafica {
         //if (SingletonsEF.efilogin == null) {
         if (SingletonsUsu.usulogin == null) {
 
-            DAOEFgrafica.borrarcamposcrea();
-            JOptionPane.showMessageDialog(null, "1 if");
+            DAOEFgrafica.borrarcamposcrea();            
             creaEF.dispose();
             new controlador_login(new Signin(), 5).Iniciar(5);
 
             //} else if ("User".equals(SingletonsEF.efilogin.getTipo())) {
         } else if ("User".equals(SingletonsUsu.usulogin.getTipo())) {
 
-            DAOEFgrafica.borrarcamposcrea();
-            JOptionPane.showMessageDialog(null, "2 if");
+            DAOEFgrafica.borrarcamposcrea();            
             creaEF.dispose();
             new controlador_login(new Signin(), 5).Iniciar(5);
 
         } else {
-            DAOEFgrafica.borrarcamposcrea();
-            JOptionPane.showMessageDialog(null, "3 if");
+            DAOEFgrafica.borrarcamposcrea();            
             creaEF.dispose();
             new controladorEF(new interfaceEFgrafica(), 1).Iniciar(1);
         }
